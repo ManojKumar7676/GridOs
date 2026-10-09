@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.pytest_cache/
+
+# Environments & Sensitive Credentials
+.env
+.env.local
+*.key
+*.pem
+
+# SQLite database files & test artifacts
+storage/*.db
+*.db
+*.sqlite3
+
+# Temporary / Scratch scripts & duplicate decks
+evaluate_deck.py
+GridOS_Pitch_Deck.pptx
+GridOS_Pitch_Deck_Light.pptx
+GridOS_Pitch_Deck_Final.pptx
+
+# OS Generated
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo

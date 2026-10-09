@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accenture GridOS™ | Problem Statement 4: Solution Architecture & Technical Flows</title>
+    <!-- Mermaid.js for Vector Diagram Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0f1d;
+            --bg-secondary: #111827;
+            --bg-card: #162032;
+            --border-color: #1f293d;
+            --border-active: #3b82f6;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #064e3b 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 40px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .badge-green { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+        .badge-blue { background: rgba(59, 130, 246, 0.18); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.35); }
+        .badge-purple { background: rgba(139, 92, 246, 0.18); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.35); }
+        .badge-amber { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #ffffff, #93c5fd, #6ee7b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subheading {
+            font-size: 1.15rem;
+            color: #d1d5db;
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 60px;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 35px;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .nav-tab {
+            padding: 12px 22px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-tab:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px 6px 0 0;
+        }
+
+        .nav-tab.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.08);
+            border-radius: 6px 6px 0 0;
+        }
+
+        /* Tab Content Panels */
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards & Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 30px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+
+        @media (max-width: 1024px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            header, .container { padding: 30px 20px; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            transition: border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .card-header-icon {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Callout Box */
+        .callout {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+            border-left: 4px solid var(--accent-blue);
+            border-radius: 0 10px 10px 0;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            color: #60a5fa;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Diagram Box */
+        .diagram-container {
+            background: #0d1322;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 24px 0 35px 0;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        .diagram-caption {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.92rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.03);
+            color: #93c5fd;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        code, pre {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.4);
+            color: #67e8f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin: 12px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #d1d5db;
+        }
+
+        .kpi-row {
+            display: flex;
+            gap: 16px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .kpi-pill {
+            background: #111a2e;
+            border: 1px solid #1f2d47;
+            border-radius: 8px;
+            padding: 12px 20px;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .kpi-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #38bdf8;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 30px 60px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            background: #080c16;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="badge-row">
+            <span class="badge badge-green">Accenture × The Economic Times AI Hackathon</span>
+            <span class="badge badge-blue">Problem Statement 4: Utilities</span>
+            <span class="badge badge-purple">Claimed 9-Blocker: F3 - D3</span>
+            <span class="badge badge-amber">IEC 61850 / IEEE 1547 / NERC BAL-001</span>
+        </div>
+        <h1>Accenture GridOS™ | Solution Architecture & Technical Flows</h1>
+        <p class="subheading">
+            Comprehensive blueprint detailing the mathematical, agentic, functional, logical, deployment, and integration architecture for autonomous 15-minute cyber-physical renewable energy orchestration.
+        </p>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <button class="nav-tab active" onclick="openTab(event, 'tab-overview')">📖 Problem & Solution Overview</button>
+        <button class="nav-tab" onclick="openTab(event, 'tab-tech-arch')">🏗️ Technical Architecture</button>
+        <button class="nav-tab" onclick="openTab(event, 'tab-functional')">🔄 Functional Flow</button>
+        <button class="nav-tab" onclick="openTab(event, 'tab-logical')">🔀 Logical Flow & Shocks</button>
+        <button class="nav-tab" onclick="openTab(event, 'tab-deployment')">🚀 Deployment Flow</button>
+        <button class="nav-tab" onclick="openTab(event, 'tab-integration')">🔌 Integration Flow</button>
+        <button class="nav-tab" onclick="openTab(event, 'tab-matrix')">📋 Actions & Scenarios Matrix</button>
+    </div>
+
+    <!-- TAB 1: Problem & Solution Overview -->
+    <div id="tab-overview" class="tab-panel active">
+        <div class="callout">
+            <div class="callout-title">⚡ The Problem Statement 4 Challenge</div>
+            <p>
+                Adoption and utilization of renewable energy are increasing and are expected to increase sharply in the future.
+                However, renewable generation is <strong>highly variable</strong>. Coordination across solar, wind, batteries, and market prices is therefore critical to optimizing cost and sustainability.
+            </p>
+            <p style="margin-top: 8px;">
+                The AI agent must <strong>autonomously coordinate</strong> solar generation, wind generation, battery storage, grid imports, wholesale energy prices, and industrial demand forecasts <strong>every 15 minutes</strong> to minimize cost, maximize clean energy utilization, and maintain grid reliability.
+            </p>
+        </div>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header-icon">
+                    <div class="card-icon" style="color: #f59e0b;">☀️</div>
+                    <div>
+                        <div class="card-title">Physical Portfolio Managed</div>
+                        <div class="card-subtitle">10 Cyber-Physical Utility Assets</div>
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>5 Solar Farms (230 MW)</strong>: Geographically dispersed across microclimates, subject to spatial cloud front attenuation.</li>
+                    <li><strong>3 Wind Farms (250 MW)</strong>: Coastal and ridge terrain, governed by cut-in (3 m/s) and storm safety cut-out (25 m/s) boundaries.</li>
+                    <li><strong>2 Battery Storage Systems (150 MW / 500 MWh)</strong>: BESS-01 (400 MWh Bulk LFP) + BESS-02 (100 MWh Fast Peaker LTO).</li>
+                    <li><strong>3 Heavy Industrial Consumers (~155 MW)</strong>: Baseload, flexible green hydrogen electrolyzer (shiftable), and electric smelter (interruptible DR).</li>
+                    <li><strong>500 kV Regional Interties (200 MW export)</strong>: Subject to thermal line ratings and transmission congestion limits.</li>
+                    <li><strong>Wholesale ISO/LMP Market</strong>: Real-time spot trading, forward spreads, negative pricing tariffs, and $35/ton carbon compliance.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header-icon">
+                    <div class="card-icon" style="color: #3b82f6;">⚖️</div>
+                    <div>
+                        <div class="card-title">Competing Objectives Paradox</div>
+                        <div class="card-subtitle">Non-Linear Multi-Objective Optimization</div>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Minimize (Costs & Wear)</th>
+                            <th>Maximize (Value & Security)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wholesale power purchase expenditure</td>
+                            <td>Commercial arbitrage trading revenue</td>
+                        </tr>
+                        <tr>
+                            <td>Avoided carbon emissions tax ($35/t)</td>
+                            <td>Clean renewable energy utilization (MWh)</td>
+                        </tr>
+                        <tr>
+                            <td>Renewable energy curtailment (MW)</td>
+                            <td>Grid frequency stability (60 Hz &plusmn; 0.03)</td>
+                        </tr>
+                        <tr>
+                            <td>Battery cell electrochemical degradation wear</td>
+                            <td>Spinning reserve margin for N-1 contingency</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.88rem; color: #9ca3af;">
+                    <em>Core Insight:</em> A market price spike incentivizes draining batteries for maximum profit, but this leaves the grid vulnerable without reserves. GridOS resolves this paradox through dynamic Pareto weighting and formal LP dispatch.
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 30px;">
+            <div class="card-header-icon">
+                <div class="card-icon" style="color: #10b981;">🛡️</div>
+                <div>
+                    <div class="card-title">How GridOS Solves It: Unlike Chatbots, We Take Physical Actions</div>
+                    <div class="card-subtitle">Cyber-Physical Actuation Every 15 Minutes</div>
+                </div>
+            </div>
+            <p style="margin-bottom: 12px;">
+                Traditional LLMs act as conversational chatbots offering text suggestions. <strong>Accenture GridOS is an autonomous cyber-physical operating system</strong>. It ingests Doppler radar frames and SCADA sensors, deliberates through 4 autonomous agents, solves a formal HiGHS linear programming Security-Constrained Economic Dispatch (SCED), and executes binding SCADA commands every 15 minutes across all 5 action categories specified in the problem statement:
+            </p>
+            <div class="grid-3" style="margin-top: 16px;">
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px;">
+                    <strong style="color: #38bdf8;">🔋 Battery Actions:</strong>
+                    <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 4px;">Charge, Discharge, Emergency Reserve Headroom</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px;">
+                    <strong style="color: #34d399;">💹 Market Actions:</strong>
+                    <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 4px;">Buy Power, Sell Power, Delay Selling (Forward Arbitrage)</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px;">
+                    <strong style="color: #facc15;">☀️ Renewable Actions:</strong>
+                    <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 4px;">Curtail Wind Pitch, Curtail Solar Inverters, Prioritize Clean</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px;">
+                    <strong style="color: #f87171;">🏭 Demand Management:</strong>
+                    <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 4px;">Trigger DR Smelter, Shift Hydrogen Loads, Derate Cold Chain</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px;">
+                    <strong style="color: #c084fc;">🔧 Maintenance Actions:</strong>
+                    <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 4px;">Delay Maintenance on Peak, Schedule Off-Peak, Dispatch Inspection Teams</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 8px;">
+                    <strong style="color: #60a5fa;">⚖️ HiGHS LP Solver:</strong>
+                    <div style="font-size: 0.85rem; color: #9ca3af; margin-top: 4px;">Exact Energy Balance ($P_{gen} = P_{load}$) & Electrochemical Bounds</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: Technical Architecture -->
+    <div id="tab-tech-arch" class="tab-panel">
+        <h2 style="margin-bottom: 8px;">🏗️ Technical Architecture Diagram</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            Multi-tier cyber-physical architecture connecting raw SCADA telemetry, multimodal radar computer vision, multi-agent consensus, linear programming optimization, and physical actuators.
+        </p>
+
+        <div class="diagram-container">
+            <div id="render-tech-arch" class="mermaid-diagram-target"></div>
+            <script type="text/plain" id="src-tech-arch">
+flowchart TD
+    subgraph SENSORS ["1. Multimodal Ingestion Layer (D3)"]
+        RADAR["Doppler Radar Feeds - NEXRAD WSR-88D Level II"]
+        SCADA["Real-Time SCADA Bus - IEC 61850 and DNP3"]
+        MARKET["Wholesale Market Ticker - ISO/RTO Spot LMP and Forward"]
+        GRID_TEL["Grid Telemetry - 500kV Voltage and 60Hz Frequency"]
+    end
+
+    subgraph CV_LAYER ["2. Perception and Feature Extraction (D3)"]
+        RADAR_ENGINE["RadarVisionEngine<br/>Cloud Opacity Ratio<br/>20x20 Localized Patch Sampling<br/>Peak dBZ and Convective Gust Fronts"]
+    end
+
+    subgraph AGENT_COLLECTIVE ["3. Collaborative Multi-Agent Collective (4 Agents)"]
+        AGT_FC["AGT-01-METEO: Forecast Perception Agent<br/>Irradiance and Wind Yield Forecasts"]
+        AGT_MKT["AGT-02-MRKT: Wholesale Market Agent<br/>LMP Arbitrage and DR Valuation"]
+        AGT_GRID["AGT-03-GRID: Grid Reliability Agent<br/>NERC BAL-001 and BESS Health Protection"]
+        ORCH["AGT-00-EXEC: Chief Executive Orchestrator<br/>Dynamic Pareto Weight Arbitration<br/>w_profit, w_carbon, w_reliability, w_battery, w_curtail"]
+    end
+
+    subgraph OPTIMIZER ["4. Mathematical Optimization Engine (D2)"]
+        SOLVER["IndustrialDispatchSolver (scipy HiGHS LP)<br/>13 Decision Variables Decision Matrix<br/>Exact Energy Conservation and SoC Envelope 10% to 95%"]
+    end
+
+    subgraph ACTUATION ["5. Physical SCADA Actuation Layer (F1 - All 5 Categories)"]
+        ACT_BESS["BATTERY_ACTIONS<br/>Charge / Discharge / Reserve Headroom"]
+        ACT_MKT["MARKET_ACTIONS<br/>Buy / Sell / Delay Arbitrage"]
+        ACT_REN["RENEWABLE_ACTIONS<br/>Curtail Wind / Curtail Solar / Clean Priority"]
+        ACT_DR["DEMAND_MANAGEMENT<br/>Trigger DR / Shift Hydrogen / Pre-cool"]
+        ACT_MNT["MAINTENANCE_ACTIONS<br/>Delay Peak / Schedule Off-peak / Dispatch Crew"]
+    end
+
+    subgraph PERSISTENCE ["6. Persistence and Audit Trail"]
+        DB["OrchestratorDatabase<br/>ACID SQLite orchestrator.db"]
+        UI["Accenture GridOS SCADA Console<br/>Streamlit Web Application Port 8501"]
+    end
+
+    RADAR --> RADAR_ENGINE
+    RADAR_ENGINE --> AGT_FC
+    MARKET --> AGT_MKT
+    SCADA --> AGT_GRID
+    GRID_TEL --> AGT_GRID
+
+    AGT_FC -->|Derating and Storm Flags| ORCH
+    AGT_MKT -->|LMP Spread and Trading Mandates| ORCH
+    AGT_GRID -->|Frequency and Reserve Constraints| ORCH
+
+    ORCH -->|Arbitrated Weights and Constraints| SOLVER
+    SOLVER --> ACT_BESS
+    SOLVER --> ACT_MKT
+    SOLVER --> ACT_REN
+    SOLVER --> ACT_DR
+    SOLVER --> ACT_MNT
+
+    SOLVER --> DB
+    ORCH --> DB
+    DB --> UI
+            </script>
+            <div class="diagram-caption">Figure 1: Full Technical Architecture of Accenture GridOS™ Cyber-Physical Multi-Agent System</div>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-title">1. Multimodal Perception</div>
+                <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 8px;">
+                    Integrates WSR-88D Doppler radar imagery, satellite optical depth, and ground sensors. Computer vision extracts localized cloud attenuation per solar farm coordinate and detects convective storm squalls.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-title">2. 4-Agent Collective</div>
+                <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 8px;">
+                    Forecast, Market, and Grid Reliability agents deliberate in parallel. The Chief Executive Orchestrator arbitrates Pareto weights dynamically to resolve the competing objectives paradox.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-title">3. HiGHS LP SCED Engine</div>
+                <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 8px;">
+                    Formulates a 13-variable linear programming decision problem solved in milliseconds by the HiGHS simplex engine, guaranteeing exact physical energy conservation and electrochemical battery bounds.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: Functional Flow -->
+    <div id="tab-functional" class="tab-panel">
+        <h2 style="margin-bottom: 8px;">🔄 Functional Flow Diagram</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            Step-by-step sequence diagram illustrating how sensor inputs flow through agent deliberation, LP optimization, physical actuation, and database audit logging every 15 minutes.
+        </p>
+
+        <div class="diagram-container">
+            <div id="render-functional" class="mermaid-diagram-target"></div>
+            <script type="text/plain" id="src-functional">
+sequenceDiagram
+    autonumber
+    actor Weather as Weather Radar / Satellite
+    actor Market as Wholesale Market Feed
+    actor SCADA as Physical Grid SCADA
+    participant CV as RadarVisionEngine
+    participant Meteo as Forecast Agent (AGT-01)
+    participant Mkt as Market Agent (AGT-02)
+    participant Grid as Grid Reliability Agent (AGT-03)
+    participant Chief as Chief Executive Orchestrator (AGT-00)
+    participant Solver as HiGHS LP Solver Engine
+    participant Actuator as Physical SCADA Actuators
+    participant DB as SQLite Audit Trail
+
+    Note over Weather,DB: === Interval Start: 15-Minute SCADA Cycle ===
+    
+    Weather->>CV: Ingest Doppler radar frame (PNG / Tensor)
+    CV->>CV: Compute cloud opacity and 20x20 patch asset attenuation
+    CV-->>Meteo: Return MultimodalPerceptionReport (dBZ, derating, storm_alert)
+    Meteo->>Chief: Deliberation Advisory: Available Solar and Wind Generation
+
+    Market->>Mkt: Ingest Spot LMP ($/MWh) and Forward Price Curve
+    Mkt->>Mkt: Calculate forward arbitrage spread (Delta P = Proj - Spot)
+    Mkt->>Chief: Deliberation Advisory: Trading Strategy and Arbitrage Window
+
+    SCADA->>Grid: Ingest frequency (Hz), voltage (kV), line congestion, BESS SoC
+    Grid->>Grid: Audit NERC BAL-001 frequency bounds and IEEE 1547 envelopes
+    Grid->>Chief: Deliberation Advisory: Grid reserve headroom and asset constraints
+
+    Note over Chief: === Deliberation and Pareto Arbitration ===
+    Chief->>Chief: Arbitrate dynamic weights: w_profit, w_carbon, w_rel, w_batt, w_curt
+    Chief->>Solver: Pass Portfolio, Arbitrated Weights and Asset Boundaries
+
+    Note over Solver: === Security-Constrained Economic Dispatch ===
+    Solver->>Solver: Solve 13-variable LP via scipy HiGHS optimizer
+    Solver-->>Chief: DispatchExecutionResult (Setpoints, Revenue, Carbon, Stress)
+
+    Chief->>Actuator: Command 5 Action Categories (Battery, Market, Curtailment, DR, Maintenance)
+    Actuator->>SCADA: Execute physical setpoints on inverters, turbines and breakers
+    Chief->>DB: Log interval telemetry, agent messages, action cluster and rationales
+
+    Note over Weather,DB: === Interval Completed: Ready for Next Cycle ===
+            </script>
+            <div class="diagram-caption">Figure 2: Functional Sequence Flow across the 15-Minute Operational Cycle</div>
+        </div>
+    </div>
+
+    <!-- TAB 4: Logical Flow & Shocks -->
+    <div id="tab-logical" class="tab-panel">
+        <h2 style="margin-bottom: 8px;">🔀 Logical Flow & Real-World Shocks Handled</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            State-machine decision logic demonstrating how the orchestrator evaluates contingencies and shifts dispatch strategy across all 7 real-world disruptions.
+        </p>
+
+        <div class="diagram-container">
+            <div id="render-logical" class="mermaid-diagram-target"></div>
+            <script type="text/plain" id="src-logical">
+flowchart TD
+    START(["Start: New 15-Min SCADA Cycle"]) --> READ_INPUTS["Ingest Radar, Market LMP and SCADA Telemetry"]
+    READ_INPUTS --> RUN_AGENTS["Run Forecast, Market and Grid Reliability Agents"]
+
+    RUN_AGENTS --> CHECK_SHOCKS{"Assess Active Operational Contingency"}
+
+    CHECK_SHOCKS -->|"Scenario 1: Clouds Reduce Solar"| S1["Cloud Deck over Solar Basin<br/>CV calculates 78% attenuation<br/>Derate solar output to 22%<br/>Discharge BESS-01 to cover deficit"]
+    CHECK_SHOCKS -->|"Scenario 2: Wind Storm Cut-out"| S2["Gale Storm over 25 m/s<br/>Cut-out speed breached<br/>Pitch turbine blades - MNT_GUST_LOCKOUT<br/>Spin fast BESS-02 peaker"]
+    CHECK_SHOCKS -->|"Scenario 3: Price Spike"| S3["Price Spike at 285 USD/MWh<br/>Set w_profit to 55%<br/>Discharge all BESS to intertie<br/>Trigger industrial Smelter DR curtailment<br/>Defer scheduled maintenance"]
+    CHECK_SHOCKS -->|"Scenario 4: Negative Pricing"| S4["Negative LMP at -18.50 USD/MWh<br/>Suppress grid export injection<br/>Absorb power into bulk BESS cells<br/>Curtail surplus solar and wind"]
+    CHECK_SHOCKS -->|"Scenario 5: Battery Outage"| S5["BESS-01 Thermal Trip<br/>Take BESS-01 offline<br/>Dispatch BMS inspection crew<br/>Re-route flow to BESS-02 and import"]
+    CHECK_SHOCKS -->|"Scenario 6: Line Congestion"| S6["500kV Intertie Congested<br/>Thermal corridor limit reached<br/>Derate export limit 50%<br/>Curtail excess solar and wind inverters"]
+    CHECK_SHOCKS -->|"Scenario 7: Industrial Surge"| S7["Smelter Demand Surge +35 MW<br/>Sudden industrial demand jump<br/>Shift Hydrogen electrolyzer load<br/>Increase BESS discharge and grid import"]
+    CHECK_SHOCKS -->|"Routine Operations"| S0["Nominal Baseline Operation<br/>Balanced Pareto weights<br/>Standard economic merit dispatch"]
+
+    S1 --> ARBITRATE["Dynamic Pareto Weight Arbitration"]
+    S2 --> ARBITRATE
+    S3 --> ARBITRATE
+    S4 --> ARBITRATE
+    S5 --> ARBITRATE
+    S6 --> ARBITRATE
+    S7 --> ARBITRATE
+    S0 --> ARBITRATE
+
+    ARBITRATE --> LP_SOLVE["HiGHS Linear Programming Optimization Solve"]
+    LP_SOLVE --> CHECK_SOC{"Check BESS SoC Limits"}
+
+    CHECK_SOC -->|"Within 10% to 95% Bounds"| APPLY_SOC["Update BESS SoC Envelope"]
+    CHECK_SOC -->|"Exceeds Safety Envelope"| CLAMP_SOC["Clamp to Physical Safety Bounds"]
+    CLAMP_SOC --> APPLY_SOC
+
+    APPLY_SOC --> EMIT_ACTIONS["Emit 5 Discrete Action Clusters"]
+    EMIT_ACTIONS --> LOG_DB["Commit to SQLite Audit Trail"]
+    LOG_DB --> NEXT_STEP(["Complete: Await Next 15-Min Interval"])
+            </script>
+            <div class="diagram-caption">Figure 3: Logical Decision Tree and Shock Handling State Machine</div>
+        </div>
+    </div>
+
+    <!-- TAB 5: Deployment Flow -->
+    <div id="tab-deployment" class="tab-panel">
+        <h2 style="margin-bottom: 8px;">🚀 Deployment Flow Diagram</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            Production enterprise deployment topology: Edge SCADA Gateways, containerized Kubernetes/Docker services, high-availability database, and Streamlit Operations Center.
+        </p>
+
+        <div class="diagram-container">
+            <div id="render-deployment" class="mermaid-diagram-target"></div>
+            <script type="text/plain" id="src-deployment">
+flowchart TB
+    subgraph FIELD ["Cyber-Physical Utility Field Infrastructure"]
+        SOLAR_PLANTS["5 Solar PV Inverter Substations<br/>IEC 61850 MMS"]
+        WIND_FARMS["3 Wind Turbine Parks<br/>IEC 61850 / Modbus TCP"]
+        BESS_HUBS["2 BESS Facilities<br/>BMS DNP3 / OPC-UA"]
+        INDUSTRIAL["3 Industrial Facilities<br/>Modbus TCP DR Breakers"]
+        INTERTIE["500 kV Substation PMU<br/>IEEE C37.118 Synchrophasor"]
+    end
+
+    subgraph EDGE ["Edge Security and Gateway Layer"]
+        SCADA_GW["Industrial SCADA Edge Gateway<br/>Protocol Normalization IEC 61850 / DNP3<br/>TLS 1.3 Mutual Authentication<br/>Real-Time Polling 1 Hz"]
+        NOAA_API["NOAA / NWS Radar Downlink<br/>WSR-88D NEXRAD Level II Ingestion"]
+        ISO_FEED["ISO / RTO Market Gateway<br/>Real-Time LMP Ticker API"]
+    end
+
+    subgraph K8S_CLUSTER ["Accenture GridOS Containerized Platform (Kubernetes / Docker)"]
+        API_GATEWAY["API Gateway and Reverse Proxy<br/>Nginx / Traefik with TLS Termination"]
+
+        subgraph PODS ["Microservices Pods"]
+            ORCH_POD["GridOS Orchestrator Engine<br/>ChiefExecutiveOrchestrator<br/>4 Collaborative Agents<br/>HiGHS LP Solver"]
+            CV_POD["Computer Vision Pod<br/>RadarVisionEngine<br/>Doppler Tensor Ingestion"]
+            API_POD["FastAPI REST Backend<br/>/api/v1/dispatch/interval<br/>/api/v1/perception/upload-image"]
+            WEB_POD["SCADA Web Console<br/>Streamlit Operations Center<br/>Port 8501"]
+        end
+
+        STORAGE_VOL["Persistent Storage Volume<br/>SQLite / PostgreSQL<br/>Radar Imagery Store"]
+    end
+
+    subgraph CLIENTS ["Operations and SCADA Control Room"]
+        OPERATOR["Utility Control Room Operator<br/>Real-Time Browser Console"]
+        EMS["Utility Energy Management System (EMS)<br/>Upstream SCADA Integration"]
+    end
+
+    FIELD -->|IEC 61850 / DNP3| SCADA_GW
+    SCADA_GW -->|Encrypted Telemetry Stream| API_GATEWAY
+    NOAA_API --> API_GATEWAY
+    ISO_FEED --> API_GATEWAY
+
+    API_GATEWAY --> API_POD
+    API_GATEWAY --> WEB_POD
+    API_POD --> ORCH_POD
+    ORCH_POD --> CV_POD
+    ORCH_POD --> STORAGE_VOL
+    WEB_POD --> STORAGE_VOL
+
+    WEB_POD --> OPERATOR
+    API_POD --> EMS
+            </script>
+            <div class="diagram-caption">Figure 4: Enterprise Production Deployment Topology and Network Architecture</div>
+        </div>
+    </div>
+
+    <!-- TAB 6: Integration Flow -->
+    <div id="tab-integration" class="tab-panel">
+        <h2 style="margin-bottom: 8px;">🔌 Integration Flow Diagram</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            Protocol-level integration architecture showing industrial communication standards, data payload mappings, and API endpoints.
+        </p>
+
+        <div class="diagram-container">
+            <div id="render-integration" class="mermaid-diagram-target"></div>
+            <script type="text/plain" id="src-integration">
+flowchart LR
+    subgraph INBOUND ["Inbound Telemetry Feeds"]
+        I1["Solar PV Arrays<br/>IEC 61850 MMS<br/>SOL_MMXU1.TotW (Active Power)<br/>SOL_MMXU1.Tmp (Inverter Temp)"]
+        I2["Wind Turbines<br/>IEC 61850 MMS<br/>WND_MMXU1.TotW (Active Power)<br/>WND_WIND1.WndSpd (Anemometer)"]
+        I3["BESS Systems<br/>DNP3 Outstation<br/>Point 0: SoC %<br/>Point 1: Cell Temp deg C<br/>Point 2: Availability Flag"]
+        I4["500kV Intertie<br/>IEEE C37.118 PMU<br/>Frequency (Hz), Voltage (kV), Thermal MVA"]
+        I5["Wholesale Market<br/>REST API / WebSocket<br/>Real-Time Spot LMP ($/MWh) and Spreads"]
+        I6["Doppler Radar<br/>NOAA Level II S3 API<br/>WSR-88D Reflectivity Radar Scans"]
+    end
+
+    subgraph CORE ["Accenture GridOS Integration Bus"]
+        INGEST["Telemetry Normalization and Validation Bus<br/>Pydantic Models + IEC SCADA Tags"]
+        DISPATCH["Chief Executive Orchestrator + HiGHS LP Solver"]
+    end
+
+    subgraph OUTBOUND ["Outbound Physical Control Actuators"]
+        O1["Battery Inverters<br/>IEC 61850 GOOSE<br/>BESS_CSWI1.Pos (Charge/Discharge MW)"]
+        O2["Wholesale Intertie<br/>ISO Trading API<br/>Sell/Buy Bid Placement ($/MWh, MW)"]
+        O3["Solar / Wind Curtailment<br/>IEC 61850 GOOSE<br/>Inverter Throttle and Blade Pitch Feathering"]
+        O4["Demand Response<br/>Modbus TCP / OpenADR<br/>Smelter Trip Breaker and Hydrogen Deferral"]
+        O5["Field Maintenance<br/>Enterprise CMMS API<br/>Work Order Ticket and Inspection Dispatch"]
+    end
+
+    I1 --> INGEST
+    I2 --> INGEST
+    I3 --> INGEST
+    I4 --> INGEST
+    I5 --> INGEST
+    I6 --> INGEST
+
+    INGEST --> DISPATCH
+
+    DISPATCH --> O1
+    DISPATCH --> O2
+    DISPATCH --> O3
+    DISPATCH --> O4
+    DISPATCH --> O5
+            </script>
+            <div class="diagram-caption">Figure 5: Industrial Protocol Integration Architecture (IEC 61850, DNP3, IEEE C37.118, OpenADR)</div>
+        </div>
+    </div>
+
+    <!-- TAB 7: Actions & Scenarios Matrix -->
+    <div id="tab-matrix" class="tab-panel">
+        <h2 style="margin-bottom: 8px;">📋 Complete Actions & Real-World Scenarios Matrix</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">
+            Exhaustive mapping of all 15 discrete physical actions across all 5 problem statement categories, and how all 7 real-world disruptions are autonomously resolved.
+        </p>
+
+        <h3 style="color: #60a5fa; margin-bottom: 12px;">All 15 Discrete Physical Actions Across 5 Categories</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Action Name</th>
+                    <th>SCADA Code</th>
+                    <th>Physical Mechanism & Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>🔋 Battery Actions</strong></td>
+                    <td><code>CHARGE_BATTERIES</code></td>
+                    <td><code>BESS_CMD_CHARGE</code></td>
+                    <td>Absorbs surplus solar/wind generation or negative-price market energy into BESS cells.</td>
+                </tr>
+                <tr>
+                    <td><strong>🔋 Battery Actions</strong></td>
+                    <td><code>DISCHARGE_BATTERIES</code></td>
+                    <td><code>BESS_CMD_DISCHARGE</code></td>
+                    <td>Supplies industrial demand or captures lucrative wholesale peak-price arbitrage revenue.</td>
+                </tr>
+                <tr>
+                    <td><strong>🔋 Battery Actions</strong></td>
+                    <td><code>RESERVE_BATTERY_CAPACITY</code></td>
+                    <td><code>BESS_CMD_RESERVE_EMERGENCY</code></td>
+                    <td>Holds battery headroom as spinning reserve for N-1 grid contingencies and frequency stability.</td>
+                </tr>
+                <tr>
+                    <td><strong>💹 Market Actions</strong></td>
+                    <td><code>BUY_ELECTRICITY</code></td>
+                    <td><code>MKT_CMD_BUY</code></td>
+                    <td>Imports wholesale power from regional intertie when local renewables and storage cannot meet load.</td>
+                </tr>
+                <tr>
+                    <td><strong>💹 Market Actions</strong></td>
+                    <td><code>SELL_ELECTRICITY</code></td>
+                    <td><code>MKT_CMD_SELL</code></td>
+                    <td>Exports surplus clean generation to wholesale market at profitable spot LMP clearing prices.</td>
+                </tr>
+                <tr>
+                    <td><strong>💹 Market Actions</strong></td>
+                    <td><code>DELAY_SELLING_UNTIL_PRICES_RISE</code></td>
+                    <td><code>MKT_CMD_HOLD_ARBITRAGE</code></td>
+                    <td>Conserves stored battery charge for high-value evening peak forward price spreads.</td>
+                </tr>
+                <tr>
+                    <td><strong>☀️ Renewable Actions</strong></td>
+                    <td><code>CURTAIL_WIND</code></td>
+                    <td><code>DER_CMD_CURTAIL_WIND</code></td>
+                    <td>Feathers turbine blade pitch under transmission corridor thermal limits or grid congestion.</td>
+                </tr>
+                <tr>
+                    <td><strong>☀️ Renewable Actions</strong></td>
+                    <td><code>CURTAIL_SOLAR</code></td>
+                    <td><code>DER_CMD_CURTAIL_SOLAR</code></td>
+                    <td>Throttles solar PV inverters under negative pricing or transmission line thermal limits.</td>
+                </tr>
+                <tr>
+                    <td><strong>☀️ Renewable Actions</strong></td>
+                    <td><code>PRIORITIZE_CLEANER_GENERATION</code></td>
+                    <td><code>DER_CMD_MERIT_DISPATCH</code></td>
+                    <td>Merit-order priority dispatch of zero-marginal-cost renewable generation at 100% availability.</td>
+                </tr>
+                <tr>
+                    <td><strong>🏭 Demand Management</strong></td>
+                    <td><code>TRIGGER_DEMAND_RESPONSE</code></td>
+                    <td><code>DR_CMD_TRIGGER_DR</code></td>
+                    <td>Curtains interruptible electric smelter load under contractual DR tariff ($65/MWh incentive).</td>
+                </tr>
+                <tr>
+                    <td><strong>🏭 Demand Management</strong></td>
+                    <td><code>REDUCE_NONCRITICAL_LOADS</code></td>
+                    <td><code>DR_CMD_AUDIT_LOADS</code></td>
+                    <td>Derates cold chain storage non-critical HVAC and pre-cools refrigeration zones during peak hours.</td>
+                </tr>
+                <tr>
+                    <td><strong>🏭 Demand Management</strong></td>
+                    <td><code>SHIFT_INDUSTRIAL_LOADS</code></td>
+                    <td><code>DR_CMD_SHIFT_LOAD</code></td>
+                    <td>Defers flexible PEM green hydrogen electrolyzer production to off-peak periods.</td>
+                </tr>
+                <tr>
+                    <td><strong>🔧 Maintenance Actions</strong></td>
+                    <td><code>DELAY_MAINTENANCE</code></td>
+                    <td><code>MNT_DELAY_PEAK</code></td>
+                    <td>Keeps inverter/turbine running during lucrative price spikes; activates auxiliary cooling fans.</td>
+                </tr>
+                <tr>
+                    <td><strong>🔧 Maintenance Actions</strong></td>
+                    <td><code>SCHEDULE_MAINTENANCE</code></td>
+                    <td><code>MNT_SCHEDULE_OFFPEAK</code></td>
+                    <td>Plans off-peak maintenance window for elevated thermal or vibration telemetry anomalies.</td>
+                </tr>
+                <tr>
+                    <td><strong>🔧 Maintenance Actions</strong></td>
+                    <td><code>DISPATCH_INSPECTION_TEAMS</code></td>
+                    <td><code>MNT_DISPATCH_CREW</code></td>
+                    <td>Dispatches field crews for equipment outages (BESS thermal trip, gale lockout, bearing failure).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 style="color: #60a5fa; margin: 30px 0 12px 0;">All 7 Real-World Disruptions Autonomously Resolved</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Real-World Disturbance</th>
+                    <th>Sim Interval</th>
+                    <th>Autonomous Resolution Strategy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td><strong>Clouds reduce solar output</strong> (78% attenuation)</td>
+                    <td>Steps 34-38</td>
+                    <td>Doppler radar CV detects cloud opacity index 0.88. Fleet derated to 22%. BESS-01 discharges bulk power to replace shortfall; grid import covers remaining deficit.</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td><strong>Wind storm cut-out reached</strong> (26.8 m/s > 25 m/s)</td>
+                    <td>Step 60</td>
+                    <td>Wind anemometer breaches 25.0 m/s safety cut-out limit. Turbines aerodynamically locked (MNT_GUST_LOCKOUT). BESS-02 fast peaker ramps up instantly to maintain frequency.</td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td><strong>Electricity prices spike</strong> ($285.00/MWh peak surge)</td>
+                    <td>Step 72</td>
+                    <td>Orchestrator raises profit weight to 55%. Discharges all BESS capacity to 500kV intertie. Triggers Smelter Demand Response (curtails 25 MW). Defers maintenance.</td>
+                </tr>
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td><strong>Negative pricing event</strong> (-$18.50/MWh)</td>
+                    <td>Step 48</td>
+                    <td>Intertie injection suppressed to avoid cash penalties. Massive battery charging absorbs surplus power. Surplus solar/wind curtailed to avoid paying grid to take power.</td>
+                </tr>
+                <tr>
+                    <td><strong>5</strong></td>
+                    <td><strong>Battery outage occurs</strong> (BESS-01 BMS thermal trip)</td>
+                    <td>Step 66</td>
+                    <td>BESS-01 set offline (is_available=False). Emergency BMS inspection crew dispatched. Dispatch burden transferred to fast BESS-02 peaker and grid imports.</td>
+                </tr>
+                <tr>
+                    <td><strong>6</strong></td>
+                    <td><strong>Transmission corridor congested</strong> (500kV line limit)</td>
+                    <td>Step 80</td>
+                    <td>Corridor thermal capacity limit triggered. Export capped at 50% (100 MW). Excess renewable generation absorbed into BESS or curtailed to protect line integrity.</td>
+                </tr>
+                <tr>
+                    <td><strong>7</strong></td>
+                    <td><strong>Industrial demand surge</strong> (+35 MW smelter spike)</td>
+                    <td>Step 86</td>
+                    <td>Gross demand jumps from 155 MW to 190 MW. Flexible hydrogen electrolyzer load shifted to off-peak. Contractual smelter DR curtailment triggered to keep system balanced.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer>
+    Accenture × The Economic Times AI Hackathon (Agentic Edition) | Problem Statement 4: Utilities (Renewable Energy Orchestrator)<br>
+    Self-Declared 9-Blocker Position: <strong>Level F3 - D3</strong> | Production Implementation: <code>AccentureAssessment</code>
+</footer>
+
+<script>
+    // Initialize Mermaid with Dark Utility Theme and startOnLoad: false
+    mermaid.initialize({
+        startOnLoad: false,
+        theme: 'dark',
+        themeVariables: {
+            darkMode: true,
+            background: '#0d1322',
+            primaryColor: '#1e293b',
+            primaryTextColor: '#f8fafc',
+            primaryBorderColor: '#3b82f6',
+            lineColor: '#60a5fa',
+            secondaryColor: '#0f172a',
+            tertiaryColor: '#1e1b4b'
+        }
+    });
+
+    const renderedTabs = {};
+
+    async function renderTabDiagram(tabId) {
+        if (renderedTabs[tabId]) return;
+
+        const map = {
+            'tab-tech-arch': { src: 'src-tech-arch', target: 'render-tech-arch' },
+            'tab-functional': { src: 'src-functional', target: 'render-functional' },
+            'tab-logical': { src: 'src-logical', target: 'render-logical' },
+            'tab-deployment': { src: 'src-deployment', target: 'render-deployment' },
+            'tab-integration': { src: 'src-integration', target: 'render-integration' }
+        };
+
+        const config = map[tabId];
+        if (!config) return;
+
+        const srcEl = document.getElementById(config.src);
+        const targetEl = document.getElementById(config.target);
+
+        if (srcEl && targetEl) {
+            targetEl.innerHTML = '<div style="color: #60a5fa; padding: 20px; font-family: monospace;">Rendering vector diagram...</div>';
+            const code = srcEl.textContent.trim();
+            const id = 'svg_' + tabId.replace(/-/g, '_') + '_' + Math.floor(Math.random() * 100000);
+            try {
+                const { svg } = await mermaid.render(id, code);
+                targetEl.innerHTML = svg;
+                renderedTabs[tabId] = true;
+            } catch (err) {
+                console.error('Error rendering diagram for ' + tabId + ':', err);
+                targetEl.innerHTML = '<div style="color:#ef4444; padding:20px; border:1px solid #ef4444; border-radius:8px;">Failed to render diagram: ' + (err.message || err) + '</div>';
+            }
+        }
+    }
+
+    // Tab Navigation Logic
+    function openTab(evt, tabId) {
+        const panels = document.querySelectorAll('.tab-panel');
+        panels.forEach(panel => panel.classList.remove('active'));
+
+        const tabs = document.querySelectorAll('.nav-tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+
+        const targetPanel = document.getElementById(tabId);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+        if (evt && evt.currentTarget) {
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Render diagram once tab becomes visible
+        setTimeout(() => {
+            renderTabDiagram(tabId);
+        }, 30);
+    }
+
+    // Render active tab on load
+    window.addEventListener('DOMContentLoaded', () => {
+        const activePanel = document.querySelector('.tab-panel.active');
+        if (activePanel) {
+            renderTabDiagram(activePanel.id);
+        }
+    });
+</script>
+
+</body>
+</html>
+
