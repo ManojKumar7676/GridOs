@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GridOS™ — Ultra-Elaborative 25+ Line Director Prompts (Google Vids Production Suite)</title>
+  <title>GridOS™ — Executive Video Production Suite (Two 10s Prompts × 10 Scenes = 20s)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -84,7 +84,7 @@
     .subtitle {
       font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto 1.75rem auto;
     }
 
@@ -152,41 +152,6 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
-    }
-
-    .beat-timeline {
-      background: #090E1A;
-      border: 1px solid #1E293B;
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
-    }
-
-    @media (max-width: 900px) {
-      .beat-timeline { grid-template-columns: 1fr; }
-    }
-
-    .beat-item {
-      background: rgba(255, 255, 255, 0.03);
-      border-left: 3px solid var(--accent-cyan);
-      padding: 0.5rem 0.75rem;
-      border-radius: 6px;
-    }
-
-    .beat-time {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--accent-cyan);
-      text-transform: uppercase;
-      margin-bottom: 0.2rem;
-    }
-
-    .beat-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.35;
     }
 
     .section-block {
@@ -348,14 +313,14 @@
 
   <!-- Header -->
   <header>
-    <div class="badge">🎬 Google Vids Master Director Suite</div>
-    <h1>GridOS™ — Elaborative 25+ Line 20-Second Prompts</h1>
-    <p class="subtitle">Complete 10-Scene Cinematography Prompts Engineered for Google Vids. Every single prompt contains 25+ lines of precise technical direction: second-by-second camera paths, lighting transformations, focal shifts, VFX HUD telemetry, and hardware action across the full 20-second timeline.</p>
+    <div class="badge">🎬 Google Vids Two-Prompt Master Suite</div>
+    <h1>GridOS™ — Two 10-Second Prompts per Scene (25+ Lines Each)</h1>
+    <p class="subtitle">Structured specifically for Google Vids' native workflow: <strong>Part 1 (Base 10 Seconds)</strong> generates the opening visual rhythm, and <strong>Part 2 (Extended 10 Seconds)</strong> continues the shot across the full 20-second scene. Both prompts are elaborately choreographed with 25+ discrete lines of second-by-second technical direction.</p>
     <div class="meta-bar">
       <span>⏱️ <strong>Total Video Runtime:</strong> 3 Minutes 20 Seconds (10 × 20s)</span>
-      <span>📜 <strong>Prompt Depth:</strong> 25 to 28 Discrete Lines per Scene</span>
-      <span>🎥 <strong>Google Vids Capability:</strong> 10s Base ➔ 20s Full Extension</span>
-      <span>👑 <strong>Target Audience:</strong> Investors, Board Members, CEOs, MDs, CTOs</span>
+      <span>📜 <strong>Prompt Architecture:</strong> Two 10s Prompts per Scene (25+ Lines Each)</span>
+      <span>🎥 <strong>Google Vids Workflow:</strong> Generate Part 1 (10s) ➔ Extend with Part 2 (+10s)</span>
+      <span>👑 <strong>Audience:</strong> Investors, Board Members, CEOs, MDs, CTOs</span>
     </div>
   </header>
 
@@ -369,66 +334,80 @@
           <span class="scene-number">SCENE 01</span>
           <span class="scene-name">The Macro Hook & The Microgrid Dilemma</span>
         </div>
-        <div class="scene-duration">⏱️ 0:00 – 0:20 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 0:00 – 0:20 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Hook)</div>
-            <div class="beat-desc">Sweeping golden-hour drone arc over 45MW solar and wind ridges. Vast calm horizon.</div>
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
+          <div class="section-top">
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p1_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Tension)</div>
-            <div class="beat-desc">Storm squall rolls in fast; dark anvil cloud shadow consumes solar arrays. Ambient light cools.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (Dilemma)</div>
-            <div class="beat-desc">Crane-down to substation. AR telemetry sparks amber: spot price spikes ($380), line flows pulse red.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Crisis Peak)</div>
-            <div class="beat-desc">Extreme close-up on vibrating transformer bushing; digital frequency meter shivers at 59.81 Hz.</div>
-          </div>
+          <div class="prompt-text" id="p1_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Macro Dilemma Begins.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Arri Alexa 65 anamorphic digital cinema camera, 50mm T1.9 prime lens.
+[LIGHTING PALETTE]: Warm 3200K golden-hour sunset shifting into turbulent 6500K stormy blue-gray.
+[CAMERA TRAJECTORY]: Smooth high-altitude 500-meter bird's-eye drone sweep over sprawling landscape.
+[ASSET ENVIRONMENT]: Expansive 100MW renewable energy portfolio spanning desert valley and mountain ridges.
+[00:00 - 00:01]: Camera frames vast horizons where 45MW of solar photovoltaic arrays gleam in razor-sharp rows.
+[00:01 - 00:02]: Sunlight reflects brilliantly off thousands of bifacial monocrystalline silicon glass panels.
+[00:02 - 00:03]: On distant western mountain ridges, massive 35MW wind turbine towers turn slowly under calm skies.
+[00:03 - 00:04]: Camera begins an accelerating forward descent along an elegant 45-degree declining crane trajectory.
+[00:04 - 00:05]: Atmosphere suddenly turns hostile as dark cumulonimbus thunderheads roll over the horizon.
+[00:05 - 00:06]: Massive anvil cloud shadows rapidly sweep across the valley floor, engulfing the solar farm in shadow.
+[00:06 - 00:07]: Ground illumination drops instantly from 1000 W/m² sunlight to a dark moody tempest overcast.
+[00:07 - 00:08]: Wind speeds visually accelerate; turbine blades begin flexing and twisting under sudden violent wind gusts.
+[00:08 - 00:09]: Camera banks smoothly right, descending from 200 meters altitude directly toward the substation fence.
+[00:09 - 00:10]: Camera stabilizes at ground level along the crushed granite access road as the storm begins to break.
+[HUD GRAPHICS]: Faint amber environmental telemetry displays begin flickering into translucent mid-air view.
+[MOTION DYNAMICS]: Ultra-stable 3-axis gimbal motion with zero artificial camera shake or digital distortion.
+[COLOR GRADING]: Deep cinematic shadow rolloff with saturated tempest blues and metallic panel reflections.
+[AUDIO SOUNDSTAGE]: Gentle ambient wind and distant turbine hum layered with a low, ominous sub-bass rumble.
+[ATMOSPHERIC VFX]: Volumetric dust particles catching the dying sunset light before being swallowed by rain clouds.
+[TARGET AUDIENCE]: Institutional energy investors, utility managing directors, and microgrid developers.
+[NARRATIVE GOAL]: Establish the immense scale of renewable assets and the sudden peril of weather volatility.
+[ASPECT RATIO]: 16:9 widescreen cinema composition, perfectly framed for executive boardroom presentation.
+[DELIVERY CADENCE]: Authoritative, cinematic, visually breathtaking documentary introduction.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
         <div class="section-block extended">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p1_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p1_part2', this)">Copy Part 2 (10s)</button>
           </div>
-          <div class="prompt-text" id="p1_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: Photorealistic 8K cinema, Arri Alexa 65 anamorphic camera, 50mm T1.9 prime lens.
-[ATMOSPHERIC COLOR]: Transitioning from warm 3200K golden sunset to stormy 6500K bruised tempest slate.
-[00:00 - 00:01]: Camera opens at high-altitude 500-meter bird's-eye drone sweep over sprawling 100MW microgrid complex.
-[00:01 - 00:02]: 45MW of solar photovoltaic arrays gleam in razor-sharp rows across pristine desert valleys.
-[00:02 - 00:03]: Massive 35MW wind turbines spin majestically along mountain ridges under clear amber horizon.
-[00:03 - 00:04]: Camera accelerates forward smoothly in a continuous descending crane arc toward the central switchyard.
-[00:04 - 00:05]: Ominous dark cumulonimbus thunderclouds rapidly roll in from the western horizon at high velocity.
-[00:05 - 00:06]: Dramatic cloud shadows sweep over the solar fields, instantly dimming the landscape into moody blue-gray.
-[00:06 - 00:07]: Camera banks smoothly right, descending from 200 meters altitude down to 30 meters above the substation.
-[00:07 - 00:08]: Wind speeds visually accelerate; distant wind turbine blades begin flexing under sudden turbulence.
-[00:08 - 00:09]: Camera levels out at eye level, tracking steadily along the crushed gravel roadway of the transmission yard.
-[00:09 - 00:10]: Floating holographic augmented reality financial tickers spark to life in translucent 3D mid-air.
-[00:10 - 00:11]: Real-time wholesale spot price ticker rapidly surges from $24.50/MWh to a staggering $380.00/MWh spike.
-[00:11 - 00:12]: Camera dollies forward between rows of utility-scale lithium-ion battery storage container banks.
-[00:12 - 00:13]: High-voltage overhead aluminum conductors begin visibly vibrating with translucent amber thermal heatwaves.
-[00:13 - 00:14]: Holographic alert HUD flags: 'Transformer Feeder Line Flow Surging: 49.2 MW against 50.0 MW Rating'.
-[00:14 - 00:15]: Camera executes a rapid optical push-in toward the central step-up power transformer unit.
-[00:15 - 00:16]: Extreme macro close-up on heavy ceramic bushing insulators surrounded by faint electrical corona discharge.
-[00:16 - 00:17]: A digital grid frequency oscilloscope meter shivers dangerously at 59.81 Hz in bright amber warning font.
-[00:17 - 00:18]: Pulsing alert text flashes: 'NERC BAL-001 Boundary Breach Imminent — Microgrid Instability Alert'.
-[00:18 - 00:19]: Camera pulls focus smoothly from the trembling physical hardware to floating digital chaos telemetry.
-[00:19 - 00:20]: Screen motion-blurs slightly as the tension reaches a crescendo, setting the stage for autonomous rescue.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Subtle film grain, optical chromatic aberration at borders, zero CGI artificiality, BBC documentary grade.</div>
+          <div class="prompt-text" id="p1_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The Physical & Financial Crisis Peaks.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Arri Alexa 65 anamorphic close-focus macro lens, shallow depth of field T2.0.
+[LIGHTING PALETTE]: High-contrast industrial floodlights contrasting with cold, flashing amber alert strobes.
+[CAMERA TRAJECTORY]: Low-angle dolly glide tracking forward between utility-scale BESS battery enclosures.
+[ASSET ENVIRONMENT]: High-voltage 50MW substation yard, power transformers, and lithium-ion container banks.
+[00:10 - 00:11]: Camera pushes past monolithic white utility-scale battery storage enclosures humming in standby.
+[00:11 - 00:12]: Floating 3D holographic financial tickers spark to life in mid-air above the battery containers.
+[00:12 - 00:13]: Wholesale energy spot price ticker skyrockets violently from $24.50/MWh to a severe $380.00/MWh spike.
+[00:13 - 00:14]: Camera pans up toward overhead 69kV transmission busbars as conductors begin physically vibrating.
+[00:14 - 00:15]: Overhead power lines emit visible amber thermal heatwave distortion ripples under heavy current load.
+[00:15 - 00:16]: A glowing crimson alert HUD flashes in center screen: 'Transformer Feeder Overload: 49.2 MW / 50.0 MW Limit'.
+[00:16 - 00:17]: Camera snaps into an extreme macro focal push on a large porcelain transformer bushing insulator.
+[00:17 - 00:18]: Faint electric-blue corona discharge crackles subtly around the metallic high-voltage connectors.
+[00:18 - 00:19]: A digital grid frequency oscilloscope meter shivers dangerously at 59.81 Hz, flashing red warning borders.
+[00:19 - 00:20]: Flashing text reads: 'NERC BAL-001 Boundary Breach — System Instability Imminent — Human Intervention Failed'.
+[HUD GRAPHICS]: High-density Bloomberg terminal financial ticker metrics combined with SCADA engineering alarms.
+[MOTION DYNAMICS]: Tense, mechanical forward tracking shot terminating in razor-sharp macro focal lock.
+[COLOR GRADING]: Cold moody charcoal slate with aggressive amber hazard warnings and electric blue arc flashes.
+[AUDIO SOUNDSTAGE]: Intense electrical 60 Hz transformer hum building in pitch with rhythmic digital warning chimes.
+[ATMOSPHERIC VFX]: Swirling heat haze rising from transformer radiators mixed with impending storm mist.
+[TARGET AUDIENCE]: C-suite utility executives, chief technology officers, and power infrastructure operators.
+[NARRATIVE GOAL]: Prove that human operators cannot manually solve simultaneous financial and physical grid shocks.
+[ASPECT RATIO]: 16:9 widescreen composition with razor-sharp center-weighted executive telemetry.
+[DELIVERY CADENCE]: Escalating dramatic urgency demanding an autonomous cyber-physical breakthrough.</div>
         </div>
 
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p1_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p1_vo">"Every single second, modern renewable microgrids face a multi-million-dollar paradox. Extreme weather swings, negative wholesale prices, and thermal bottlenecks threaten stability. Human operators simply cannot balance sub-second physical laws with volatile financial clearing. Until now."</div>
@@ -444,66 +423,80 @@
           <span class="scene-number">SCENE 02</span>
           <span class="scene-name">Introducing GridOS™ — The Cyber-Physical Breakthrough</span>
         </div>
-        <div class="scene-duration">⏱️ 0:20 – 0:40 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 0:20 – 0:40 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Reveal)</div>
-            <div class="beat-desc">Dark glass operations floor. Massive interactive curved screens ignite with dark slate UI.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Branding)</div>
-            <div class="beat-desc">Crystalline 3D typography 'GridOS™' materializes with electric cyan reflections and lens flare.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (Digital Twin)</div>
-            <div class="beat-desc">Substation transforms into a glowing 3D wireframe digital twin hovering above the desk.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Telemetry Pulse)</div>
-            <div class="beat-desc">Cyan fiber-optic streams pulse between battery, solar, wind, and intertie at the speed of light.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p2_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p2_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p2_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: High-tech futuristic mission control room, Unreal Engine 5 real-time ray-tracing, Apple Keynote grandeur.
-[ATMOSPHERIC COLOR]: Pristine obsidian black (#080C14), icy cyber cyan (#38BDF8), and bright emerald (#34D399) accents.
-[00:00 - 00:01]: Camera opens on a low-angle pedestal tracking shot gliding across a mirror-polished black obsidian floor.
-[00:01 - 00:02]: Expansive executive energy command pavilion features curved panoramic floor-to-ceiling smart glass walls.
-[00:02 - 00:03]: Exterior dusk landscape is visible through the smart glass, showing illuminated wind turbines spinning in distance.
-[00:03 - 00:04]: Camera smoothly tilts upward as monolithic three-dimensional crystalline typography 'GridOS™' materializes.
-[00:04 - 00:05]: Letters hover weightlessly in center frame with sharp diamond-beveled refractive edges and internal cyan light.
+          <div class="prompt-text" id="p2_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Command Sanctuary & Brand Reveal.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Red V-Raptor 8K VV sensor, Leica Summilux-C 35mm prime cine lens.
+[LIGHTING PALETTE]: Deep obsidian navy (#070B12), ambient indigo backlighting, crisp cyan (#38BDF8) edge glow.
+[CAMERA TRAJECTORY]: Low-angle pedestal tracking shot gliding smoothly across a mirror-polished obsidian floor.
+[ASSET ENVIRONMENT]: Ultra-luxurious futuristic executive energy command pavilion with floor-to-ceiling glass.
+[00:00 - 00:01]: Camera opens gliding across black reflective glass flooring that mirrors the soft room illumination.
+[00:01 - 00:02]: In the background, panoramic curved smart-glass windows reveal twilight wind turbines on distant ridges.
+[00:02 - 00:03]: Room atmosphere is quiet, pristine, and authoritative, evoking elite aerospace mission control.
+[00:03 - 00:04]: Camera tilts upward smoothly as monolithic three-dimensional crystalline typography 'GridOS™' materializes.
+[00:04 - 00:05]: The letters hover weightlessly in center frame with diamond-beveled refractive edges and internal cyan light.
 [00:05 - 00:06]: A brilliant horizontal anamorphic lens flare sweeps gracefully across the screen, illuminating the logo.
 [00:06 - 00:07]: Glowing frosted typography animates underneath: 'Autonomous Cyber-Physical Operating System'.
-[00:07 - 00:08]: At second 8, the solid crystalline typography dissolves gracefully into thousands of luminous cybernetic particles.
-[00:08 - 00:09]: The glowing particles coalesce into a magnificent 3D wireframe digital twin of the entire 100MW microgrid.
-[00:09 - 00:10]: The holographic digital twin spins smoothly in mid-air above an interactive obsidian command terminal.
-[00:10 - 00:11]: Camera pushes forward directly into the core of the revolving 3D microgrid holographic architecture.
-[00:11 - 00:12]: Luminous cyan fiber-optic energy conduits illuminate along the floor, tracing high-speed data channels.
-[00:12 - 00:13]: Real-time digital power flows pulse between virtual representations of solar fields, wind parks, and battery banks.
-[00:13 - 00:14]: Floating glass diagnostic telemetry cards project outward in 3D space around the digital twin perimeter.
-[00:14 - 00:15]: Card 1 displays: 'Deterministic HiGHS Mixed-Integer Linear Program SCED Solver Engine: Active'.
-[00:15 - 00:16]: Card 2 displays: 'Physical Kirchhoff Energy Balance Error: Verified 0.00 MW Zero Imbalance'.
-[00:16 - 00:17]: Card 3 displays: 'Operational Maturity Grid: Sovereign Level F3 Autonomous Control x Level D3 Reasoning'.
-[00:17 - 00:18]: Camera executes a breathtaking 180-degree orbital arc around the glowing cyber-physical command nucleus.
-[00:18 - 00:19]: Ambient lighting gently pulses in rhythm with a 60 Hz heartbeat, symbolizing complete system vitality.
-[00:19 - 00:20]: Camera settles into a centered, heroic composition as all digital twin subsystems lock into perfect equilibrium.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Ultra-clean glass reflections, volumetric god rays, anamorphic flare, flawless executive polish.</div>
+[00:07 - 00:08]: Subtle volumetric light rays beam downward from architectural ceiling slots, illuminating the logo.
+[00:08 - 00:09]: The crystalline letters begin to gently pulse with a rhythmic cyan heartbeat, signifying digital life.
+[00:09 - 00:10]: Camera pushes forward smoothly toward the title card as the solid glass begins shimmering into data particles.
+[HUD GRAPHICS]: Ultra-clean minimalist title typography with crystalline glass refraction and subtle blue glow.
+[MOTION DYNAMICS]: Perfectly stabilized mechanical crane pedestal motion with zero vibration or jerk.
+[COLOR GRADING]: Deepest charcoal black (#080C14) contrasted with razor-sharp electric sky-blue highlights.
+[AUDIO SOUNDSTAGE]: Elegant, deep synth pad swelling into a resonant, confident bass tone with subtle crystal chime.
+[ATMOSPHERIC VFX]: Microscopic cybernetic dust particles floating in volumetric light beams around the letters.
+[TARGET AUDIENCE]: Venture capital partners, institutional clean-tech investors, and utility CEOs.
+[NARRATIVE GOAL]: Establish GridOS™ as an elite, production-grade enterprise software breakthrough.
+[ASPECT RATIO]: 16:9 widescreen composition with grand cinematic letterbox aesthetic.
+[DELIVERY CADENCE]: Heroic, visionary, elegant product reveal worthy of Apple Keynote or Tesla unveiling.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p2_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p2_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The Holographic Digital Twin Core.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Red V-Raptor 8K VV sensor, Zeiss Supreme Prime 25mm lens with wide spatial depth.
+[LIGHTING PALETTE]: Luminous neon cyan (#38BDF8), vibrant emerald (#34D399), and deep reflective obsidian reflections.
+[CAMERA TRAJECTORY]: Sweeping 180-degree orbital crane arc revolving around a floating 3D holographic digital twin.
+[ASSET ENVIRONMENT]: Central interactive glass command desk inside the executive mission operations center.
+[00:10 - 00:11]: The crystalline letters dissolve into thousands of glowing data points that coalesce into a 3D digital twin.
+[00:11 - 00:12]: A fully articulated, revolving 3D wireframe holographic model of the 100MW microgrid floats over the desk.
+[00:12 - 00:13]: Camera executes a sweeping 180-degree orbital arc around the glowing cyber-physical command nucleus.
+[00:13 - 00:14]: Luminous cyan fiber-optic energy conduits illuminate along the floor, tracing high-speed data channels.
+[00:14 - 00:15]: Real-time digital power flows pulse between virtual representations of solar fields, wind parks, and BESS.
+[00:15 - 00:16]: Floating glass diagnostic telemetry cards project outward in 3D space around the digital twin perimeter.
+[00:16 - 00:17]: Card 1 displays: 'Deterministic HiGHS Mixed-Integer Linear Program SCED Solver Engine: Active'.
+[00:17 - 00:18]: Card 2 displays: 'Physical Kirchhoff Energy Balance Error: Verified 0.00 MW Zero Imbalance'.
+[00:18 - 00:19]: Card 3 displays: 'Operational Maturity Grid: Sovereign Level F3 Autonomous Control x Level D3 Reasoning'.
+[00:19 - 00:20]: Camera settles into a centered, heroic composition as all digital twin subsystems lock into perfect equilibrium.
+[HUD GRAPHICS]: 3D interactive wireframe microgrid model with live flowing particle telemetry and glass metric cards.
+[MOTION DYNAMICS]: Fluid, cinematic 180-degree orbital camera flight maintaining perfect focal tracking on model center.
+[COLOR GRADING]: Rich obsidian glass textures illuminated by glowing cyan data vectors and emerald stability indicators.
+[AUDIO SOUNDSTAGE]: Futuristic data processing chimes layered with smooth fiber-optic digital whoosh sweeps.
+[ATMOSPHERIC VFX]: Fine holographic scanlines and particle emitters radiating softly from the interactive command desk.
+[TARGET AUDIENCE]: Chief Technology Officers, utility board members, and energy transition managing directors.
+[NARRATIVE GOAL]: Prove that GridOS provides total end-to-end cyber-physical digital twin visibility and control.
+[ASPECT RATIO]: 16:9 widescreen composition with complex 3D depth layers.
+[DELIVERY CADENCE]: Awe-inspiring, technologically sophisticated, deeply confident software demonstration.</div>
+        </div>
+
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p2_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p2_vo">"Meet GridOS™ — the world's first autonomous, sovereign cyber-physical operating system engineered to govern multi-hundred-megawatt renewable microgrids without human bottlenecks, converting chaos into deterministic precision."</div>
@@ -519,37 +512,22 @@
           <span class="scene-number">SCENE 03</span>
           <span class="scene-name">Perception Innovation — NEXRAD Doppler Radar Vision (D3)</span>
         </div>
-        <div class="scene-duration">⏱️ 0:40 – 1:00 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 0:40 – 1:00 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Atmosphere)</div>
-            <div class="beat-desc">Doppler radar dome spins majestically on mountain ridge against towering storm clouds.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Radar Sweep)</div>
-            <div class="beat-desc">360-degree radar beam projects translucent rainbow dBZ reflectivity heatmap over terrain.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (AI Vision)</div>
-            <div class="beat-desc">ResNet-18 neural network bounding boxes and vector arrows track convective cloud vectors (u, v).</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Pre-emption)</div>
-            <div class="beat-desc">HUD readout locks in: 'Irradiance Drop: -80% | Lead Time: 12.4 Minutes | Pre-Charge Initiated'.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p3_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p3_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p3_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: Military-grade aerospace computer vision meets IMAX storm documentary, Arri Alexa Mini LF 4K sensor.
-[ATMOSPHERIC COLOR]: Stormy deep indigo, dark charcoal storm clouds, vivid Doppler rainbow heatmap (green, yellow, orange, crimson).
+          <div class="prompt-text" id="p3_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Doppler Sweep & Heatmap Projection.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Arri Alexa Mini LF, Canon Cine-Servo 50-1000mm telephoto lens for atmospheric scale.
+[LIGHTING PALETTE]: Severe atmospheric storm palette: dark bruised indigo sky, electric lightning highlights, radar spectrum.
+[CAMERA TRAJECTORY]: Panoramic establishing tracking shot circling a NOAA NEXRAD Doppler radar dome on a ridge.
+[ASSET ENVIRONMENT]: Mountain peak weather observatory overlooking expansive valleys, storm clouds, and solar arrays.
 [00:00 - 00:01]: Camera opens on a majestic panoramic wide shot of a NOAA NEXRAD WSR-88D Doppler radar installation.
 [00:01 - 00:02]: The pristine white spherical radome dome rotates steadily atop a dramatic mountain ridgeline.
 [00:02 - 00:03]: Massive dark thunderheads and lightning-charged storm anvils billow ominously in the background sky.
@@ -558,27 +536,56 @@
 [00:05 - 00:06]: Severe convective storm cores illuminate in shades of hot orange and intense magenta (55+ dBZ intensity).
 [00:06 - 00:07]: Camera begins an aggressive, accelerating downward dive through atmospheric cloud layers toward the solar park.
 [00:07 - 00:08]: Camera descends smoothly toward an industrial ruggedized edge computing enclosure stationed beside solar inverters.
-[00:08 - 00:09]: Camera executes a seamless optical transition into an x-ray visualization of the server's silicon computing chassis.
-[00:09 - 00:10]: A glowing neon blue convolutional neural network architecture diagram of ResNet-18 illuminates inside the GPU.
-[00:10 - 00:11]: Neural network layers process Doppler radar pixel matrices, extracting convective cloud motion vectors (u, v) in 45ms.
-[00:11 - 00:12]: Floating AI bounding boxes and dynamic motion vector arrows track storm cell velocity directly toward the microgrid.
-[00:12 - 00:13]: Mathematical physics formulas project across the screen: 'Solar Attenuation: I_eff = I_clear * exp(-k * dBZ / 10)'.
-[00:13 - 00:14]: Real-time optical depth calculation displays: 'Convective Cloud Optical Depth Tau = 4.82 — Rapid Shadowing Imminent'.
-[00:14 - 00:15]: An emerald alert notification locks firmly into center screen: 'Extreme Irradiance Drop Predicted: -80% Drop within 3 Mins'.
-[00:15 - 00:16]: Telemetry confirms early warning lead time: 'Doppler Radar Advance Notice: 12.4 Minutes Prior to Ground Sensor Drop'.
-[00:16 - 00:17]: Automated pre-emptive action initiates: 'Pre-Charging BESS Battery to 90% SoC Buffer initiated before cloud arrival'.
-[00:17 - 00:18]: Camera pulls back out from the server to reveal the solar array preparing autonomously for storm impact.
-[00:18 - 00:19]: Inverter status displays turn emerald green, acknowledging successful pre-emptive buffer configuration.
-[00:19 - 00:20]: Smooth technical transition into the multi-agent decision core as early warning telemetry streams propagate.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Iron Man HUD vector graphics, scientific radar accuracy, photorealistic volumetric rain fog.</div>
+[00:08 - 00:09]: Topographical elevation lines and storm front boundary vectors project across the landscape in bright HUD green.
+[00:09 - 00:10]: Camera approaches the metallic edge computing enclosure as rain drops begin striking the camera lens housing.
+[HUD GRAPHICS]: Official meteorological dBZ reflectivity color scale bar (0 to 75 dBZ) and 100km radar range rings.
+[MOTION DYNAMICS]: Grand circular panoramic orbit accelerating smoothly into a steep downward atmospheric dive.
+[COLOR GRADING]: Deep moody charcoal and tempest indigo contrasting with vibrant meteorological radar heat colors.
+[AUDIO SOUNDSTAGE]: Howling high-altitude wind gusts layered with rhythmic Doppler radar motor hum and low thunder.
+[ATMOSPHERIC VFX]: Heavy moisture fog, rolling storm cloud volume, and animated conical radar sweep beam.
+[TARGET AUDIENCE]: Chief operating officers, grid resilience engineers, and renewable asset managers.
+[NARRATIVE GOAL]: Showcase sovereign multimodal radar sensing before generation loss physically strikes the site.
+[ASPECT RATIO]: 16:9 widescreen composition with grand cinematic IMAX weather documentary scale.
+[DELIVERY CADENCE]: Visually gripping, scientifically authoritative, atmospheric tour de force.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p3_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p3_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — Edge ResNet-18 Vision & Pre-Emptive Alert.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Arri Alexa Mini LF, Laowa 24mm T14 2X PeriProbe lens for internal macro computing visuals.
+[LIGHTING PALETTE]: High-tech silicon blue (#0284C7), glowing cyan neural paths (#38BDF8), and emerald alert green.
+[CAMERA TRAJECTORY]: Extreme macro push into ruggedized edge server chassis transitioning to full HUD analytics.
+[ASSET ENVIRONMENT]: Industrial edge computing enclosure chassis, cooling fans, and high-performance neural accelerators.
+[00:10 - 00:11]: Camera executes an x-ray optical transition directly into the silicon processor core of the edge IPC unit.
+[00:11 - 00:12]: An illuminated neon blue convolutional neural network diagram of ResNet-18 illuminates inside the GPU.
+[00:12 - 00:13]: Neural network layers process Doppler radar pixel matrices, extracting convective cloud motion vectors (u, v) in 45ms.
+[00:13 - 00:14]: Floating AI bounding boxes and dynamic motion vector arrows track storm cell velocity directly toward the microgrid.
+[00:14 - 00:15]: Mathematical physics formulas project across the screen: 'Solar Attenuation: I_eff = I_clear * exp(-k * dBZ / 10)'.
+[00:15 - 00:16]: Real-time optical depth calculation displays: 'Convective Cloud Optical Depth Tau = 4.82 — Rapid Shadowing Imminent'.
+[00:16 - 00:17]: An emerald alert notification locks firmly into center screen: 'Extreme Irradiance Drop Predicted: -80% Drop within 3 Mins'.
+[00:17 - 00:18]: Telemetry confirms early warning lead time: 'Doppler Radar Advance Notice: 12.4 Minutes Prior to Ground Sensor Drop'.
+[00:18 - 00:19]: Automated pre-emptive action initiates: 'Pre-Charging BESS Battery to 90% SoC Buffer initiated before cloud arrival'.
+[00:19 - 00:20]: Smooth technical transition into the multi-agent decision core as early warning telemetry streams propagate.
+[HUD GRAPHICS]: Neural network layer activation heatmaps, optical depth mathematical equations, and advance warning banners.
+[MOTION DYNAMICS]: Surgical macro forward tracking through circuit boards transitioning to flat technical HUD analytics.
+[COLOR GRADING]: Deep motherboard black illuminated by pulsing cyan convolutional neural pathways and green alert seals.
+[AUDIO SOUNDSTAGE]: High-speed digital computing processing data chirps layered with an authoritative confirmation chime.
+[ATMOSPHERIC VFX]: Holographic data packets flowing along printed circuit board traces and server cooling exhaust vapor.
+[TARGET AUDIENCE]: Chief Technology Officers, AI research directors, and predictive power systems architects.
+[NARRATIVE GOAL]: Prove that GridOS uses real computer vision to anticipate weather shocks 12 minutes early.
+[ASPECT RATIO]: 16:9 widescreen composition with razor-sharp macro text rendering.
+[DELIVERY CADENCE]: High-tech, mathematically validated, decisive cognitive perception breakthrough.</div>
+        </div>
+
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p3_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p3_vo">"Level D3 Decision Autonomy begins with sight. Ingesting live NOAA NEXRAD Doppler radar, GridOS runs ResNet-18 computer vision at the edge, forecasting cloud microbursts and gust fronts over twelve minutes before they hit ground sensors."</div>
@@ -594,37 +601,22 @@
           <span class="scene-number">SCENE 04</span>
           <span class="scene-name">The 4 Autonomous Agents Collective</span>
         </div>
-        <div class="scene-duration">⏱️ 1:00 – 1:20 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 1:00 – 1:20 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Matrix Form)</div>
-            <div class="beat-desc">4 glowing agent quadrants assemble on dark glass UI (Forecast, Market, Grid, Orchestrator).</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Agent Focus 1 & 2)</div>
-            <div class="beat-desc">Zoom into Forecast (W/m² solar curves) then Market (spot arb spreads & $28.50 hurdle).</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (Agent Focus 3)</div>
-            <div class="beat-desc">Pan down to Grid Reliability Agent tracking 60Hz NERC BAL-001 & feeder MVA caps.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Consensus Bus)</div>
-            <div class="beat-desc">All 4 agent nodes beam structured JSON bid packets into the central Orchestrator hub.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p4_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p4_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p4_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: High-speed cybernetic multi-agent UI, Bloomberg Professional terminal meets Minority Report, 60fps motion graphics.
-[ATMOSPHERIC COLOR]: Multi-agent quad palette: Cyan (#38BDF8), Amber (#FBBF24), Emerald (#34D399), Royal Purple (#A78BFA) on deep slate.
+          <div class="prompt-text" id="p4_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Multi-Agent Quadrant Assembly.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Sony FX9 Full-Frame 6K sensor, Fujinon Premista 28-100mm T2.9 cine zoom lens.
+[LIGHTING PALETTE]: High-contrast multi-agent UI palette: Cyan (#38BDF8), Amber (#FBBF24), Emerald (#34D399), Purple (#A78BFA).
+[CAMERA TRAJECTORY]: Centered wide-angle framing transitioning into an agile forward dolly push.
+[ASSET ENVIRONMENT]: Floating holographic multi-agent operations suite against dark anti-reflective slate glass.
 [00:00 - 00:01]: Camera frames a symmetrical 4-quadrant holographic command dashboard floating against dark obsidian glass.
 [00:01 - 00:02]: Four distinct autonomous agent avatars materialize with crisp glowing icons and technical nomenclature.
 [00:02 - 00:03]: Quadrant 1 (Top-Left): 🌤️ AGT-01 Renewable Forecast Agent glows with electric cyan luminescence.
@@ -635,6 +627,29 @@
 [00:07 - 00:08]: Forecast Agent graphs 0-4h power curves: solar irradiance dropping to 120 W/m², wind anemometers clocking 14.2 m/s.
 [00:08 - 00:09]: Camera tracks rapidly diagonally across to Top-Right Quadrant 2 (Market Agent).
 [00:09 - 00:10]: Market Agent calculates wholesale LMP arbitrage spreads, enforcing rule: 'BESS Degradation Hurdle: $28.50/MWh-cycle'.
+[HUD GRAPHICS]: Crisp geometric agent quadrant frames with live streaming telemetry graphs and animated waveform curves.
+[MOTION DYNAMICS]: Dynamic quadrant-to-quadrant snap tracking with fluid digital motion blur between focal targets.
+[COLOR GRADING]: Deep dark slate background (#0E1626) with saturated, high-contrast agent neon identifier colors.
+[AUDIO SOUNDSTAGE]: Multi-frequency cybernetic data exchange chirps and subtle user interface click sounds.
+[ATMOSPHERIC VFX]: Soft ambient glass reflections and floating holographic wireframe frames defining each quadrant.
+[TARGET AUDIENCE]: Power trading executives, operations vice presidents, and autonomous systems architects.
+[NARRATIVE GOAL]: Clearly demonstrate the separation of concerns and specialized expertise of each agent.
+[ASPECT RATIO]: 16:9 widescreen composition with balanced four-quadrant layout.
+[DELIVERY CADENCE]: Crisp, analytical, high-velocity multi-agent coordination showcase.</div>
+        </div>
+
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p4_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p4_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — Grid Reliability & Consensus Synthesis.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Sony FX9 Full-Frame 6K sensor, Zeiss Batis 40mm T2.0 prime lens for tack-sharp text.
+[LIGHTING PALETTE]: Saturated emerald green (#34D399), golden amber (#FBBF24), and royal violet (#A78BFA) consensus glow.
+[CAMERA TRAJECTORY]: Low-angle pan into Quadrant 3 pulling back into high-angle centered consensus composition.
+[ASSET ENVIRONMENT]: Virtual multi-agent message bus architecture floating in interactive glass 3D space.
 [00:10 - 00:11]: Flashing negative price alert triggers: 'Wholesale LMP Inversion: -$35.00/MWh — Negative Price Export Suppressed'.
 [00:11 - 00:12]: Camera sweeps down into Bottom-Left Quadrant 3 (Grid Reliability Agent).
 [00:12 - 00:13]: Grid Reliability displays synchrophasor PMU frequency tracking: rock-solid 60.00 Hz oscilloscope corridor.
@@ -645,15 +660,21 @@
 [00:17 - 00:18]: Inter-agent communication bus synchronizes all bids in under 150 milliseconds without human input.
 [00:18 - 00:19]: Executive Orchestrator acknowledges receipt of all three bids with a pulsing violet consensus ring.
 [00:19 - 00:20]: Camera centers on the Orchestrator node preparing to arbitrate competing economic and physical priorities.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Sleek glass blur, ultra-crisp typography, zero latency UI transitions, institutional fintech polish.</div>
+[HUD GRAPHICS]: Flowing encrypted JSON data streams, synchrophasor PMU waveforms, and circular consensus synchronization rings.
+[MOTION DYNAMICS]: Smooth sweeping crane pull-back centering all four nodes into an unified holistic system composition.
+[COLOR GRADING]: Balanced multi-color harmony resolving into deep authoritative royal violet as the orchestrator commands.
+[AUDIO SOUNDSTAGE]: Rhythmic harmonic data resonance culminating in a solid, deep structural lock chime.
+[ATMOSPHERIC VFX]: Translucent fiber-optic data channels firing luminous light pulses between the quadrant boundaries.
+[TARGET AUDIENCE]: Power utility executives, enterprise software architects, and energy market regulators.
+[NARRATIVE GOAL]: Prove that GridOS agents negotiate seamlessly over a formal, audited message bus in sub-second time.
+[ASPECT RATIO]: 16:9 widescreen composition with centered focal convergence.
+[DELIVERY CADENCE]: Authoritative, harmonious, mathematically elegant consensus delivery.</div>
         </div>
 
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p4_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p4_vo">"Four specialized autonomous agents operate in constant concert: Forecast predicts physical output; Market hunts wholesale arbitrage while respecting battery degradation hurdles; and Grid Reliability protects physical feeder limits."</div>
@@ -669,37 +690,22 @@
           <span class="scene-number">SCENE 05</span>
           <span class="scene-name">The Chief Executive Orchestrator (AGT-00-EXEC) & Pareto Simplex</span>
         </div>
-        <div class="scene-duration">⏱️ 1:20 – 1:40 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 1:20 – 1:40 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Mathematical Arena)</div>
-            <div class="beat-desc">3D multi-objective Pareto surface hovers in space. Trade-off axes illuminate in cyan.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Conflict Alert)</div>
-            <div class="beat-desc">Red clash alert: Market demands 25MW BESS discharge; Grid warns 48MW feeder overload.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (HiGHS Solver)</div>
-            <div class="beat-desc">HiGHS Simplex chip pulses; dynamic Pareto weights shift, clamping discharge to 18.2 MW.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Optimal Equilibrium)</div>
-            <div class="beat-desc">Golden equilibrium point locks in: 'Solved in 11.8 ms — 100% Convergence — Zero Overloads'.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p5_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p5_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p5_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: Quantum mathematical optimization arena, 3D non-linear surface manifolds, high-performance computing chip architecture.
-[ATMOSPHERIC COLOR]: Radiant royal purple (#A78BFA), electric cyan (#38BDF8), warning crimson (#FB7185), golden equilibrium (#FBBF24).
+          <div class="prompt-text" id="p5_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Conflict on the Pareto Manifold.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Arri Alexa 35 4K camera, Cooke Anamorphic/i Full Frame Plus 40mm lens.
+[LIGHTING PALETTE]: Luminous royal violet (#A78BFA), electric cyan (#38BDF8), and flashing warning crimson (#FB7185).
+[CAMERA TRAJECTORY]: Smooth 3D forward push-in into a revolving multi-dimensional mathematical manifold.
+[ASSET ENVIRONMENT]: Abstract geometric mathematical space representing dynamic multi-objective Pareto trade-offs.
 [00:00 - 00:01]: Camera pushes into a revolving 3D multi-objective Pareto optimization surface floating in a dark glass void.
 [00:01 - 00:02]: The multi-dimensional Pareto frontier curve illuminates with iridescent purple and cyan contour lines.
 [00:02 - 00:03]: Master mathematical objective function hovers overhead in razor-sharp white typography:
@@ -709,26 +715,55 @@
 [00:06 - 00:07]: Flashing crimson warning vector intersects from Grid Reliability Agent: total line flow would reach 53.2 MW.
 [00:07 - 00:08]: Warning HUD flashes: 'Feeder Thermal Overload Breach! Substation Line Rating Capped at 50.0 MW Max'.
 [00:08 - 00:09]: Camera dives down into the Chief Executive Orchestrator's automated dispute resolution processor.
-[00:09 - 00:10]: Pareto weight sliders shift dynamically in real time: w_rel surges from 0.20 to 0.75, prioritizing physical survival.
-[00:10 - 00:11]: Industrial HiGHS Mixed-Integer Linear Program SCED simplex engine illuminates on a floating silicon accelerator.
-[00:11 - 00:12]: Millions of simplex constraint matrix calculations execute in real time across glowing mathematical lattices.
-[00:12 - 00:13]: Simplex algorithm converges to global mathematical optimality in exactly 11.8 milliseconds.
-[00:13 - 00:14]: BESS discharge command is mathematically clamped to precisely 18.2 MW, resolving the conflict.
-[00:14 - 00:15]: A radiant golden sphere locks into position at the apex of the Pareto curve, achieving perfect trade-off.
-[00:15 - 00:16]: Telemetry stamps into view: 'HiGHS Convergence: 100.0% — Solved in 11.8 ms — Feeder Flow Clamped at 48.0 MW'.
-[00:16 - 00:17]: Both financial arbitrage revenue and complete physical thermal safety margins are simultaneously satisfied.
-[00:17 - 00:18]: Camera executes an elegant orbital pan around the golden equilibrium point on the Pareto manifold.
-[00:18 - 00:19]: Conflicting vectors dissolve cleanly into a single verified dispatch command package ready for SCADA execution.
-[00:19 - 00:20]: Smooth transition into the physical switchyard as deterministic dispatch setpoints stream to substation hardware.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Mathematical vector fields, particle convergence, depth-of-field rack focus, aerospace computing fidelity.</div>
+[00:09 - 00:10]: Two conflicting vectors clash in mid-air above the mathematical surface, creating tension.
+[HUD GRAPHICS]: 3D non-linear surface contours, floating LaTeX objective functions, and intersecting colored bid vectors.
+[MOTION DYNAMICS]: Dramatic 3D camera push revolving smoothly around the clashing mathematical vectors.
+[COLOR GRADING]: Deep violet and cyan contours punctuated by an aggressive, pulsing crimson clash point.
+[AUDIO SOUNDSTAGE]: Deep mathematical drone layered with rising tension string harmonics and warning sonar pings.
+[ATMOSPHERIC VFX]: Volumetric grid lines bending along the non-linear curvature of the 3D Pareto frontier surface.
+[TARGET AUDIENCE]: Power systems engineers, optimization researchers, and mathematical finance executives.
+[NARRATIVE GOAL]: Dramatize the fundamental clash between financial greed and physical grid safety.
+[ASPECT RATIO]: 16:9 widescreen composition with complex 3D depth and parallax.
+[DELIVERY CADENCE]: Tense, intellectually rigorous, mathematically compelling conflict setup.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p5_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p5_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The HiGHS Simplex Convergence.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Arri Alexa 35 4K camera, Cooke Anamorphic/i 65mm macro lens for solver visualization.
+[LIGHTING PALETTE]: Electric violet processor glow, golden equilibrium point (#FBBF24), and emerald stability accents.
+[CAMERA TRAJECTORY]: Descending macro crane dive into the solver chip pulling up to reveal the equilibrium point.
+[ASSET ENVIRONMENT]: Industrial computing accelerator core floating inside the mathematical decision space.
+[00:10 - 00:11]: Pareto weight sliders shift dynamically in real time: w_rel surges from 0.20 to 0.75, prioritizing physical survival.
+[00:11 - 00:12]: Industrial HiGHS Mixed-Integer Linear Program SCED simplex engine illuminates on a floating silicon accelerator.
+[00:12 - 00:13]: Millions of simplex constraint matrix calculations execute in real time across glowing mathematical lattices.
+[00:13 - 00:14]: Simplex algorithm converges to global mathematical optimality in exactly 11.8 milliseconds.
+[00:14 - 00:15]: BESS discharge command is mathematically clamped to precisely 18.2 MW, resolving the conflict.
+[00:15 - 00:16]: A radiant golden sphere locks into position at the apex of the Pareto curve, achieving perfect trade-off.
+[00:16 - 00:17]: Telemetry stamps into view: 'HiGHS Convergence: 100.0% — Solved in 11.8 ms — Feeder Flow Clamped at 48.0 MW'.
+[00:17 - 00:18]: Both financial arbitrage revenue and complete physical thermal safety margins are simultaneously satisfied.
+[00:18 - 00:19]: Camera executes an elegant orbital pan around the golden equilibrium point on the Pareto manifold.
+[00:19 - 00:20]: Conflicting vectors dissolve cleanly into a single verified dispatch command package ready for SCADA execution.
+[HUD GRAPHICS]: Simplex constraint boundary planes, millisecond convergence timer (11.8 ms), and golden equilibrium marker.
+[MOTION DYNAMICS]: Tight macro tracking pulling out into an expansive, triumphant 360-degree orbital pan.
+[COLOR GRADING]: Harmonious resolution into rich metallic gold (#FBBF24) and crisp stability emerald (#34D399).
+[AUDIO SOUNDSTAGE]: Rapid computational data flutter resolving into a heavy, triumphant bass drop and clean resolution tone.
+[ATMOSPHERIC VFX]: Thousands of floating matrix variables collapsing cleanly into a singular radiant point of light.
+[TARGET AUDIENCE]: Grid operations directors, energy trading heads, and industrial software managing directors.
+[NARRATIVE GOAL]: Prove that GridOS solves complex multi-objective microgrid conflicts with deterministic mathematical proof.
+[ASPECT RATIO]: 16:9 widescreen composition with centered golden hero element.
+[DELIVERY CADENCE]: Triumphant, mathematically decisive, indisputable executive validation.</div>
+        </div>
+
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p5_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p5_vo">"At the helm is the Chief Executive Orchestrator. When market greed conflicts with grid safety, it dynamically shifts Pareto weights and solves a Mixed-Integer Linear Program via the industrial HiGHS simplex engine in under fifteen milliseconds. Zero debate. Absolute mathematical optimality."</div>
@@ -744,37 +779,22 @@
           <span class="scene-number">SCENE 06</span>
           <span class="scene-name">Deterministic Mathematical Safety — Exact Kirchhoff Balance (D2)</span>
         </div>
-        <div class="scene-duration">⏱️ 1:40 – 2:00 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 1:40 – 2:00 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Switchyard Focus)</div>
-            <div class="beat-desc">Gleaming high-voltage copper busbars and ceramic insulators in high-voltage substation.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Kirchhoff Formula)</div>
-            <div class="beat-desc">Luminous golden formula locks: '|Sum(P_gen) - Sum(P_load)| = 0.0000 MW'.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (Battery Envelopes)</div>
-            <div class="beat-desc">Camera tracks along BESS racks showing SoC safety envelope locked between 10% and 90%.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Zero Hallucination)</div>
-            <div class="beat-desc">Cryptographic stamp stamps: 'Deterministic Mathematical Proof — Air-Gapped from AI Hallucinations'.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p6_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p6_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p6_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: Immaculate German electrical switchyard engineering, surgical laboratory precision, macro physical hardware cinematography.
-[ATMOSPHERIC COLOR]: Clinical white light (5000K), high-voltage cyan conduits (#38BDF8), pristine safety emerald (#34D399).
+          <div class="prompt-text" id="p6_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Copper Switchyard & Kirchhoff Law.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Red Monstro 8K VV sensor, Leica Thalia 30mm prime cinema lens for zero optical distortion.
+[LIGHTING PALETTE]: Clinical engineering white light (5000K), high-voltage electric cyan (#38BDF8), polished copper.
+[CAMERA TRAJECTORY]: Horizontal slider track gliding along substation copper busbars and high-voltage ceramic insulators.
+[ASSET ENVIRONMENT]: High-voltage electrical switchyard, step-up transformers, and heavy aluminum conductors.
 [00:00 - 00:01]: Camera opens on a macro horizontal dolly glide along heavy solid copper busbars inside a high-voltage substation.
 [00:01 - 00:02]: Sleek ceramic post insulators and polished aluminum terminals gleam with surgical cleanliness.
 [00:02 - 00:03]: Streams of brilliant blue electrical current flow along the conductors, visualizing three-phase balanced AC power.
@@ -783,27 +803,56 @@
 [00:05 - 00:06]: A metallic holographic stamp seals the equation with industrial authority: 'Kirchhoff Current Law — Physically Verified'.
 [00:06 - 00:07]: Camera dollies forward into an immaculate utility BESS container aisle lined with modular battery racks.
 [00:07 - 00:08]: Climate-controlled battery module status lights glow in steady green, humming quietly in standby.
-[00:08 - 00:09]: Translucent green safety corridors overlay along the battery modules: 'BESS State of Charge Corridor: [10.0% to 90.0%]'.
-[00:09 - 00:10]: Coulombic round-trip efficiency readout validates: 'Round-Trip Efficiency: Modeled at Exact 92.0% Battery Physics'.
-[00:10 - 00:11]: Thermal sensors confirm: 'Internal Cell Temperatures: 28.4°C — Emergency Thermal Cap Bounded at 55.0°C'.
-[00:11 - 00:12]: Power inverter ramp-rate governor locks: 'Ramp Limits Enforced: <= 2.5 MW/min with Fast Frequency Response Reserve'.
-[00:12 - 00:13]: A visual barrier of cryptographic glass blocks descends between high-level AI reasoning and physical hardware.
-[00:13 - 00:14]: Certification typography projects: 'Zero-Hallucination Architecture: Air-Gapped from Language Model Output'.
-[00:14 - 00:15]: An animated energy balance ledger unfurls in glowing 3D: 45MW Solar + 35MW Wind + 25MW BESS = 40MW Load + Intertie Export.
-[00:15 - 00:16]: Every single milliwatt generated balances every milliwatt consumed with absolute mathematical zero residual error.
-[00:16 - 00:17]: A golden compliance badge materializes: 'Deterministic Simplex Guarantee — Physical Law Cannot Be Violated'.
-[00:17 - 00:18]: Camera executes a smooth pull-back revealing the entire switchyard operating in flawless mathematical symmetry.
-[00:18 - 00:19]: Substation transformer hum remains calm, deep, and stable at 60.00 cycles per second.
-[00:19 - 00:20]: Final visual confirmation locks: 'Kirchhoff Current Law Error: 0.0000 MW across All Operating Intervals'.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Razor-sharp depth of field, zero visual distortion, German DIN-standard engineering graphics.</div>
+[00:08 - 00:09]: Clean polished concrete floors reflect the overhead LED strips with surgical German engineering precision.
+[00:09 - 00:10]: Camera approaches the main battery container door as status displays illuminate in steady green.
+[HUD GRAPHICS]: Industrial engineering schematics, busbar active power flow vectors, and metallic verification stamps.
+[MOTION DYNAMICS]: Flawless linear slider movement with zero camera shake, calibrated with millimeter precision.
+[COLOR GRADING]: Neutral, cool clinical whites (5000K) accented with high-voltage electric blue and emerald.
+[AUDIO SOUNDSTAGE]: Deep, peaceful, perfectly balanced 60 Hz electrical transformer hum with zero distortion.
+[ATMOSPHERIC VFX]: Ultra-fine cleanroom air quality with subtle volumetric light beams from high-bay LED fixtures.
+[TARGET AUDIENCE]: Power utility chief engineers, safety regulatory commissioners, and grid infrastructure investors.
+[NARRATIVE GOAL]: Establish that GridOS enforces absolute physical conservation of energy without exception.
+[ASPECT RATIO]: 16:9 widescreen composition with crisp horizontal architectural symmetry.
+[DELIVERY CADENCE]: Pristine, disciplined, reassuring engineering perfection.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p6_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p6_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The Physical Feasibility Corridor & AI Air-Gap.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Red Monstro 8K VV sensor, Leica Thalia 70mm lens for extreme macro detail.
+[LIGHTING PALETTE]: Pristine safety emerald (#34D399), cooling cyan (#38BDF8), and cryptographic glass reflections.
+[CAMERA TRAJECTORY]: Smooth forward tracking shot through battery container aisle pulling up into balance ledger.
+[ASSET ENVIRONMENT]: Utility battery container interior racks, lithium iron phosphate modules, and cooling channels.
+[00:10 - 00:11]: Translucent green safety corridors overlay along the battery modules: 'BESS State of Charge Corridor: [10.0% to 90.0%]'.
+[00:11 - 00:12]: Coulombic round-trip efficiency readout validates: 'Round-Trip Efficiency: Modeled at Exact 92.0% Battery Physics'.
+[00:12 - 00:13]: Thermal sensors confirm: 'Internal Cell Temperatures: 28.4°C — Emergency Thermal Cap Bounded at 55.0°C'.
+[00:13 - 00:14]: Power inverter ramp-rate governor locks: 'Ramp Limits Enforced: <= 2.5 MW/min with Fast Frequency Response Reserve'.
+[00:14 - 00:15]: A visual barrier of cryptographic glass blocks descends between high-level AI reasoning and physical hardware.
+[00:15 - 00:16]: Certification typography projects: 'Zero-Hallucination Architecture: Air-Gapped from Language Model Output'.
+[00:16 - 00:17]: An animated energy balance ledger unfurls in glowing 3D: 45MW Solar + 35MW Wind + 25MW BESS = 40MW Load + Intertie Export.
+[00:17 - 00:18]: Every single milliwatt generated balances every milliwatt consumed with absolute mathematical zero residual error.
+[00:18 - 00:19]: A golden compliance badge materializes: 'Deterministic Simplex Guarantee — Physical Law Cannot Be Violated'.
+[00:19 - 00:20]: Final visual confirmation locks: 'Kirchhoff Current Law Error: 0.0000 MW across All Operating Intervals'.
+[HUD GRAPHICS]: Dynamic 3D energy conservation balance sheet, SoC boundary envelopes, and cryptographic air-gap wall.
+[MOTION DYNAMICS]: Slow, confident forward push culminating in a solid, unshakeable center-screen graphic lock.
+[COLOR GRADING]: Deep industrial slate illuminated by pure safety emerald (#34D399) and crystalline glass reflections.
+[AUDIO SOUNDSTAGE]: Reassuring mechanical relay clicks and a solid metallic lock sound verifying zero error.
+[ATMOSPHERIC VFX]: Holographic cryptographic security barriers manifesting with subtle refractive glass distortion.
+[TARGET AUDIENCE]: Utility risk officers, electrical reliability engineers, and technical due-diligence teams.
+[NARRATIVE GOAL]: Prove that AI language models are strictly air-gapped from direct SCADA power setpoints.
+[ASPECT RATIO]: 16:9 widescreen composition with balanced technical typography.
+[DELIVERY CADENCE]: Absolute, uncompromising, bankable physical reliability.</div>
+        </div>
+
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p6_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p6_vo">"Language models propose strategy, but deterministic mathematics governs reality. GridOS mathematically enforces Kirchhoff's Current Law down to zero point zero zero megawatts imbalance, ensuring AI hallucinations can never enter the physical switchyard."</div>
@@ -819,37 +868,22 @@
           <span class="scene-number">SCENE 07</span>
           <span class="scene-name">Closed-Loop SCADA & Physical Actuation (Level F1-F3)</span>
         </div>
-        <div class="scene-duration">⏱️ 2:00 – 2:20 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 2:00 – 2:20 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Hardware Actuation)</div>
-            <div class="beat-desc">Substation vacuum breaker opens in under 4ms with electrical arc suppression flash.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Inverter Response)</div>
-            <div class="beat-desc">BESS 4-quadrant inverters transition instantly to grid-forming V/f mode; LED banks flash green.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (Wind Turbine Pitch)</div>
-            <div class="beat-desc">Camera cuts to wind turbine hub; blades pitch feather smoothly against gusting winds.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (15 Actuator Registry)</div>
-            <div class="beat-desc">Full 15-actuator cyber-physical telemetry schematic displays: 'Level F3 Autonomous SCADA Active'.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p7_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p7_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p7_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: High-speed industrial action cinematography, 1000fps slow-motion mechanics, dramatic substation twilight atmosphere.
-[ATMOSPHERIC COLOR]: Deep twilight blue (4500K), mechanical electrical arc flash, glowing status emerald, telemetry cyan.
+          <div class="prompt-text" id="p7_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Breaker Trip & Turbine Feathering.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Phantom Flex4K high-speed camera, Zeiss Master Prime 50mm T1.3 cine lens.
+[LIGHTING PALETTE]: High-contrast industrial twilight (4500K), electrical blue plasma arc flashes, mechanical sparks.
+[CAMERA TRAJECTORY]: Ultra-high-speed 1000fps macro shot tracking breaker contacts cutting to exterior wind turbine.
+[ASSET ENVIRONMENT]: High-voltage substation circuit breaker bay and mountain-ridge wind turbine nacelle.
 [00:00 - 00:01]: Camera opens on an ultra-high-speed 1000fps slow-motion shot of a 69kV substation vacuum circuit breaker.
 [00:01 - 00:02]: The heavy mechanical contact arm snaps open in extreme slow motion with a contained blue plasma flash.
 [00:02 - 00:03]: Electrical arc suppression chambers absorb the transient flash without mechanical damage.
@@ -859,26 +893,55 @@
 [00:06 - 00:07]: High-torque electro-mechanical pitch drives rotate the gigantic 60-meter composite blades from 0 to 85 degrees.
 [00:07 - 00:08]: Wind turbine pitch smoothly feathers in high wind, protecting turbine drivetrains from catastrophic cut-out shock.
 [00:08 - 00:09]: Status HUD confirms: 'ACT-09 High-Wind Aerodynamic Feathering Active — Mechanical Stress Minimized'.
-[00:09 - 00:10]: Camera cuts to an expansive row of utility-scale 4-quadrant BESS battery inverters.
-[00:10 - 00:11]: Inverter status displays switch instantaneously from grid-following amber to active grid-forming green.
-[00:11 - 00:12]: Inverters autonomously establish voltage and frequency (V/f mode) for the microgrid island in under 4ms.
-[00:12 - 00:13]: 4-quadrant converters inject reactive power Q (MVAr) to stabilize sub-cycle voltage phase angles.
-[00:13 - 00:14]: Camera pans across an animated schematic showcasing all 15 atomic physical SCADA actuation commands:
-[00:14 - 00:15]: BESS Charge/Discharge P_set, Volt-VAr Q_set, PV Inverter Curtailment %, Turbine Pitch, Tier-1 Load Shedding.
-[00:15 - 00:16]: Protocol bus telemetry confirms: 'DNP3 Secure Outstation Active — Commands Executed in Closed-Loop'.
-[00:16 - 00:17]: Phasor measurement unit stream validates: 'IEEE C37.118 PMU 60fps Synchrophasor Telemetry Surveillance'.
-[00:17 - 00:18]: Critical industrial manufacturing loads remain powered without a single millisecond of voltage sag.
-[00:18 - 00:19]: Camera pulls out to a dramatic low-angle view of the substation operating in total autonomous sovereignty.
-[00:19 - 00:20]: Telemetry stamp seals the scene: 'Level F3 Autonomous Control: Hardware Actuation without Human-in-the-Loop Delay'.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Hyper-realistic electrical arc VFX, macro mechanical detail, industrial documentary color grading.</div>
+[00:09 - 00:10]: Camera dollies around the rotating hub as blades slice effortlessly through gusting 26 m/s wind shear.
+[HUD GRAPHICS]: Substation single-line breaker diagrams, millisecond trip timers (3.8 ms), and aerodynamic blade pitch angle gauges.
+[MOTION DYNAMICS]: Ultra-slow-motion high-speed photography transitioning into powerful sweeping exterior drone tracking.
+[COLOR GRADING]: Dramatic industrial twilight with intense blue electrical plasma highlights and wet metallic surfaces.
+[AUDIO SOUNDSTAGE]: Thunderous mechanical breaker snap followed by the deep, resonant swoosh of feathered composite blades.
+[ATMOSPHERIC VFX]: Contained plasma arc glow, high-speed rain streaks, and mist peeling off turbine blade tips.
+[TARGET AUDIENCE]: Substation automation directors, wind plant operators, and protection relay engineers.
+[NARRATIVE GOAL]: Demonstrate instantaneous hardware actuation under extreme contingency shocks.
+[ASPECT RATIO]: 16:9 widescreen composition with epic industrial cinematic scale.
+[DELIVERY CADENCE]: High-octane, visually arresting, technologically authoritative action.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p7_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p7_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The 15 Actuators & Closed-Loop Protocol Bus.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Phantom Flex4K camera, Angenieux Optimo 24-290mm zoom for sweeping substation coverage.
+[LIGHTING PALETTE]: Inverter status emerald (#34D399), protocol bus cyan (#38BDF8), and twilight sky indigo.
+[CAMERA TRAJECTORY]: Sweeping crane shot gliding across utility inverters and mapping cyber-physical protocol flows.
+[ASSET ENVIRONMENT]: Central inverter substation pad, flexible industrial load feeders, and SCADA gateway racks.
+[00:10 - 00:11]: Camera cuts to an expansive row of utility-scale 4-quadrant BESS battery inverters.
+[00:11 - 00:12]: Inverter status displays switch instantaneously from grid-following amber to active grid-forming green.
+[00:12 - 00:13]: Inverters autonomously establish voltage and frequency (V/f mode) for the microgrid island in under 4ms.
+[00:13 - 00:14]: 4-quadrant converters inject reactive power Q (MVAr) to stabilize sub-cycle voltage phase angles.
+[00:14 - 00:15]: Camera pans across an animated schematic showcasing all 15 atomic physical SCADA actuation commands:
+[00:15 - 00:16]: BESS Charge/Discharge P_set, Volt-VAr Q_set, PV Inverter Curtailment %, Turbine Pitch, Tier-1 Load Shedding.
+[00:16 - 00:17]: Protocol bus telemetry confirms: 'DNP3 Secure Outstation Active — Commands Executed in Closed-Loop'.
+[00:17 - 00:18]: Phasor measurement unit stream validates: 'IEEE C37.118 PMU 60fps Synchrophasor Telemetry Surveillance'.
+[00:18 - 00:19]: Critical industrial manufacturing loads remain powered without a single millisecond of voltage sag.
+[00:19 - 00:20]: Telemetry stamp seals the scene: 'Level F3 Autonomous Control: Hardware Actuation without Human-in-the-Loop Delay'.
+[HUD GRAPHICS]: Animated cyber-physical protocol flow maps, 15-actuator command registry checklist, and PMU angle telemetry.
+[MOTION DYNAMICS]: Grand elevated crane descent moving smoothly past inverter banks into full system telemetry view.
+[COLOR GRADING]: Deep twilight blue atmosphere punctuated by steady green status LEDs and electric blue telemetry buses.
+[AUDIO SOUNDSTAGE]: Clean electrical contactor snaps, inverter cooling fan hum, and smooth confirmation audio tones.
+[ATMOSPHERIC VFX]: Translucent digital protocol conduits traveling through physical electrical conduits into hardware.
+[TARGET AUDIENCE]: SCADA engineers, utility asset managers, and chief operating officers.
+[NARRATIVE GOAL]: Prove that GridOS achieves Level F3 Physical Autonomy across all substation assets.
+[ASPECT RATIO]: 16:9 widescreen composition with complex industrial depth.
+[DELIVERY CADENCE]: Confident, robust, industrial-strength automation mastery.</div>
+        </div>
+
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p7_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p7_vo">"Level F3 Physical Autonomy means real-world control. Across 15 atomic actuators — from sub-four-millisecond IEC 61850 breaker trips to DNP3 inverter commands — GridOS executes closed-loop control without waiting for human intervention."</div>
@@ -894,37 +957,22 @@
           <span class="scene-number">SCENE 08</span>
           <span class="scene-name">Contingency Shock Lab & Real-World Resilience</span>
         </div>
-        <div class="scene-duration">⏱️ 2:20 – 2:40 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 2:20 – 2:40 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Split Screen)</div>
-            <div class="beat-desc">Split-screen comparison: Left 'Uncoordinated Baseline' vs. Right 'GridOS™ Autonomous'.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Baseline Failure)</div>
-            <div class="beat-desc">Cloud microburst hits: Left screen crashes (58.9 Hz, transformer overheat, blackout).</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (GridOS Resilience)</div>
-            <div class="beat-desc">Right screen holds steady: BESS discharges 18.4 MW in 100ms, frequency locked at 60.00 Hz.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (7 Shocks Matrix)</div>
-            <div class="beat-desc">Full 7 real-world contingency shocks cycle through with 100% green 'PASSED' badges.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p8_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p8_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p8_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: High-contrast side-by-side corporate control room stress test, split-screen data analytics, urgent crisis resolving to peace.
-[ATMOSPHERIC COLOR]: Split screen: Left side flashing crimson alarm red; Right side glowing calm cyan (#38BDF8) and emerald (#34D399).
+          <div class="prompt-text" id="p8_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Split-Screen Showdown.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Arri Alexa Mini LF, Zeiss Supreme Prime 35mm lens for sharp data contrast.
+[LIGHTING PALETTE]: Split-screen lighting: Left monitor crimson warning red (#FB7185); Right monitor calm cyan (#38BDF8).
+[CAMERA TRAJECTORY]: Centered tracking dolly moving in toward dual high-resolution frameless glass displays.
+[ASSET ENVIRONMENT]: Executive power operations war room, high-contrast control displays, dark glass consoles.
 [00:00 - 00:01]: Camera frames a large dual split-screen monitor floating on frameless glass in an energy trading operations center.
 [00:01 - 00:02]: Left monitor displays: 'Uncoordinated Baseline Control'; Right monitor displays: 'GridOS™ Autonomous Dispatch'.
 [00:02 - 00:03]: A simultaneous severe shock event hits both systems: 42 MW to 7.8 MW sudden cloud microburst in under 3 minutes.
@@ -933,27 +981,56 @@
 [00:05 - 00:06]: On the Right monitor, GridOS reacts instantly: BESS battery ramps discharge by +18.4 MW in under 100 milliseconds.
 [00:06 - 00:07]: GridOS grid frequency oscilloscope trace stays perfectly flatlined along the 60.00 Hz center line.
 [00:07 - 00:08]: Right monitor confirms zero load shed, zero transformer overheating, and zero NERC BAL-001 violations.
-[00:08 - 00:09]: Camera dollies back as the display expands into a matrix testing all 7 real-world operational shocks:
-[00:09 - 00:10]: Shock 1 (Cloud Microburst -80%): BESS ramps +18.4 MW in 100ms — Status: 100% BAL-001 Compliant.
-[00:10 - 00:11]: Shock 2 (Wind Cut-Out 26 m/s): Aerodynamic pitch feathers; BESS discharges +15 MW — Status: 100% Feasible.
-[00:11 - 00:12]: Shock 3 (Negative Price Inversion -$35/MWh): Grid export halted; 100% surplus stored in BESS at profit.
-[00:12 - 00:13]: Shock 4 (Intertie Islanding Feeder Trip): Switched to grid-forming V/f mode in <4ms — Status: Zero Outage.
-[00:13 - 00:14]: Shock 5 (Industrial Demand Surge +30%): Peak shaving and Tier-1 demand response — Status: No Overloads.
-[00:14 - 00:15]: Shock 6 (BESS Thermal Derate 55°C): Battery discharge clamped to 5 MW; balance shifted to spinning reserves.
-[00:15 - 00:16]: Shock 7 (NEXRAD Storm Front): Pre-charged BESS to 90% SoC 15 mins prior — Status: Pre-Emptive Safe.
-[00:16 - 00:17]: Across all 7 shock cards, bold glowing emerald badges stamp sequentially: 'PASSED — 100% FEASIBLE'.
-[00:17 - 00:18]: Benchmark suite summary aggregates: '8 of 8 Benchmark Scenarios Successfully Passed across 96 Operating Intervals'.
-[00:18 - 00:19]: Comparative analytics confirm GridOS maintained 100% system availability where uncoordinated baselines collapsed.
-[00:19 - 00:20]: Camera finishes on a centered, high-contrast composition proving total cyber-physical resilience.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: High-density data dashboards, crisp typography, corporate Bloomberg / Refinitiv analytics aesthetic.</div>
+[00:08 - 00:09]: Left screen shows industrial factory lights going dark; Right screen shows factory running at 100% capacity.
+[00:09 - 00:10]: Camera executes a dramatic push toward the Right monitor proving complete autonomous stability.
+[HUD GRAPHICS]: Comparative oscilloscope frequency traces (58.85 Hz failure vs 60.00 Hz perfection) and line flow bars.
+[MOTION DYNAMICS]: Tense, slow, controlled forward tracking emphasizing the Stark contrast between failure and success.
+[COLOR GRADING]: Jarring red alarm strobes on the left contrasted with peaceful, pristine electric blue on the right.
+[AUDIO SOUNDSTAGE]: Harsh emergency alarm Klaxons from the left channel contrasted with calm, steady hum on the right.
+[ATMOSPHERIC VFX]: Subtle screen glow reflections on dark glass desk and polished granite control room walls.
+[TARGET AUDIENCE]: Utility board members, risk committee chairs, and infrastructure insurance underwriters.
+[NARRATIVE GOAL]: Provide undeniable side-by-side empirical proof of GridOS resilience over traditional dispatch.
+[ASPECT RATIO]: 16:9 widescreen composition with clean 50/50 split-screen layout.
+[DELIVERY CADENCE]: High-stakes, drama-packed, indisputable empirical validation.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p8_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p8_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The 7-Shock Stress Matrix & 100% Pass.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Arri Alexa Mini LF, Zeiss Supreme Prime 21mm wide lens for multi-card data display.
+[LIGHTING PALETTE]: Rich dark navy background with 7 glowing emerald (#34D399) success cards and gold accents.
+[CAMERA TRAJECTORY]: Smooth crane pull-back and jib-up revealing all 7 contingency shock stress-test panels.
+[ASSET ENVIRONMENT]: Virtual contingency stress-testing laboratory running 96 multi-period operational intervals.
+[00:10 - 00:11]: Camera dollies back as the display expands into a matrix testing all 7 real-world operational shocks:
+[00:11 - 00:12]: Shock 1 (Cloud Microburst -80%): BESS ramps +18.4 MW in 100ms — Status: 100% BAL-001 Compliant.
+[00:12 - 00:13]: Shock 2 (Wind Cut-Out 26 m/s): Aerodynamic pitch feathers; BESS discharges +15 MW — Status: 100% Feasible.
+[00:13 - 00:14]: Shock 3 (Negative Price Inversion -$35/MWh): Grid export halted; 100% surplus stored in BESS at profit.
+[00:14 - 00:15]: Shock 4 (Intertie Islanding Feeder Trip): Switched to grid-forming V/f mode in <4ms — Status: Zero Outage.
+[00:15 - 00:16]: Shock 5 (Industrial Demand Surge +30%): Peak shaving and Tier-1 demand response — Status: No Overloads.
+[00:16 - 00:17]: Shock 6 (BESS Thermal Derate 55°C): Battery discharge clamped to 5 MW; balance shifted to spinning reserves.
+[00:17 - 00:18]: Shock 7 (NEXRAD Storm Front): Pre-charged BESS to 90% SoC 15 mins prior — Status: Pre-Emptive Safe.
+[00:18 - 00:19]: Across all 7 shock cards, bold glowing emerald badges stamp sequentially: 'PASSED — 100% FEASIBLE'.
+[00:19 - 00:20]: Benchmark suite summary aggregates: '8 of 8 Benchmark Scenarios Successfully Passed across 96 Operating Intervals'.
+[HUD GRAPHICS]: 7 interactive scenario cards with live animated telemetry replay graphs and green compliance stamps.
+[MOTION DYNAMICS]: Grand panoramic crane pull-back revealing the comprehensive breadth of the benchmark suite.
+[COLOR GRADING]: Deep institutional charcoal slate illuminated by an array of 7 emerald victory checkmarks.
+[AUDIO SOUNDSTAGE]: Sequential satisfying mechanical stamp sounds as all 7 scenarios lock into passed status.
+[ATMOSPHERIC VFX]: Holographic data particles radiating outward from each verified contingency scenario card.
+[TARGET AUDIENCE]: Energy regulatory commissioners, utility managing directors, and technical audit teams.
+[NARRATIVE GOAL]: Prove that GridOS has been exhaustively tested against every known power system disruption.
+[ASPECT RATIO]: 16:9 widescreen composition with balanced grid layout.
+[DELIVERY CADENCE]: Thorough, exhaustive, rock-solid engineering triumph.</div>
+        </div>
+
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p8_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p8_vo">"Tested against 96 real-world operational intervals and seven extreme disruptions — from sudden islanding to negative pricing inversions — GridOS maintained one hundred percent uptime and perfect NERC compliance where traditional systems collapsed."</div>
@@ -969,37 +1046,22 @@
           <span class="scene-number">SCENE 09</span>
           <span class="scene-name">Evaluation Scorecard & Google Gemini Regulatory Auditor</span>
         </div>
-        <div class="scene-duration">⏱️ 2:40 – 3:00 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 2:40 – 3:00 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (Scorecard Stamp)</div>
-            <div class="beat-desc">Metallic platinum plaque materializes: 'Benchmark Score: 98.4 / 100 — Grade A+'.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (Gemini AI Audit)</div>
-            <div class="beat-desc">Google Gemini AI agent verifies NERC BAL-001, FAC-008 thermal, and PRC-024 standards.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (Operator Cockpit)</div>
-            <div class="beat-desc">Camera glides through live Streamlit console (port 8501) showing 25/25 automated tests passing.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Compliance Seal)</div>
-            <div class="beat-desc">Cryptographic audit log seal locks into permanent ledger: 'Bankable Regulatory Compliance'.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p9_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p9_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p9_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: Institutional audit certificate ceremony, Swiss banking elegance, platinum and gold beveled glass plaque, Forbes rating quality.
-[ATMOSPHERIC COLOR]: Platinum silver, deep midnight blue, glowing emerald (#34D399), warm burnished gold (#FBBF24).
+          <div class="prompt-text" id="p9_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The Platinum Scorecard & Gemini AI Audit.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Sony Venice 2 8K sensor, Master Prime 40mm T1.3 cine lens for exquisite metallic glass bevels.
+[LIGHTING PALETTE]: Platinum silver, deep midnight blue, glowing emerald (#34D399), warm burnished gold (#FBBF24).
+[CAMERA TRAJECTORY]: Elegant slow-motion crane glide moving in toward a floating beveled platinum institutional plaque.
+[ASSET ENVIRONMENT]: Executive institutional audit archive void with reflective black obsidian floor.
 [00:00 - 00:01]: Camera opens on a majestic, bevel-edged platinum and crystal digital certificate floating in a dark glass void.
 [00:01 - 00:02]: Large, glowing gold typography stamps into the certificate center: 'Institutional Audit Score: 98.4 / 100 — Grade A+'.
 [00:02 - 00:03]: A dedicated cognitive window illuminates marked 'Google Gemini AI Regulatory Auditor (AGT-04-EVAL)'.
@@ -1009,26 +1071,55 @@
 [00:06 - 00:07]: Metric 1: 'Forecast Irradiance Mean Absolute Error: 12.4 W/m² | Wind Speed RMSE: 0.68 m/s'.
 [00:07 - 00:08]: Metric 2: 'Cloud Attenuation Accuracy: 98.4% | Doppler Storm Classification F1-Score: 0.96'.
 [00:08 - 00:09]: Metric 3: 'Wholesale Arbitrage Capture Efficiency: 94.2% | Degradation Hurdle Compliance: 100.0%'.
-[00:09 - 00:10]: Metric 4: 'Thermal Line Overload Events: Exactly 0 Events | BESS SoC Envelope Violations: Exactly 0 Events'.
-[00:10 - 00:11]: Metric 5: 'Kirchhoff Energy Balance Error: 0.0000 MW | HiGHS Simplex Solver Convergence: 100.0%'.
-[00:11 - 00:12]: Camera tracks smoothly across to an active Streamlit operator console running on port 8501 in real time.
-[00:12 - 00:13]: Interactive console demonstrates live single-interval dispatch sliders, 96-period simulation curves, and shock lab.
-[00:13 - 00:14]: A developer terminal sub-window reveals automated test runner output: 'pytest tests/ — 25 of 25 Tests Passed (100%)'.
-[00:14 - 00:15]: An immutable cryptographic hash stamp seals the audit document: 'SHA-256 Verified Regulatory Audit Trail'.
-[00:15 - 00:16]: Floating gold certification seal locks onto the screen: 'Bankable Asset Performance Certified for Utility Operators'.
-[00:16 - 00:17]: Camera executes a gentle dolly push into the golden Grade A+ seal as light reflections ripple across the glass.
-[00:17 - 00:18]: Ambient acoustic chime resonates, signaling institutional validation and risk mitigation for infrastructure investors.
-[00:18 - 00:19]: Audit document archives securely into an institutional database with reassuring precision.
-[00:19 - 00:20]: Screen transitions smoothly into the final executive ROI summary and strategic call-to-action.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Platinum edge lighting, metallic gold shaders, cryptographic security badges, flawless Swiss corporate design.</div>
+[00:09 - 00:10]: Camera dollies closer as quantitative KPI bars fill with brilliant green liquid-light animations.
+[HUD GRAPHICS]: Certified audit scorecard layout with official regulatory compliance badges and live narrative generation.
+[MOTION DYNAMICS]: Ultra-smooth, graceful crane pedestal glide with subtle lighting reflections playing across the glass.
+[COLOR GRADING]: High-luxury Swiss private banking aesthetic: polished platinum, midnight blue, and metallic gold.
+[AUDIO SOUNDSTAGE]: Majestic orchestral string swell layered with subtle high-frequency data chirps.
+[ATMOSPHERIC VFX]: Warm golden particle dust drifting in slow motion around the beveled platinum certificate edges.
+[TARGET AUDIENCE]: Infrastructure fund managers, utility regulatory officers, and independent engineers.
+[NARRATIVE GOAL]: Establish that GridOS performance is audited and certified by an autonomous AI agent.
+[ASPECT RATIO]: 16:9 widescreen composition with centered institutional crest.
+[DELIVERY CADENCE]: Prestigious, authoritative, institutional-grade validation.</div>
         </div>
 
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p9_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p9_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The Live Console & 25 Automated Tests.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Sony Venice 2 8K sensor, Master Prime 65mm lens for tack-sharp console text.
+[LIGHTING PALETTE]: High-tech console cyan (#38BDF8), terminal green (#34D399), and cryptographic gold (#FBBF24).
+[CAMERA TRAJECTORY]: Smooth lateral tracking shot from the certificate across to the live operational operator dashboard.
+[ASSET ENVIRONMENT]: Live Streamlit operations station running on localhost:8501 with developer terminal overlay.
+[00:10 - 00:11]: Metric 4: 'Thermal Line Overload Events: Exactly 0 Events | BESS SoC Envelope Violations: Exactly 0 Events'.
+[00:11 - 00:12]: Metric 5: 'Kirchhoff Energy Balance Error: 0.0000 MW | HiGHS Simplex Solver Convergence: 100.0%'.
+[00:12 - 00:13]: Camera tracks smoothly across to an active Streamlit operator console running on port 8501 in real time.
+[00:13 - 00:14]: Interactive console demonstrates live single-interval dispatch sliders, 96-period simulation curves, and shock lab.
+[00:14 - 00:15]: A developer terminal sub-window reveals automated test runner output: 'pytest tests/ — 25 of 25 Tests Passed (100%)'.
+[00:15 - 00:16]: An immutable cryptographic hash stamp seals the audit document: 'SHA-256 Verified Regulatory Audit Trail'.
+[00:16 - 00:17]: Floating gold certification seal locks onto the screen: 'Bankable Asset Performance Certified for Utility Operators'.
+[00:17 - 00:18]: Camera executes a gentle dolly push into the golden Grade A+ seal as light reflections ripple across the glass.
+[00:18 - 00:19]: Ambient acoustic chime resonates, signaling institutional validation and risk mitigation for infrastructure investors.
+[00:19 - 00:20]: Audit document archives securely into an institutional database with reassuring precision.
+[HUD GRAPHICS]: Streamlit operator web console UI, terminal pytest output (25 passed), and SHA-256 cryptographic seal.
+[MOTION DYNAMICS]: Controlled lateral slider movement panning from high-level certificate to granular terminal code verification.
+[COLOR GRADING]: Polished dark-mode developer UI contrasted with brilliant metallic gold certification seals.
+[AUDIO SOUNDSTAGE]: Satisfying terminal execution chime followed by a solid, authoritative vault lock sound.
+[ATMOSPHERIC VFX]: Fine holographic security watermarks animating across the surface of the digital certificate.
+[TARGET AUDIENCE]: Chief Risk Officers, independent system operators (ISOs), and technical due-diligence teams.
+[NARRATIVE GOAL]: Prove that GridOS has 100% automated test coverage and bankable regulatory certification.
+[ASPECT RATIO]: 16:9 widescreen composition with rich dual-screen information density.
+[DELIVERY CADENCE]: Bankable, airtight, mathematically and legally certified.</div>
+        </div>
+
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p9_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p9_vo">"Audited by our sovereign AGT-04 evaluation agent powered by Google Gemini, GridOS scores ninety-eight point four out of one hundred — delivering Grade A-plus reliability and bankable regulatory assurance for utility asset owners."</div>
@@ -1044,37 +1135,22 @@
           <span class="scene-number">SCENE 10</span>
           <span class="scene-name">Executive ROI, 9-Blocker Apex & Call to Action</span>
         </div>
-        <div class="scene-duration">⏱️ 3:00 – 3:20 (Full 20-Second Scene)</div>
+        <div class="scene-duration">⏱️ 3:00 – 3:20 (20s Total: 2 × 10s Prompts)</div>
       </div>
       <div class="scene-body">
         
-        <div class="beat-timeline">
-          <div class="beat-item">
-            <div class="beat-time">00s – 05s (9-Blocker Apex)</div>
-            <div class="beat-desc">3x3 Autonomous Maturity Grid zooms into view; GridOS claims the top-right apex (F3 × D3).</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">05s – 10s (ROI Metrics)</div>
-            <div class="beat-desc">Financial metrics ignite: +$1.82M Annual Arbitrage, -$420K Battery Savings, 14,800t CO2.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">10s – 15s (Team Attribution)</div>
-            <div class="beat-desc">Leadership card appears: 'Led by ManojKumar P (Lead Architect) & Engineering Team'.</div>
-          </div>
-          <div class="beat-item">
-            <div class="beat-time">15s – 20s (Climax & CTA)</div>
-            <div class="beat-desc">Brilliant sunrise over microgrid; clean CTA: 'github.com/ManojKumar7676/GridOs'. Fade to black.</div>
-          </div>
-        </div>
-
-        <div class="section-block extended">
+        <!-- PROMPT 1: BASE 10 SECONDS (00:00 - 00:10) -->
+        <div class="section-block primary">
           <div class="section-top">
-            <span class="section-label label-purple">⏩ Master Director Prompt (20 Seconds Full Choreography) <span class="line-counter">27 Lines</span></span>
-            <button class="copy-btn" onclick="copyPrompt('p10_full', this)">Copy Full 20s Prompt</button>
+            <span class="section-label label-cyan">🎬 Part 1: Base Prompt (First 10s: 00:00 – 00:10) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p10_part1', this)">Copy Part 1 (10s)</button>
           </div>
-          <div class="prompt-text" id="p10_full">[DIRECTOR INSTRUCTION]: Executive 20-second cinematic master prompt for Google Vids.
-[VISUAL AESTHETIC]: Visionary venture capital climax, golden sunrise horizon, heroic corporate documentary finale, transcendent tech triumph.
-[ATMOSPHERIC COLOR]: Radiant morning sunrise (2800K gold), deep cyber cyan (#38BDF8), platinum white typography, warm anamorphic lens flare.
+          <div class="prompt-text" id="p10_part1">[SCENE PART 1]: Initial Generation (00:00 - 00:10) — The 9-Blocker Apex & Financial ROI.
+[DIRECTOR SPECIFICATION]: Google Vids Base 10-Second Generation Prompt.
+[LENS & SENSOR]: Arri Alexa 65 Full-Format camera, Prime 65mm T1.8 lens with glorious anamorphic flare.
+[LIGHTING PALETTE]: Grand golden sunrise (2800K), radiant emerald (#34D399), platinum white, and cyber cyan (#38BDF8).
+[CAMERA TRAJECTORY]: Epic low-angle pedestal boom rising into a panoramic architectural atrium overview.
+[ASSET ENVIRONMENT]: Executive penthouse boardroom overlooking an expansive utility clean-energy complex at dawn.
 [00:00 - 00:01]: Camera frames a monumental 3x3 Autonomous Maturity Taxonomy matrix floating in golden holographic light against dawn sky.
 [00:01 - 00:02]: GridOS claims the undisputed top-right apex: 'Level F3 Autonomous Control (Physical Agency) x Level D3 Reasoning'.
 [00:02 - 00:03]: Surrounding the apex, bold economic ROI figures burst onto the screen in glowing emerald typography:
@@ -1085,6 +1161,29 @@
 [00:07 - 00:08]: Beyond the atrium, the full physical 100MW microgrid complex spreads out under a glorious golden sunrise.
 [00:08 - 00:09]: Sunlight glints off 45MW of photovoltaic panels, while massive wind turbines turn in gentle, peaceful rhythm.
 [00:09 - 00:10]: Utility battery containers and high-voltage substations hum in flawless, autonomous cyber-physical equilibrium.
+[HUD GRAPHICS]: 3x3 Autonomous Maturity Grid with glowing apex crown, bold multi-million dollar ROI callouts.
+[MOTION DYNAMICS]: Grand, slow, cinematic pedestal boom rising steadily to reveal the breathtaking dawn landscape.
+[COLOR GRADING]: Warm, inspiring 2800K golden sunrise light bathing high-tech cyan and emerald typography.
+[AUDIO SOUNDSTAGE]: Inspiring corporate hybrid orchestral score building in emotional power with brass and warm synths.
+[ATMOSPHERIC VFX]: Golden dawn volumetric rays breaking through morning mist, illuminating the solar panels.
+[TARGET AUDIENCE]: Institutional energy investors, private equity partners, and utility chief executive officers.
+[NARRATIVE GOAL]: Deliver the undeniable multi-million dollar business return on investment of GridOS.
+[ASPECT RATIO]: 16:9 widescreen composition with heroic scale and boundless horizon.
+[DELIVERY CADENCE]: Visionary, triumphant, inspiring venture capital climax.</div>
+        </div>
+
+        <!-- PROMPT 2: EXTENDED 10 SECONDS (00:10 - 00:20) -->
+        <div class="section-block extended">
+          <div class="section-top">
+            <span class="section-label label-purple">⏩ Part 2: Extended Prompt (Next 10s: 00:10 – 00:20) <span class="line-counter">25 Lines</span></span>
+            <button class="copy-btn" onclick="copyPrompt('p10_part2', this)">Copy Part 2 (10s)</button>
+          </div>
+          <div class="prompt-text" id="p10_part2">[SCENE PART 2]: Scene Extension (+10s, 00:10 - 00:20) — The Leadership Attribution & Call to Action.
+[DIRECTOR SPECIFICATION]: Google Vids 10-Second Extension Prompt completing the 20-second beat.
+[LENS & SENSOR]: Arri Alexa 65 Full-Format camera, Prime 40mm wide-angle anamorphic lens with warm horizontal flare.
+[LIGHTING PALETTE]: Radiant sunrise gold, pure platinum white typography, and electric cyan interactive links.
+[CAMERA TRAJECTORY]: Grand continuous crane flight pulling back and tilting up into the infinite golden sky.
+[ASSET ENVIRONMENT]: Full panoramic landscape of 45MW solar, 35MW wind, 25MW BESS, and 50MW transmission lines.
 [00:10 - 00:11]: Monumental crystalline typography materializes in center frame: 'GridOS™: The Operating System for the Autonomous Clean Grid'.
 [00:11 - 00:12]: Leadership attribution appears with executive pride: 'Engineered by ManojKumar P (Lead Architect) & Core Engineering Team'.
 [00:12 - 00:13]: Individual technical roles display: ManojKumar P (Lead Architect), X (Systems), Y (Power Optimization), Z (Cyber-Physical AI).
@@ -1095,15 +1194,21 @@
 [00:17 - 00:18]: Warm horizontal anamorphic lens flares sweep gently across the lens as the music builds to an inspiring crescendo.
 [00:18 - 00:19]: Visual elements gently fade into warm golden light, affirming technological maturity and deployment readiness.
 [00:19 - 00:20]: Final peaceful cinematic fade to black with lingering glowing GridOS emblem.
-[LENS & OPTICS]: Master anamorphic cinema glass with subtle oval bokeh.
-[AUDIO DESIGN]: Substation electrical hum layered with rising cinematic sub-bass.
-[EXECUTIVE DELIVERY]: Calibrated for C-suite presentation and investor board review.
-[VFX POST-PROCESSING]: Hollywood blockbuster color grading, warm 2800K sunrise volumetric scattering, anamorphic lens bokeh, pristine finish.</div>
+[HUD GRAPHICS]: Sovereign GridOS logo, full engineering team roster, and clickable GitHub repository link.
+[MOTION DYNAMICS]: Infinite upward crane departure looking out toward the limitless future of clean autonomous energy.
+[COLOR GRADING]: Sublime cinematic sunrise gold resolving peacefully into a dignified, confident black blackout.
+[AUDIO SOUNDSTAGE]: Majestic orchestral crescendo culminating in a warm, resonant, unforgettable closing chord.
+[ATMOSPHERIC VFX]: Anamorphic lens flare streaks across the screen, concluding with a gentle glowing logo trail.
+[TARGET AUDIENCE]: Global clean-tech leaders, utility boards, venture investors, and technology partners.
+[NARRATIVE GOAL]: Conclude with complete executive authority, personal ownership, and a clear call to action.
+[ASPECT RATIO]: 16:9 widescreen composition with unforgettable closing image.
+[DELIVERY CADENCE]: Triumphant, unforgettable, world-class executive finale.</div>
         </div>
 
+        <!-- VOICEOVER SCRIPT -->
         <div class="section-block voiceover">
           <div class="section-top">
-            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for 20 Seconds)</span>
+            <span class="section-label label-green">🎙️ Executive Voiceover Script (Synchronized for Full 20s Scene)</span>
             <button class="copy-btn" onclick="copyPrompt('p10_vo', this)">Copy Voiceover</button>
           </div>
           <div class="prompt-text" id="p10_vo">"For a 100MW portfolio, GridOS delivers 1.8 million dollars in annual arbitrage lift and extends battery lifespan by nearly four years. The future of energy is autonomous, mathematically proven, and live today. Welcome to GridOS."</div>
@@ -1111,27 +1216,27 @@
 
       </div>
     </div>
-  </div> <!-- /scene-grid -->
+  </div>
 
   <!-- Executive Production Guide -->
   <div class="tips-box">
-    <div class="tips-title">💡 How to Produce 25+ Line Prompts in Google Vids</div>
+    <div class="tips-title">💡 How to Produce Two 10-Second Prompts in Google Vids</div>
     <ul class="tips-list">
       <li>
-        <strong>1. Single Comprehensive Master Prompt</strong>
-        Copy the entire <strong>Master Director Prompt (Purple)</strong> for each scene directly into Google Vids' generation box. It contains camera directions, timestamps, lighting parameters, and VFX instructions in a single prompt.
+        <strong>1. Step 1: Generate Base 10 Seconds</strong>
+        Click "New Scene" in Google Vids and paste <strong>Part 1: Base Prompt (Cyan)</strong> to generate seconds 00:00 to 00:10.
       </li>
       <li>
-        <strong>2. 20-Second Scene Generation</strong>
-        In Google Vids, set scene duration to 20 seconds (or extend the base scene). The prompts are structured with explicit 2-second timestamp blocks (`[00:00 - 00:01]`, `[00:01 - 00:02]`, etc.) to guide the video generation model across the full duration.
+        <strong>2. Step 2: Extend with Part 2 (+10s)</strong>
+        Click "Extend Scene" in Google Vids and paste <strong>Part 2: Extended Prompt (Purple)</strong> to continue seamlessly through seconds 00:10 to 00:20.
       </li>
       <li>
         <strong>3. Synchronized Voiceover (TTS)</strong>
-        Paste the <strong>Executive Voiceover Script (Green)</strong> into Google Vids text-to-speech. Select a calm, authoritative corporate voice (e.g. Deep American or British Male / Confident Female Executive).
+        Copy the <strong>Executive Voiceover Script (Green)</strong> into Google Vids Text-to-Speech. It is timed for an authoritative 18–20 second delivery.
       </li>
       <li>
-        <strong>4. Strict Sovereign Branding</strong>
-        All prompts, text overlays, and voiceovers use sovereign <strong>GridOS™</strong> branding with 0 mentions of external company names, fully crediting ManojKumar P & the core engineering team.
+        <strong>4. Guaranteed Line Depth</strong>
+        Every prompt contains 25 discrete lines with camera trajectories, lighting shifts, timestamps, and VFX instructions for maximum visual quality.
       </li>
     </ul>
   </div>
