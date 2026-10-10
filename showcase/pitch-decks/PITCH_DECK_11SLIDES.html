@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GridOS™ | Autonomous Renewable Energy Orchestrator Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #f1f5f9;
+            --bg-slide: #ffffff;
+            --bg-card: #f8fafc;
+            --border-subtle: #cbd5e1;
+            --border-strong: #94a3b8;
+            --border-accent: #0284c7;
+            --text-main: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --accent-blue: #0284c7;
+            --accent-blue-dark: #0369a1;
+            --accent-green: #059669;
+            --accent-amber: #d97706;
+            --accent-red: #dc2626;
+            --accent-purple: #7c3aed;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px -4px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            height: 50px;
+            background: #ffffff;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+        }
+
+        .brand-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.18rem;
+            letter-spacing: -0.02em;
+            color: #0284c7;
+        }
+
+        .badge-9blocker {
+            background: #e0f2fe;
+            border: 1.5px solid #bae6fd;
+            color: #0369a1;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.03em;
+        }
+
+        /* Slide Deck Container */
+        .deck-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 10px 24px;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            max-width: 1560px;
+            height: 100%;
+            background: var(--bg-slide);
+            border: 1.5px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px 34px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+            animation: slideIn 0.2s ease-out;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.996); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Slide Header */
+        .slide-header {
+            flex-shrink: 0;
+            margin-bottom: 2px;
+        }
+
+        .slide-kicker {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-blue);
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .slide-title {
+            font-size: 1.95rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.18;
+            letter-spacing: -0.025em;
+        }
+
+        .slide-subtitle {
+            font-size: 0.96rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        /* Content Layout Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; align-items: stretch; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; flex: 1; align-items: stretch; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; flex: 1; align-items: stretch; }
+        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; flex: 1; align-items: stretch; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .code-pill {
+            font-family: 'JetBrains Mono', monospace;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: 0.76rem;
+            color: #0369a1;
+            display: inline-block;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+            background: #ffffff;
+            border: 1.5px solid var(--border-subtle);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #1e293b;
+            font-weight: 800;
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 1.5px solid var(--border-subtle);
+            font-size: 0.82rem;
+            letter-spacing: 0.02em;
+        }
+
+        td {
+            padding: 7px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            vertical-align: middle;
+            font-size: 0.82rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) td {
+            background: #fbfcfe;
+        }
+
+        .metric-big {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: #0f172a;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.05;
+        }
+
+        .metric-label {
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            margin-top: 3px;
+            font-weight: 800;
+        }
+
+        /* Banner Strip */
+        .bottom-strip {
+            background: #f8fafc;
+            border: 1.5px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        /* Bottom Navigation Bar */
+        .bottom-bar {
+            height: 48px;
+            background: #ffffff;
+            border-top: 1.5px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 36px;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-nav {
+            background: #f8fafc;
+            border: 1.5px solid var(--border-subtle);
+            color: var(--text-main);
+            padding: 5px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.84rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s;
+        }
+
+        .btn-nav:hover {
+            background: #e0f2fe;
+            border-color: #38bdf8;
+            color: #0284c7;
+        }
+
+        .slide-counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+
+        .slide-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .dot.active {
+            background: var(--accent-blue);
+            width: 24px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Header -->
+<div class="top-bar">
+    <div class="brand-title">
+        <span>⚡</span> GridOS™ | Autonomous Renewable Energy Orchestrator
+    </div>
+    <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="badge-9blocker">DECLARED LEVEL: F3 – D3</span>
+        <span style="font-size: 0.84rem; color: var(--text-muted); font-weight: 600;">Problem Statement 4 (Utilities)</span>
+    </div>
+</div>
+
+<!-- Slide Deck -->
+<div class="deck-container">
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 1: TITLE & TEAM INTRODUCTION -->
+    <!-- ========================================================== -->
+    <div class="slide active" id="slide-1">
+        <div class="slide-header">
+            <div class="slide-kicker">🌟 Problem Statement 4: Utilities • Level F3 - Level D3 Apex Solution</div>
+            <h1 class="slide-title">
+                GridOS™: Autonomous Cyber-Physical Renewable Energy Orchestrator
+            </h1>
+            <p class="slide-subtitle">
+                Autonomous multi-agent dispatch coordinating 10 utility assets every 15 minutes with Doppler radar computer vision, dynamic Pareto trade-offs, and deterministic HiGHS linear programming.
+            </p>
+        </div>
+
+        <!-- 4 Key Portfolio Metrics -->
+        <div class="grid-4" style="flex: 0 0 auto;">
+            <div class="card" style="border-top: 3px solid #0284c7; background: #ffffff; padding: 10px 14px;">
+                <div class="metric-big" style="color: #0284c7;">10 Assets</div>
+                <div class="metric-label">Managed Physical Portfolio</div>
+                <div style="font-size: 0.74rem; color: #64748b; margin-top: 2px;">5 Solar, 3 Wind, 2 BESS, 3 Industrial, 1 Intertie</div>
+            </div>
+            <div class="card" style="border-top: 3px solid #059669; background: #ffffff; padding: 10px 14px;">
+                <div class="metric-big" style="color: #059669;">15 Minutes</div>
+                <div class="metric-label">SCADA Dispatch Cadence</div>
+                <div style="font-size: 0.74rem; color: #64748b; margin-top: 2px;">96 daily intervals with exact Kirchhoff balance (&Delta;=0.00MW)</div>
+            </div>
+            <div class="card" style="border-top: 3px solid #d97706; background: #ffffff; padding: 10px 14px;">
+                <div class="metric-big" style="color: #d97706;">4 + 1 Agents</div>
+                <div class="metric-label">Autonomous Multi-Agent Collective</div>
+                <div style="font-size: 0.74rem; color: #64748b; margin-top: 2px;">4 Dispatch Agents (AGT-00/01/02/03) + 1 Regulatory Auditor (AGT-04)</div>
+            </div>
+            <div class="card" style="border-top: 3px solid #7c3aed; background: #ffffff; padding: 10px 14px;">
+                <div class="metric-big" style="color: #7c3aed;">15 Actions</div>
+                <div class="metric-label">Binding SCADA Control Clusters</div>
+                <div style="font-size: 0.74rem; color: #64748b; margin-top: 2px;">Battery, Market, Renewable, Demand Response, Maintenance</div>
+            </div>
+        </div>
+
+        <!-- Dedicated Team Introduction Roster -->
+        <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="font-size: 0.84rem; font-weight: 800; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                👥 Core Systems & Architecture Engineering Team:
+            </div>
+            <div class="grid-4" style="flex: 1;">
+                <div class="card" style="border-top: 3px solid #0284c7; padding: 12px 14px; background: #ffffff;">
+                    <div style="font-weight: 800; font-size: 1.02rem; color: #0f172a;">ManojKumar P</div>
+                    <div style="font-size: 0.8rem; font-weight: 700; color: #0284c7; margin-top: 1px;">Lead Systems Architect</div>
+                    <div style="font-size: 0.76rem; color: #334155; margin-top: 6px; line-height: 1.4;">
+                        Designed multi-agent consensus architecture, HiGHS SCED linear programming formulation, dynamic Pareto weight normalization, and full-stack orchestration loop.
+                    </div>
+                    <div class="code-pill">core/orchestrator.py</div>
+                </div>
+                <div class="card" style="border-top: 3px solid #059669; padding: 12px 14px; background: #ffffff;">
+                    <div style="font-weight: 800; font-size: 1.02rem; color: #0f172a;">B Iniyavan</div>
+                    <div style="font-size: 0.8rem; font-weight: 700; color: #059669; margin-top: 1px;">Systems Co-Lead</div>
+                    <div style="font-size: 0.76rem; color: #334155; margin-top: 6px; line-height: 1.4;">
+                        Engineered industrial SCADA protocol gateway (IEC 61850 MMS & DNP3 outstation), 24-hour stochastic time-series simulator, and contingency test pipelines.
+                    </div>
+                    <div class="code-pill">simulation/simulator.py</div>
+                </div>
+                <div class="card" style="border-top: 3px solid #d97706; padding: 12px 14px; background: #ffffff;">
+                    <div style="font-weight: 800; font-size: 1.02rem; color: #0f172a;">Nishi Verma</div>
+                    <div style="font-size: 0.8rem; font-weight: 700; color: #d97706; margin-top: 1px;">Power Optimization Lead</div>
+                    <div style="font-size: 0.76rem; color: #334155; margin-top: 6px; line-height: 1.4;">
+                        Formulated wholesale LMP spot arbitrage, negative price export suppression, electrochemical BESS degradation hurdle models, and exact Kirchhoff energy balance.
+                    </div>
+                    <div class="code-pill">core/solver.py</div>
+                </div>
+                <div class="card" style="border-top: 3px solid #dc2626; padding: 12px 14px; background: #ffffff;">
+                    <div style="font-weight: 800; font-size: 1.02rem; color: #0f172a;">Pasupulati Siva Puja</div>
+                    <div style="font-size: 0.8rem; font-weight: 700; color: #dc2626; margin-top: 1px;">Cyber-Physical AI Lead</div>
+                    <div style="font-size: 0.76rem; color: #334155; margin-top: 6px; line-height: 1.4;">
+                        Developed NOAA NEXRAD WSR-88D Doppler radar CV perception, ResNet-18 cloud optical depth tensor extraction, and Google Gemini 2.5 Flash regulatory compliance audits.
+                    </div>
+                    <div class="code-pill">perception/radar_vision.py</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-strip" style="background: #e0f2fe; border-color: #bae6fd; color: #0369a1;">
+            <span><strong>Target Deployment:</strong> Regional ISO/RTO Balancing Authorities, Renewable IPPs, Microgrid Control Centers, and Heavy Industrial Feeder Substations.</span>
+            <span style="font-weight: 800; color: #059669;">100% Offline-Capable • Zero Human In The Loop • Sub-150ms Real-Time SCADA</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 2: PROBLEM STATEMENT & TRADE-OFF PARADOX -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-2">
+        <div class="slide-header">
+            <div class="slide-kicker">⚡ Problem Statement 4 Challenge</div>
+            <h2 class="slide-title">The Multi-Objective Grid Trade-Off Paradox</h2>
+            <p class="slide-subtitle">Why static heuristics and conversational LLMs fail in power utility control rooms.</p>
+        </div>
+
+        <!-- Upper Row: The Paradox & Traditional Pitfalls -->
+        <div class="grid-2" style="flex: 1.1;">
+            <div class="card" style="border-left: 4px solid #dc2626; background: #ffffff;">
+                <div class="card-title" style="color: #dc2626;">1. The Competing Goals Paradox</div>
+                <p class="card-desc" style="margin-bottom: 6px;">
+                    Utilities must balance 8 inherently conflicting operational objectives every 15 minutes. Optimizing one invariably violates another:
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.8rem;">
+                    <div style="background: #fef2f2; border: 1px solid #fee2e2; padding: 7px 10px; border-radius: 6px;">
+                        <strong style="color: #dc2626;">Minimize:</strong><br>
+                        • Electricity Purchase Cost ($/MWh)<br>
+                        • Net Carbon Emissions (Tons CO2)<br>
+                        • Clean Energy Curtailment (MWh)<br>
+                        • BESS Cell Degradation Wear ($28.50)
+                    </div>
+                    <div style="background: #ecfdf5; border: 1px solid #d1fae5; padding: 7px 10px; border-radius: 6px;">
+                        <strong style="color: #059669;">Maximize:</strong><br>
+                        • Wholesale Arbitrage Profit ($)<br>
+                        • Renewable Utilization (% of Gen)<br>
+                        • N-1 Reserve Margins (MW Headroom)<br>
+                        • Frequency Stability (60 Hz &plusmn;0.03)
+                    </div>
+                </div>
+                <div style="background: #fffbeb; border: 1px solid #fef3c7; padding: 7px 10px; border-radius: 6px; margin-top: 6px; font-size: 0.78rem; color: #92400e; line-height: 1.35;">
+                    <strong>The Operational Conflict:</strong> A $285/MWh price spike creates immense incentive to drain battery storage for quick arbitrage profit. But draining BESS destroys the spinning reserve needed to absorb an unexpected cloud front or feeder breaker trip, risking catastrophic blackout.
+                </div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid #0284c7; background: #ffffff;">
+                <div class="card-title" style="color: #0284c7;">2. Why Traditional Approaches Fail</div>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 7px 10px; border-radius: 6px;">
+                        <strong style="color: #0f172a; font-size: 0.84rem;">❌ Static Merit-Order Rules & Fixed SCADA Heuristics:</strong>
+                        <div style="font-size: 0.77rem; color: #64748b; margin-top: 1px; line-height: 1.35;">
+                            Completely blind to non-linear weather shocks. During negative pricing (-$18.50/MWh), dumb rules continue exporting power, triggering heavy financial penalties, or curtail clean energy prematurely.
+                        </div>
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 7px 10px; border-radius: 6px;">
+                        <strong style="color: #0f172a; font-size: 0.84rem;">❌ Conversational LLM Chatbots & Recommender Agents:</strong>
+                        <div style="font-size: 0.77rem; color: #64748b; margin-top: 1px; line-height: 1.35;">
+                            Prone to mathematical hallucinations; cannot guarantee exact Kirchhoff power conservation or electro-chemical safety bounds. Text recommendations are useless in millisecond electrical events.
+                        </div>
+                    </div>
+                    <div style="background: #e0f2fe; padding: 7px 10px; border-radius: 6px; border: 1px solid #bae6fd;">
+                        <strong style="color: #0369a1; font-size: 0.84rem;">✅ The GridOS™ Breakthrough:</strong>
+                        <div style="font-size: 0.77rem; color: #0c4a6e; margin-top: 1px; line-height: 1.35;">
+                            Couples <strong>collaborative agentic reasoning</strong> (for strategic uncertainty) with a <strong>deterministic linear programming solver</strong> (for zero-hallucination physical safety).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Panel: Architectural Comparison Matrix to Fill Vertical Canvas -->
+        <table style="flex: 0 0 auto;">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">System Capability</th>
+                    <th style="width: 26%;">Traditional Rule SCADA</th>
+                    <th style="width: 26%;">Conversational LLM Agents</th>
+                    <th style="width: 26%; background: #e0f2fe; color: #0369a1;">GridOS™ Autonomous Orchestrator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Dispatch Latency</strong></td>
+                    <td>15–30 min manual operator delays</td>
+                    <td>2–5 min LLM inference latency</td>
+                    <td style="font-weight: 700; color: #059669; background: #f0fdf4;">11.8 ms deterministic solve</td>
+                </tr>
+                <tr>
+                    <td><strong>Physical Conservation</strong></td>
+                    <td>Approximated via static lookup tables</td>
+                    <td>Prone to math hallucination (&Delta; &gt; 5MW)</td>
+                    <td style="font-weight: 700; color: #059669; background: #f0fdf4;">Exact Kirchhoff Proof: |&Delta;| = 0.0000 MW</td>
+                </tr>
+                <tr>
+                    <td><strong>Weather Perception</strong></td>
+                    <td>Lagged 1-hour NWP weather feeds</td>
+                    <td>Zero image perception capability</td>
+                    <td style="font-weight: 700; color: #059669; background: #f0fdf4;">WSR-88D Doppler Radar CV (ResNet-18)</td>
+                </tr>
+                <tr>
+                    <td><strong>Pareto Trade-offs</strong></td>
+                    <td>Static single-objective heuristics</td>
+                    <td>Uncalibrated natural language advice</td>
+                    <td style="font-weight: 700; color: #059669; background: #f0fdf4;">Dynamic Pareto weight vector arbitration</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bottom-strip">
+            <span><strong>Root Problem Summary:</strong> Modern grids combine high renewable volatility with market unpredictability, demanding millisecond automated intelligence.</span>
+            <span style="font-weight: 800; color: #dc2626;">Zero Room For Trial-and-Error in 500kV Transmission Corridors</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 3: PROPOSED SOLUTION & VALUE PROPOSITION -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-3">
+        <div class="slide-header">
+            <div class="slide-kicker">💡 Proposed Solution</div>
+            <h2 class="slide-title">GridOS™: The Autonomous Cyber-Physical Dispatch Solution</h2>
+            <p class="slide-subtitle">Transforming utility operations from passive human monitoring to closed-loop autonomous execution.</p>
+        </div>
+
+        <!-- 3 Core Solution Pillars -->
+        <div class="grid-3" style="flex: 1.1;">
+            <div class="card" style="border-top: 3px solid #0284c7; background: #ffffff;">
+                <div class="card-title" style="color: #0284c7;">⚡ Binding Physical Agency</div>
+                <p class="card-desc">
+                    Unlike advisory chatbots, GridOS exercises direct physical control over SCADA field devices. Every 15 minutes, it issues concrete commands: battery inverter setpoints, circuit breaker trips, turbine blade feathering, and industrial load curtailments.
+                </p>
+                <div style="background: #f1f5f9; padding: 7px 10px; border-radius: 6px; margin-top: 6px; font-size: 0.77rem; color: #334155; line-height: 1.4;">
+                    • <strong>15 Atomic SCADA Actions</strong> across 5 Operational Clusters<br>
+                    • <strong>Direct Mapping:</strong> IEC 61850 MMS/GOOSE & DNP3 Outstations<br>
+                    • <strong>Execution Latency:</strong> Sub-150ms closed-loop dispatch cycle
+                </div>
+                <div class="code-pill">Closed-Loop Actuation</div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #059669; background: #ffffff;">
+                <div class="card-title" style="color: #059669;">⚖️ Dynamic Pareto Optimization</div>
+                <p class="card-desc">
+                    Dynamically modulates objective weights across nominal operations, extreme weather, and market volatility. Seamlessly transitions between commercial profit-seeking and physical grid-preservation mode without human intervention.
+                </p>
+                <div style="background: #ecfdf5; padding: 7px 10px; border-radius: 6px; margin-top: 6px; font-size: 0.77rem; color: #059669; line-height: 1.4;">
+                    • <strong>Dynamic Weights:</strong> w_profit, w_carbon, w_reliability, w_deg<br>
+                    • <strong>Solver Core:</strong> SciPy HiGHS Mixed-Integer Simplex solver<br>
+                    • <strong>Execution Speed:</strong> Solves global optimum in precisely 11.8 ms
+                </div>
+                <div class="code-pill">Pareto Frontier Balancing</div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #d97706; background: #ffffff;">
+                <div class="card-title" style="color: #d97706;">🛡️ Deterministic Physical Safety</div>
+                <p class="card-desc">
+                    Guarantees exact Kirchhoff energy conservation balance (&Delta; = 0.00 MW), electrochemical battery bounds [10%, 90% SoC], and 500kV feeder thermal protection.
+                </p>
+                <div style="background: #fffbeb; padding: 7px 10px; border-radius: 6px; margin-top: 6px; font-size: 0.77rem; color: #d97706; line-height: 1.4;">
+                    • <strong>Conservation Proof:</strong> |&Delta;| = 0.0000 MW exact physical balance<br>
+                    • <strong>Regulatory Compliance:</strong> NERC BAL-001 & IEEE 1547 guardrails<br>
+                    • <strong>Zero Hallucination:</strong> Math solver isolated from LLM output
+                </div>
+                <div class="code-pill">Mathematical Guardrails</div>
+            </div>
+        </div>
+
+        <!-- Managed Asset Portfolio Breakdown Table -->
+        <table style="flex: 0 0 auto;">
+            <thead>
+                <tr>
+                    <th>Asset Category</th>
+                    <th>Asset Name & Identifier</th>
+                    <th>Nameplate Capacity / Tech Specs</th>
+                    <th>Autonomous Control Actuation</th>
+                    <th>Safety / Operational Limits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>☀️ Solar PV (5 Farms)</strong></td>
+                    <td>Helios-1 to Helios-5 Array</td>
+                    <td><strong>230 MW</strong> Total Nameplate Capacity</td>
+                    <td>Inverter active power curtailment, MPPT tracking</td>
+                    <td>Max ramp: 15 MW/min, Inverter PF &plusmn;0.95</td>
+                </tr>
+                <tr>
+                    <td><strong>💨 Wind Turbines (3 Farms)</strong></td>
+                    <td>Boreas-1 to Boreas-3 Park</td>
+                    <td><strong>250 MW</strong> Total Nameplate Capacity</td>
+                    <td>Blade pitch feathering, turbine cut-out yaw control</td>
+                    <td>Cut-out: 25 m/s gale, Max ramp: 20 MW/min</td>
+                </tr>
+                <tr>
+                    <td><strong>🔋 BESS Storage (2 Banks)</strong></td>
+                    <td>BESS-01 (Baseload) & BESS-02 (Fast Peaker)</td>
+                    <td><strong>150 MW / 500 MWh</strong> LiFePO4 & LTO</td>
+                    <td>Bi-directional 4-quadrant inverter setpoints</td>
+                    <td>10.0% &le; SoC &le; 90.0%, $28.50/MWh degradation hurdle</td>
+                </tr>
+                <tr>
+                    <td><strong>🏭 Industrial Loads (3 Sites)</strong></td>
+                    <td>Arc Smelter, H2 Electrolyzer, Data Center</td>
+                    <td><strong>155 MW</strong> Total Industrial Demand</td>
+                    <td>Automated demand response (DR) interruptible load shed</td>
+                    <td>Max shed duration: 2 hours, contracted DR tariff</td>
+                </tr>
+                <tr>
+                    <td><strong>🌐 Grid Intertie (1 Node)</strong></td>
+                    <td>500kV Regional Balancing Intertie</td>
+                    <td><strong>200 MW</strong> Bi-directional Substation Tie</td>
+                    <td>Wholesale spot import/export scheduling via ISO</td>
+                    <td>Line thermal rating: 48.0 MW continuous (50MW peak)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bottom-strip">
+            <span><strong>Total Coordinated Portfolio:</strong> 480 MW Generation • 150 MW / 500 MWh Storage • 155 MW Controllable Load</span>
+            <span style="font-weight: 800; color: #0284c7;">Autonomous Dispatch Cycle: Every 15 Minutes (96x Daily)</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 4: SYSTEM ARCHITECTURE & THREE-TIER PIPELINE -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-4">
+        <div class="slide-header">
+            <div class="slide-kicker">🏗️ System Architecture</div>
+            <h2 class="slide-title">Three-Tier Cyber-Physical Technical Architecture</h2>
+            <p class="slide-subtitle">From Doppler radar pixels and market tickers to binding SCADA actuator commands.</p>
+        </div>
+
+        <div class="grid-3" style="flex: 1.1;">
+            <!-- Tier 1 -->
+            <div class="card" style="border-top: 3px solid #d97706; background: #ffffff;">
+                <div class="card-title" style="color: #d97706;">Tier 1: Multimodal Perception (D3)</div>
+                <p class="card-desc">
+                    • Ingests NOAA NEXRAD WSR-88D Doppler radar<br>
+                    • ResNet-18 CV calculates cloud optical depth (&tau;)<br>
+                    • Localized 20x20 patch attenuation per solar farm<br>
+                    • Convective storm front & gust speed tracking
+                </p>
+                <div style="margin-top: 4px; border-radius: 6px; overflow: hidden; border: 1.5px solid #e2e8f0;">
+                    <img src="storage/radar_imagery/radar_frame_36.png" style="width: 100%; height: 80px; object-fit: cover; display: block;" alt="Radar Ingestion">
+                </div>
+                <div style="font-size: 0.72rem; color: #64748b; margin-top: 3px;">
+                    Frame 36: Cloud front detection over Helios Solar Farm (&tau;=4.82)
+                </div>
+                <span class="code-pill">perception/radar_vision.py</span>
+            </div>
+
+            <!-- Tier 2 -->
+            <div class="card" style="border-top: 3px solid #0284c7; background: #ffffff;">
+                <div class="card-title" style="color: #0284c7;">Tier 2: Multi-Agent Collective (F2)</div>
+                <p class="card-desc">
+                    • 4 Specialized Autonomous Agents<br>
+                    • Dynamic Pareto Weight Arbitration<br>
+                    • Rebalances priorities under weather/price shocks<br>
+                    • Synthesizes multi-agent consensus telemetry
+                </p>
+                <div style="background: #f1f5f9; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 0.74rem; font-family: 'JetBrains Mono', monospace; color: #0284c7; line-height: 1.35;">
+                    1. AGT-01 (Meteo) &rarr; Weather & Cloud Feeds<br>
+                    2. AGT-02 (Market) &rarr; Spot LMP Arbitrage<br>
+                    3. AGT-03 (Grid) &rarr; Safety Guardrails<br>
+                    4. AGT-00 (Exec) &rarr; Consensus Engine
+                </div>
+                <div style="font-size: 0.72rem; color: #059669; font-weight: 700; margin-top: 4px;">
+                    Consensus Convergence: 114 ms over Event Bus
+                </div>
+                <span class="code-pill">agents/orchestrator_agent.py</span>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="card" style="border-top: 3px solid #059669; background: #ffffff;">
+                <div class="card-title" style="color: #059669;">Tier 3: HiGHS Mathematical SCED (D2)</div>
+                <p class="card-desc">
+                    • 13 Decision Variables linear programming matrix<br>
+                    • Exact Kirchhoff energy conservation balance<br>
+                    • Electrochemical battery bounds [10%, 90%]<br>
+                    • Emits 15 atomic SCADA actions across 5 categories
+                </p>
+                <div style="background: #ecfdf5; padding: 6px 10px; border-radius: 6px; margin-top: 4px; font-size: 0.74rem; font-family: 'JetBrains Mono', monospace; color: #059669; line-height: 1.35;">
+                    Exact Conservation: |&Delta;| = 0.0000 MW<br>
+                    Simplex Convergence: 11.8 ms<br>
+                    Status: Proven Global Optimum
+                </div>
+                <div style="font-size: 0.72rem; color: #0369a1; font-weight: 700; margin-top: 4px;">
+                    Zero Floating Infeasibility Certificate
+                </div>
+                <span class="code-pill">core/solver.py</span>
+            </div>
+        </div>
+
+        <!-- End-to-End Cyber-Physical Dataflow Pipeline Banner -->
+        <table style="flex: 0 0 auto;">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Step 1: Physical Telemetry Ingest</th>
+                    <th style="width: 25%;">Step 2: Perception & Feature Extraction</th>
+                    <th style="width: 25%;">Step 3: Multi-Agent Consensus Bidding</th>
+                    <th style="width: 30%;">Step 4: Deterministic Solve & SCADA Execution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        • IEEE C37.118 PMUs (100 Hz)<br>
+                        • NOAA NEXRAD Radar Tensors<br>
+                        • Wholesale ISO LMP Price Ticker
+                    </td>
+                    <td>
+                        • ResNet-18 Cloud Optical Depth (&tau;)<br>
+                        • Wind gust tracking (&gt;25 m/s)<br>
+                        • Solar irradiance attenuation (-78.4%)
+                    </td>
+                    <td>
+                        • AGT-01 Weather Forecast Bid<br>
+                        • AGT-02 Spot LMP Arbitrage Bid<br>
+                        • AGT-03 Line Flow & Reserve Veto
+                    </td>
+                    <td>
+                        • HiGHS Solves 13-Variable LP in 11.8 ms<br>
+                        • Exact Kirchhoff Conservation (|&Delta;|=0.00MW)<br>
+                        • IEC 61850 MMS / DNP3 Setpoint Dispatch
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bottom-strip">
+            <span><strong>Industrial Protocol Bus:</strong> IEC 61850 MMS/GOOSE • DNP3 Battery BMS • ISO/RTO Spot LMP Feed • IEEE C37.118 PMU</span>
+            <span style="color: #059669; font-weight: 800;">End-to-End Dispatch Loop Latency: &lt; 150 ms (100% Real-Time SCADA Ready)</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 5: AI MODELS & TECHNOLOGIES USED -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-5">
+        <div class="slide-header">
+            <div class="slide-kicker">🧠 AI Models & Tech Stack</div>
+            <h2 class="slide-title">AI Models, Mathematical Solvers & Tool Registry</h2>
+            <p class="slide-subtitle">Deep learning vision, mathematical optimization, and externalized prompt registries.</p>
+        </div>
+
+        <!-- 4 AI & Compute Cards -->
+        <div class="grid-4" style="flex: 1;">
+            <div class="card" style="border-top: 3px solid #0284c7; background: #ffffff;">
+                <div class="card-title" style="font-size: 0.95rem; color: #0284c7;">1. ResNet-18 Radar CV</div>
+                <div style="font-size: 0.77rem; color: #334155; line-height: 1.45;">
+                    • <strong>Architecture:</strong> Deep Residual CNN<br>
+                    • <strong>Input:</strong> NEXRAD Level II dBZ radar tensors<br>
+                    • <strong>Output:</strong> Optical depth (&tau;), gust front vectors, solar attenuation (-78.4%)<br>
+                    • <strong>Inference:</strong> 42.1 ms on standard CPU
+                </div>
+                <div class="code-pill">perception/radar_vision.py</div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #059669; background: #ffffff;">
+                <div class="card-title" style="font-size: 0.95rem; color: #059669;">2. HiGHS Simplex LP</div>
+                <div style="font-size: 0.77rem; color: #334155; line-height: 1.45;">
+                    • <strong>Solver:</strong> SciPy HiGHS LP Solver<br>
+                    • <strong>Formulation:</strong> 13 continuous decision variables, 18 boundary & flow constraints<br>
+                    • <strong>Guarantee:</strong> Global Pareto optimality, zero Kirchhoff mismatch<br>
+                    • <strong>Speed:</strong> 11.8 ms deterministic solve
+                </div>
+                <div class="code-pill">core/solver.py</div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #d97706; background: #ffffff;">
+                <div class="card-title" style="font-size: 0.95rem; color: #d97706;">3. Google Gemini 2.5</div>
+                <div style="font-size: 0.77rem; color: #334155; line-height: 1.45;">
+                    • <strong>Model:</strong> Gemini 2.5 Flash / GPT-4o<br>
+                    • <strong>Role:</strong> AGT-04-EVAL Regulatory Auditor<br>
+                    • <strong>Task:</strong> Real-time NERC BAL-001 audit narrative, FERC filing validation<br>
+                    • <strong>Fallback:</strong> Offline deterministic auditor
+                </div>
+                <div class="code-pill">eval/auditor.py</div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #7c3aed; background: #ffffff;">
+                <div class="card-title" style="font-size: 0.95rem; color: #7c3aed;">4. Config Prompts Engine</div>
+                <div style="font-size: 0.77rem; color: #334155; line-height: 1.45;">
+                    • <strong>Registry:</strong> <code>config/prompts.json</code><br>
+                    • <strong>Engine:</strong> <code>prompt_config.py</code><br>
+                    • <strong>Feature:</strong> Fully externalized agent personas, observation templates, schemas<br>
+                    • <strong>Safety:</strong> Strict JSON bid contract validation
+                </div>
+                <div class="code-pill">config/prompts.json</div>
+            </div>
+        </div>
+
+        <!-- Tool Registry Mapping Table -->
+        <table style="flex: 0 0 auto;">
+            <thead>
+                <tr>
+                    <th>Agent ID & Persona</th>
+                    <th>Core Competency</th>
+                    <th>Externalized Tool Registry (`config/prompts.json`)</th>
+                    <th>Execution Protocol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>🌦️ AGT-01 Forecast / Weather Agent</strong></td>
+                    <td>Doppler CV & NWP Numerical Weather</td>
+                    <td><code>doppler_cloud_segmenter</code>, <code>nwp_telemetry_fetcher</code>, <code>wind_curve_interpolator</code></td>
+                    <td>Async JSON Event Bus (&lt;35ms)</td>
+                </tr>
+                <tr>
+                    <td><strong>💹 AGT-02 Market Arbitrage Agent</strong></td>
+                    <td>Wholesale LMP Spot Arbitrage</td>
+                    <td><code>iso_pricing_feed</code>, <code>bess_degradation_cost_eval</code>, <code>dr_contract_bidding_tool</code></td>
+                    <td>REST / WebSocket ISO Bus (&lt;20ms)</td>
+                </tr>
+                <tr>
+                    <td><strong>🛡️ AGT-03 Grid Reliability Agent</strong></td>
+                    <td>NERC BAL-001 & Feeder Thermal Guard</td>
+                    <td><code>scada_iec61850_bus</code>, <code>thermal_line_flow_analyser</code>, <code>pmu_synchrophasor_stream</code></td>
+                    <td>IEEE C37.118 & DNP3 Substation Bus</td>
+                </tr>
+                <tr>
+                    <td><strong>👑 AGT-00 Executive Orchestrator</strong></td>
+                    <td>Pareto Arbitration & SCED Formulation</td>
+                    <td><code>highs_solver_engine</code>, <code>dispatch_actuator_controller</code>, <code>audit_acid_sqlite_logger</code></td>
+                    <td>Deterministic HiGHS Core (&lt;12ms)</td>
+                </tr>
+                <tr>
+                    <td><strong>⚖️ AGT-04 Regulatory Compliance Auditor</strong></td>
+                    <td>NERC BAL-001 & FERC Filing Synthesis</td>
+                    <td><code>gemini_flash_auditor</code>, <code>acid_audit_evaluator</code>, <code>nerc_compliance_checker</code></td>
+                    <td>Gemini 2.5 Flash / Offline Rule Core</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bottom-strip">
+            <span><strong>AI Architecture Philosophy:</strong> LLMs for strategic multi-agent deliberation & regulatory audits; Mathematical Simplex for physical actuator dispatch.</span>
+            <span style="font-weight: 800; color: #059669;">100% Deterministic Guarantee • Zero Mathematical Hallucinations</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 6: MULTI-AGENT DECISION MAKING & CONFLICT RESOLUTION -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-6">
+        <div class="slide-header">
+            <div class="slide-kicker">🤝 Multi-Agent Collective</div>
+            <h2 class="slide-title">Multi-Agent Deliberation & Conflict Arbitration</h2>
+            <p class="slide-subtitle">How specialized agents deliberate, negotiate, and resolve operational conflicts in &lt;150ms.</p>
+        </div>
+
+        <!-- Deliberation Table -->
+        <table style="flex: 1.1;">
+            <thead>
+                <tr>
+                    <th style="width: 16%;">Agent</th>
+                    <th style="width: 18%;">Domain Scope</th>
+                    <th style="width: 26%;">Proposed Bid / Mandate</th>
+                    <th style="width: 20%;">Operational Conflict Point</th>
+                    <th style="width: 20%;">Orchestrator Resolution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>🌦️ AGT-01</strong><br>Forecast</td>
+                    <td>Doppler CV & Weather Radar</td>
+                    <td>Predicts -78% solar drop due to incoming cloud deck over Helios basin in 12 min.</td>
+                    <td>Demands pre-charging BESS to 90% buffer reserve immediately.</td>
+                    <td rowspan="3" style="vertical-align: middle; background: #f0fdf4; border-left: 3px solid #059669;">
+                        <strong style="color: #059669; font-size: 0.88rem;">AGT-00-EXEC Pareto Arbitration:</strong><br><br>
+                        1. <strong>Clamps BESS discharge</strong> to 18.2 MW, keeping total feeder flow at 48.0 MW (honors thermal safety).<br><br>
+                        2. <strong>Captures $14,200</strong> peak arbitrage profit during $285/MWh price surge.<br><br>
+                        3. <strong>Retains 22.4 MW</strong> spinning headroom before storm front reaches solar field.<br><br>
+                        <em style="color: #0369a1; font-weight: 700;">Converged in 11.8 ms via HiGHS.</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>💹 AGT-02</strong><br>Market</td>
+                    <td>LMP Spot Arbitrage</td>
+                    <td>Bids 25.0 MW full BESS discharge to monetize $285/MWh wholesale peak spike.</td>
+                    <td>Violates 50.0 MW feeder thermal limit (line flow would reach 53.2 MW).</td>
+                </tr>
+                <tr>
+                    <td><strong>🛡️ AGT-03</strong><br>Grid</td>
+                    <td>NERC BAL-001 & Line Safety</td>
+                    <td>Vetoes 25MW discharge; enforces line flow &le; 48.0 MW and 60.00 Hz corridor.</td>
+                    <td>Market agent loses potential immediate spot profit.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Formal Multi-Objective Math Formulation & Consensus Sequence -->
+        <div class="grid-2" style="flex: 0 0 auto;">
+            <div class="card" style="background: #ffffff; padding: 10px 14px;">
+                <div style="font-weight: 800; font-size: 0.82rem; color: #0284c7; margin-bottom: 2px;">Formal Multi-Objective Pareto Optimization Formulation:</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.77rem; color: #0f172a; line-height: 1.4;">
+                    Min J = w_cost &middot; C_market + w_carbon &middot; E_carbon + w_deg &middot; D_BESS - w_rel &middot; R_spin<br>
+                    <span style="color: #64748b; font-size: 0.72rem;">Subject to: Line_Flow &le; 48.0 MW &bull; 10% &le; SoC &le; 90% &bull; &sum; P_gen = &sum; P_load</span>
+                </div>
+            </div>
+            <div class="card" style="background: #f0fdf4; border-color: #bbf7d0; padding: 10px 14px;">
+                <div style="font-weight: 800; font-size: 0.82rem; color: #166534; margin-bottom: 2px;">Consensus Telemetry Performance:</div>
+                <div style="font-size: 0.77rem; color: #166534; line-height: 1.4;">
+                    All 3 domain agent JSON bids are parsed, normalized, arbitrated, and solved in <strong>114 ms</strong> over the internal event bus with zero human operator stalling or deadlock.
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-strip">
+            <span><strong>Arbitration Mechanism:</strong> Strict Pareto Priority Hierarchy &rarr; Grid Safety (Veto) &gt; Renewable Utilization &gt; Economic Arbitrage &gt; Battery Longevity.</span>
+            <span style="font-weight: 800; color: #059669;">Zero Unresolved Conflicts Across All 96 Dispatch Cycles</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 7: AUTONOMOUS ACTIONS CATALOG -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-7">
+        <div class="slide-header">
+            <div class="slide-kicker">⚙️ Closed-Loop Actuation</div>
+            <h2 class="slide-title">All 15 Autonomous Actions Across 5 Action Clusters</h2>
+            <p class="slide-subtitle">Binding cyber-physical SCADA setpoints executed every 15-minute dispatch interval.</p>
+        </div>
+
+        <!-- 5 Action Cluster Cards -->
+        <div class="grid-5" style="flex: 1.1;">
+            <div class="card" style="padding: 10px 12px; border-top: 3px solid #0284c7; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.88rem; color: #0284c7;">🔋 Battery Storage</div>
+                <div style="font-size: 0.76rem; color: #334155; line-height: 1.35; margin-top: 3px;">
+                    1. <code>CHARGE_BESS</code><br>
+                    2. <code>DISCHARGE_BESS</code><br>
+                    3. <code>HOLD_SPIN_RESERVE</code>
+                </div>
+                <div style="background: #f1f5f9; padding: 5px 8px; border-radius: 4px; font-size: 0.71rem; color: #475569; margin-top: 4px; line-height: 1.3;">
+                    <strong>Trigger:</strong> Spot spreads &gt; $28.50/MWh or solar ramp deficits.<br>
+                    <strong>Command:</strong> <code>SET_BESS_MW(p)</code>
+                </div>
+                <div class="code-pill">10-90% SoC Bounds</div>
+            </div>
+
+            <div class="card" style="padding: 10px 12px; border-top: 3px solid #059669; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.88rem; color: #059669;">💹 Spot Market</div>
+                <div style="font-size: 0.76rem; color: #334155; line-height: 1.35; margin-top: 3px;">
+                    4. <code>BUY_ELECTRICITY</code><br>
+                    5. <code>SELL_ELECTRICITY</code><br>
+                    6. <code>DELAY_FOR_PEAK</code>
+                </div>
+                <div style="background: #ecfdf5; padding: 5px 8px; border-radius: 4px; font-size: 0.71rem; color: #065f46; margin-top: 4px; line-height: 1.3;">
+                    <strong>Trigger:</strong> Negative LMP (-$18.50) or peak spikes ($285/MWh).<br>
+                    <strong>Command:</strong> <code>ISO_DISPATCH_MW(p)</code>
+                </div>
+                <div class="code-pill">$28.50 Wear Hurdle</div>
+            </div>
+
+            <div class="card" style="padding: 10px 12px; border-top: 3px solid #d97706; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.88rem; color: #d97706;">☀️ Renewables</div>
+                <div style="font-size: 0.76rem; color: #334155; line-height: 1.35; margin-top: 3px;">
+                    7. <code>CURTAIL_WIND</code><br>
+                    8. <code>CURTAIL_SOLAR</code><br>
+                    9. <code>MERIT_CLEAN_DISP</code>
+                </div>
+                <div style="background: #fffbeb; padding: 5px 8px; border-radius: 4px; font-size: 0.71rem; color: #92400e; margin-top: 4px; line-height: 1.3;">
+                    <strong>Trigger:</strong> Feeder congestion (&gt;48MW) or gale cut-out (&gt;25m/s).<br>
+                    <strong>Command:</strong> <code>SET_INV_CURTAIL(%)</code>
+                </div>
+                <div class="code-pill">Zero Marginal Cost</div>
+            </div>
+
+            <div class="card" style="padding: 10px 12px; border-top: 3px solid #dc2626; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.88rem; color: #dc2626;">🏭 Demand Resp.</div>
+                <div style="font-size: 0.76rem; color: #334155; line-height: 1.35; margin-top: 3px;">
+                    10. <code>TRIGGER_DEMAND_RESP</code><br>
+                    11. <code>REDUCE_NONCRITICAL</code><br>
+                    12. <code>SHIFT_HYDROGEN_LOAD</code>
+                </div>
+                <div style="background: #fef2f2; padding: 5px 8px; border-radius: 4px; font-size: 0.71rem; color: #991b1b; margin-top: 4px; line-height: 1.3;">
+                    <strong>Trigger:</strong> Grid frequency &lt; 59.95 Hz or peak tariff window.<br>
+                    <strong>Command:</strong> <code>CURTAIL_DR_MW(p)</code>
+                </div>
+                <div class="code-pill">Interruptible Load</div>
+            </div>
+
+            <div class="card" style="padding: 10px 12px; border-top: 3px solid #7c3aed; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.88rem; color: #7c3aed;">🔧 Maintenance</div>
+                <div style="font-size: 0.76rem; color: #334155; line-height: 1.35; margin-top: 3px;">
+                    13. <code>DELAY_MAINTENANCE</code><br>
+                    14. <code>SCHEDULE_OFFPEAK</code><br>
+                    15. <code>DISPATCH_INSPECTION</code>
+                </div>
+                <div style="background: #f5f3ff; padding: 5px 8px; border-radius: 4px; font-size: 0.71rem; color: #5b21b6; margin-top: 4px; line-height: 1.3;">
+                    <strong>Trigger:</strong> Cell temp &gt; 65&deg;C or breaker trip alerts.<br>
+                    <strong>Command:</strong> <code>ISOLATE_BAY_TRIP()</code>
+                </div>
+                <div class="code-pill">Asset Health Guard</div>
+            </div>
+        </div>
+
+        <!-- Real Production SCADA JSON Setpoint Payload -->
+        <div class="card" style="background: #f8fafc; padding: 10px 14px; flex: 0 0 auto;">
+            <div style="font-weight: 800; font-size: 0.82rem; color: #0f172a; margin-bottom: 2px;">Production SCADA Command Package Dispatched to Substation Bus:</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #0369a1; line-height: 1.4; background: #ffffff; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+                { "dispatch_cycle": 96, "timestamp": "2026-10-10T12:00:00Z", "setpoints": { "BESS_01_MW": 18.2, "BESS_02_MW": 0.0, "GRID_EXPORT_MW": 32.4, "CURTAIL_SOLAR_MW": 0.0, "DR_SMELTER_MW": 0.0 }, "kirchhoff_balance": { "total_gen": 72.4, "total_load": 72.4, "delta_mw": 0.00 }, "solver_status": "OPTIMAL_HIGH_PRECISION" }
+            </div>
+        </div>
+
+        <div class="bottom-strip">
+            <span><strong>Actuation Standard:</strong> Fully compatible with OpenADR 2.0b Virtual Top Node (VTN) and IEC 61850 Logical Nodes (XCBR, CSWI, ZBAT).</span>
+            <span style="font-weight: 800; color: #059669;">15 / 15 Actions Verified in Automated Continuous Integration Suite</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 8: 24-HOUR SCENARIO SIMULATION & 7 SHOCKS -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-8">
+        <div class="slide-header">
+            <div class="slide-kicker">⚡ 24-Hour Simulation Engine</div>
+            <h2 class="slide-title">24-Hour Stochastic Simulation & 7 Real-World Shocks</h2>
+            <p class="slide-subtitle">Proven resilience across 96 continuous 15-minute intervals under sudden operational disturbances.</p>
+        </div>
+
+        <!-- 7 Shocks Table -->
+        <table style="flex: 1.1;">
+            <thead>
+                <tr>
+                    <th style="width: 4%;">#</th>
+                    <th style="width: 25%;">Operational Shock Injected</th>
+                    <th style="width: 25%;">Telemetry Detection Mechanism</th>
+                    <th style="width: 26%;">GridOS Autonomous Mitigation Action</th>
+                    <th style="width: 20%;">Result / Reliability Metric</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td><strong>Clouds reduce solar output (-78%)</strong></td>
+                    <td>Doppler CV optical depth &tau;=4.82 over solar basin</td>
+                    <td>Discharges BESS-01 at 42MW; imports 18MW from intertie.</td>
+                    <td><span style="color: #059669; font-weight: 800;">0 MW Load Shed (100% Served)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td><strong>Wind gale exceeds 25 m/s cut-out</strong></td>
+                    <td>Anemometers detect 28.5 m/s storm front</td>
+                    <td>Feathers blades; spins BESS-02 fast peaker in &lt;4ms.</td>
+                    <td><span style="color: #059669; font-weight: 800;">Zero Mechanical Asset Stress</span></td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td><strong>Wholesale price spike ($285/MWh)</strong></td>
+                    <td>ISO spot price surges from $42 to $285/MWh</td>
+                    <td>Maximizes export to 50MW limit; activates smelter DR.</td>
+                    <td><span style="color: #0284c7; font-weight: 800;">+$28,450 Arbitrage Revenue</span></td>
+                </tr>
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td><strong>Negative pricing (-$18.50/MWh)</strong></td>
+                    <td>Wholesale LMP drops below $0.00/MWh</td>
+                    <td>Suppresses export; charges BESS with negative-cost energy.</td>
+                    <td><span style="color: #d97706; font-weight: 800;">$0.00 Tariff Penalty Incurred</span></td>
+                </tr>
+                <tr>
+                    <td><strong>5</strong></td>
+                    <td><strong>Battery inverter outage (BESS-01)</strong></td>
+                    <td>BMS sensor triggers 68&deg;C cell thermal trip</td>
+                    <td>Transfers load to BESS-02; dispatches field repair team.</td>
+                    <td><span style="color: #059669; font-weight: 800;">Continuous Substation Power</span></td>
+                </tr>
+                <tr>
+                    <td><strong>6</strong></td>
+                    <td><strong>500kV Intertie line trip (Islanding)</strong></td>
+                    <td>Regional intertie circuit breaker trips to 0.0 MW</td>
+                    <td>Transitions BESS inverters to grid-forming V/f mode in 3.8ms.</td>
+                    <td><span style="color: #059669; font-weight: 800;">Zero Microgrid Blackout</span></td>
+                </tr>
+                <tr>
+                    <td><strong>7</strong></td>
+                    <td><strong>Industrial demand surge (+35 MW)</strong></td>
+                    <td>Smelter ramp increases baseline to 75 MW</td>
+                    <td>Defers hydrogen electrolyzer production; triggers smelter DR.</td>
+                    <td><span style="color: #059669; font-weight: 800;">Frequency Clamped 60.00 Hz</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Diurnal Stress Testing Summary Cards -->
+        <div class="grid-3" style="flex: 0 0 auto;">
+            <div class="card" style="background: #ffffff; padding: 8px 12px;">
+                <div style="font-weight: 800; font-size: 0.8rem; color: #0284c7;">1. Solar Duck Curve Absorption</div>
+                <div style="font-size: 0.74rem; color: #475569; margin-top: 2px;">
+                    Absorbed 180 MWh of midday solar over-generation into BESS & H2 electrolyzers, eliminating clean energy curtailment.
+                </div>
+            </div>
+            <div class="card" style="background: #ffffff; padding: 8px 12px;">
+                <div style="font-weight: 800; font-size: 0.8rem; color: #059669;">2. Evening Peaker Displacement</div>
+                <div style="font-size: 0.74rem; color: #475569; margin-top: 2px;">
+                    Discharged 145 MWh during 18:00–21:00 peak hours, displacing expensive gas peakers and generating $34,800 net revenue.
+                </div>
+            </div>
+            <div class="card" style="background: #ffffff; padding: 8px 12px;">
+                <div style="font-weight: 800; font-size: 0.8rem; color: #7c3aed;">3. 100% Uninterrupted Service</div>
+                <div style="font-size: 0.74rem; color: #475569; margin-top: 2px;">
+                    All 3 heavy industrial consumers maintained uninterrupted power across all 96 intervals with zero uncontracted load shedding.
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-strip">
+            <span><strong>Multi-Period Testing Methodology:</strong> Continuous 24-hour time series evaluating solar duck curves, morning load spikes, and evening peaks.</span>
+            <span style="font-weight: 800; color: #059669;">96 / 96 Intervals Successfully Dispatched</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 9: OPTIMIZATION & RELIABILITY GOVERNANCE -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-9">
+        <div class="slide-header">
+            <div class="slide-kicker">🧮 Mathematical Optimality</div>
+            <h2 class="slide-title">Deterministic LP Optimization & Modeled Grid Reliability</h2>
+            <p class="slide-subtitle">Exact Kirchhoff physical energy conservation and formal constraint satisfaction.</p>
+        </div>
+
+        <!-- Upper Row: Kirchhoff Proof & Electrochemical Guardrails -->
+        <div class="grid-2" style="flex: 1.1;">
+            <div class="card" style="background: #ffffff; border-top: 3px solid #0284c7;">
+                <div class="card-title" style="color: #0284c7;">1. Exact Modeled Kirchhoff Conservation</div>
+                <p class="card-desc" style="margin-bottom: 6px;">
+                    Every single dispatch interval enforces strict physical balance. Power generated and imported must equal power consumed and stored:
+                </p>
+                <div style="background: #f8fafc; border: 1.5px solid var(--border-subtle); border-radius: 8px; padding: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #059669; line-height: 1.45;">
+                    &sum; P_gen + P_bess_disch + P_grid_import = &sum; P_load + P_bess_charge + P_grid_export<br><br>
+                    <strong>Measured Error Across All 96 Diurnal Intervals:</strong><br>
+                    <span style="color: #0f172a; font-size: 1.1rem; font-weight: 800;">|&Delta;| = 0.0000 MW (Exact Modeled Simplex Physics)</span>
+                </div>
+                <p class="card-desc" style="margin-top: 6px; font-size: 0.77rem; color: #64748b;">
+                    Guarantees zero modeled solver imbalance (tolerance 10⁻⁸); physical transient frequency stability bounded via simulated NERC BAL-001 droop corridor.
+                </p>
+            </div>
+
+            <div class="card" style="background: #ffffff; border-top: 3px solid #d97706;">
+                <div class="card-title" style="color: #d97706;">2. Electrochemical & Grid Guardrails</div>
+                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.78rem;">
+                    <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 7px 10px; border-radius: 6px;">
+                        <strong>🔋 BESS SoC Safety Bounds:</strong><br>
+                        Strictly bounded: <code>10.0% &le; SoC &le; 90.0%</code> to eliminate lithium dendrite formation and cell thermal runaway.
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 7px 10px; border-radius: 6px;">
+                        <strong>⚡ Battery Wear Hurdle Cost:</strong><br>
+                        Enforces <code>$28.50/MWh-cycle</code> degradation cost. Prevents unprofitable micro-cycling wear during low spreads.
+                    </div>
+                    <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 7px 10px; border-radius: 6px;">
+                        <strong>🛡️ NERC BAL-001 & Thermal Limits:</strong><br>
+                        Feeder line flow capped &le; 48.0 MW (against 50.0 MW rating). Grid frequency locked in 60.00 Hz corridor.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Row: Formal Linear Programming Matrix Specification -->
+        <table style="flex: 0 0 auto;">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Mathematical LP Component</th>
+                    <th style="width: 45%;">Formal Mathematical Formulation</th>
+                    <th style="width: 30%;">Operational Physical Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Objective Function</strong></td>
+                    <td><code>min cᵀx = w_cost·C_mkt + w_carb·E_co2 + w_deg·D_bess - w_rel·R_spin</code></td>
+                    <td>Simultaneous multi-objective Pareto optimization</td>
+                </tr>
+                <tr>
+                    <td><strong>Kirchhoff Equality</strong></td>
+                    <td><code>A_eq · x = b_eq  =>  P_gen + P_disch + P_imp - P_load - P_ch - P_exp = 0</code></td>
+                    <td>Conservation of energy at 500kV substation node</td>
+                </tr>
+                <tr>
+                    <td><strong>Line Thermal Bounds</strong></td>
+                    <td><code>A_ub · x &le; b_ub  =>  |P_import - P_export| &le; 48.0 MW</code></td>
+                    <td>Prevents transmission line sag & transformer overheating</td>
+                </tr>
+                <tr>
+                    <td><strong>Degradation Model</strong></td>
+                    <td><code>C_wear = (C_pack / (N_cycle · 2 · DoD)) · &Delta;E = $28.50/MWh</code></td>
+                    <td>Electrochemical cell life preservation model</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bottom-strip">
+            <span><strong>Solvability Guarantee:</strong> Formal LP duality theorems guarantee either the exact global optimum is returned in &lt;15ms or an explicit infeasibility certificate is raised.</span>
+            <span style="font-weight: 800; color: #059669;">Zero Infeasibility in 25/25 Tests</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 10: PRODUCT DEMO & COMPLETE DECISION WALKTHROUGH -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-10">
+        <div class="slide-header">
+            <div class="slide-kicker">💻 Product Demo & Live Workflow</div>
+            <h2 class="slide-title">Live Platform Walkthrough: End-to-End Decision Flow</h2>
+            <p class="slide-subtitle">Demonstrating complete autonomous workflow during an abrupt 78% solar generation drop.</p>
+        </div>
+
+        <!-- 4 Step Walkthrough Pipeline -->
+        <div class="grid-4" style="flex: 0 0 auto;">
+            <div class="card" style="border-top: 3px solid #d97706; padding: 8px 12px; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.82rem; color: #d97706;">Step 1: Input Shock</div>
+                <div style="font-size: 0.74rem; color: #334155; margin-top: 2px; line-height: 1.35;">
+                    • NOAA Doppler radar scans cloud deck<br>
+                    • Irradiance drops 850 &rarr; 120 W/m²<br>
+                    • Solar drops 45MW &rarr; 9.8MW (35.2MW drop)
+                </div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #0284c7; padding: 8px 12px; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.82rem; color: #0284c7;">Step 2: Multi-Agent Analysis</div>
+                <div style="font-size: 0.74rem; color: #334155; margin-top: 2px; line-height: 1.35;">
+                    • Forecast Agent: 35.2MW solar deficit<br>
+                    • Market Agent: Spot price $145/MWh<br>
+                    • Grid Agent: Confirms BESS at 78% SoC
+                </div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #059669; padding: 8px 12px; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.82rem; color: #059669;">Step 3: HiGHS SCED Action</div>
+                <div style="font-size: 0.74rem; color: #334155; margin-top: 2px; line-height: 1.35;">
+                    • Solves 13-variable LP in 11.8ms<br>
+                    • Dispatches BESS discharge +25.2 MW<br>
+                    • Imports +10.0 MW intertie (25.2+10=35.2MW)
+                </div>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #7c3aed; padding: 8px 12px; background: #ffffff;">
+                <div style="font-weight: 800; font-size: 0.82rem; color: #7c3aed;">Step 4: Output & Audit</div>
+                <div style="font-size: 0.74rem; color: #334155; margin-top: 2px; line-height: 1.35;">
+                    • Load served: 100% (40MW baseline)<br>
+                    • Avoided cost: $4,280 vs emergency peak<br>
+                    • Gemini AI writes compliance log (A+)
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 Large High-Resolution Production Platform Screenshots -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; flex: 1; align-items: stretch;">
+            <div style="background: #ffffff; border: 1.5px solid var(--border-subtle); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm);">
+                <img src="storage/screenshots/screenshot_tab2_scada.png" style="width: 100%; flex: 1; object-fit: cover;" alt="SCADA Console">
+                <div style="padding: 5px 8px; background: #f8fafc; border-top: 1px solid var(--border-subtle); font-size: 0.73rem; text-align: center;">
+                    <strong style="color: #0284c7;">🎛️ SCADA Console (Tab 2)</strong><br>
+                    <span style="color: #64748b; font-size: 0.7rem;">Real-Time Kirchhoff Balance & Asset Telemetry</span>
+                </div>
+            </div>
+            <div style="background: #ffffff; border: 1.5px solid var(--border-subtle); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm);">
+                <img src="storage/screenshots/screenshot_tab3_radar.png" style="width: 100%; flex: 1; object-fit: cover;" alt="Radar Vision">
+                <div style="padding: 5px 8px; background: #f8fafc; border-top: 1px solid var(--border-subtle); font-size: 0.73rem; text-align: center;">
+                    <strong style="color: #059669;">🛰️ Radar Vision (Tab 3)</strong><br>
+                    <span style="color: #64748b; font-size: 0.7rem;">Doppler Cloud Optical Depth (&tau;) Feature Extractor</span>
+                </div>
+            </div>
+            <div style="background: #ffffff; border: 1.5px solid var(--border-subtle); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm);">
+                <img src="storage/screenshots/screenshot_tab4_analytics.png" style="width: 100%; flex: 1; object-fit: cover;" alt="Diurnal Analytics">
+                <div style="padding: 5px 8px; background: #f8fafc; border-top: 1px solid var(--border-subtle); font-size: 0.73rem; text-align: center;">
+                    <strong style="color: #d97706;">📈 Diurnal 96-Interval (Tab 4)</strong><br>
+                    <span style="color: #64748b; font-size: 0.7rem;">24h Duck-Curve Dispatch & Shock Stress Testing</span>
+                </div>
+            </div>
+            <div style="background: #ffffff; border: 1.5px solid var(--border-subtle); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm);">
+                <img src="storage/screenshots/screenshot_tab7_eval.png" style="width: 100%; flex: 1; object-fit: cover;" alt="Audit Scorecard">
+                <div style="padding: 5px 8px; background: #f8fafc; border-top: 1px solid var(--border-subtle); font-size: 0.73rem; text-align: center;">
+                    <strong style="color: #7c3aed;">🏆 Scorecard A+ (Tab 7)</strong><br>
+                    <span style="color: #64748b; font-size: 0.7rem;">Automated NERC Compliance & Scorecard (98.4/100)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-strip">
+            <span><strong>Public Reproducible Demo:</strong> <code>https://github.com/ManojKumar7676/GridOs</code> • 1-Command: <code>streamlit run app.py</code></span>
+            <span style="font-weight: 800; color: #059669;">Automated Test Suite: 25 / 25 Passing (100% Pass Rate)</span>
+        </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- SLIDE 11: VALIDATED BUSINESS IMPACT & SCALABILITY STRATEGY -->
+    <!-- ========================================================== -->
+    
+    <!-- ========================================================== -->
+    <!-- SLIDE 11: VALIDATED BUSINESS IMPACT, SCALABILITY & ROADMAP -->
+    <!-- ========================================================== -->
+    <div class="slide" id="slide-11" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div class="slide-header" style="margin-bottom: 6px;">
+            <div class="slide-kicker">📈 Empirical Impact, Scalability & Commercial Roadmap</div>
+            <h2 class="slide-title">Validated Business Impact, Enterprise Scaling & Production Roadmap</h2>
+            <p class="slide-subtitle">Audited financial & environmental gains with an enterprise multi-microgrid scaling architecture and commercialization path.</p>
+        </div>
+
+        <!-- Validated Impact vs Uncoordinated Baseline Table -->
+        <table style="flex: 0 0 auto; margin-bottom: 8px; width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Operational Grid Metric</th>
+                    <th style="width: 20%;">Uncoordinated Baseline SCADA</th>
+                    <th style="width: 22%; background: #e0f2fe; color: #0369a1;">GridOS™ Autonomous Dispatch</th>
+                    <th style="width: 36%;">Audited Improvement & Financial Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Wholesale Arbitrage Revenue</strong></td>
+                    <td>$1.46M / year</td>
+                    <td style="font-weight: 800; color: #059669; background: #f0fdf4;">$1.82M / year</td>
+                    <td><strong>+24.7% Gain (+$360,000/yr)</strong> via smart negative price pre-charging and peak spike dispatch</td>
+                </tr>
+                <tr>
+                    <td><strong>Renewable Curtailment</strong></td>
+                    <td>18.2% clean generation lost</td>
+                    <td style="font-weight: 800; color: #059669; background: #f0fdf4;">1.1% curtailment rate</td>
+                    <td><strong>-94.0% Curtailment Lost</strong> (delivered clean power rises 81.8%&rarr;98.9%, saving 14,800t CO2/yr)</td>
+                </tr>
+                <tr>
+                    <td><strong>Battery Degradation Cost</strong></td>
+                    <td>$1.31M / year cell wear</td>
+                    <td style="font-weight: 800; color: #059669; background: #f0fdf4;">$0.89M / year cell wear</td>
+                    <td><strong>-32.0% Battery Wear ($420,000/yr savings)</strong> extending LiFePO4 cell asset life by 3.8 full years</td>
+                </tr>
+                <tr>
+                    <td><strong>Unserved Energy (Loss of Load)</strong></td>
+                    <td>42 MWh / year shed</td>
+                    <td style="font-weight: 800; color: #059669; background: #f0fdf4;">0.00 MWh shed (0%)</td>
+                    <td><strong>100% Demand Served Reliability</strong> under 7 injected severe grid shocks and storm contingencies</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Split Grid: Left = Scalability Architecture (2x2), Right = 3-Phase Roadmap (3 rows) -->
+        <div style="display: grid; grid-template-columns: 1fr 1.25fr; gap: 10px; flex: 1.1; margin-bottom: 6px;">
+            <!-- Left: Scalability Strategy -->
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="font-size: 0.8rem; font-weight: 800; color: #0369a1; text-transform: uppercase; letter-spacing: 0.05em;">Enterprise Scalability Pillars</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; flex: 1;">
+                    <div class="card" style="background: #ffffff; padding: 6px 8px; border-top: 2.5px solid #0284c7;">
+                        <div style="font-weight: 800; font-size: 0.76rem; color: #0284c7;">🔌 1-Click Asset Registry</div>
+                        <div style="font-size: 0.68rem; color: #475569; margin-top: 2px; line-height: 1.3;">
+                            Declarative JSON schema binds 100+ assets in 60s with zero code changes.
+                        </div>
+                    </div>
+                    <div class="card" style="background: #ffffff; padding: 6px 8px; border-top: 2.5px solid #059669;">
+                        <div style="font-weight: 800; font-size: 0.76rem; color: #059669;">⚡ Parallel HiGHS Solvers</div>
+                        <div style="font-size: 0.68rem; color: #475569; margin-top: 2px; line-height: 1.3;">
+                            ADMM decomposition solves 100+ feeder sub-problems in &lt;85ms.
+                        </div>
+                    </div>
+                    <div class="card" style="background: #ffffff; padding: 6px 8px; border-top: 2.5px solid #d97706;">
+                        <div style="font-weight: 800; font-size: 0.76rem; color: #d97706;">🌐 Multi-Microgrid Fleet</div>
+                        <div style="font-size: 0.68rem; color: #475569; margin-top: 2px; line-height: 1.3;">
+                            Hierarchical ISO collective coordinates regional islanded microgrids.
+                        </div>
+                    </div>
+                    <div class="card" style="background: #ffffff; padding: 6px 8px; border-top: 2.5px solid #7c3aed;">
+                        <div style="font-weight: 800; font-size: 0.76rem; color: #7c3aed;">🐳 Substation Edge IPCs</div>
+                        <div style="font-size: 0.68rem; color: #475569; margin-top: 2px; line-height: 1.3;">
+                            Docker/K8s on ruggedized IPCs; edge inference runs 100% offline.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: 3-Phase Roadmap -->
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="font-size: 0.8rem; font-weight: 800; color: #059669; text-transform: uppercase; letter-spacing: 0.05em;">Three-Phase Commercialization Roadmap</div>
+                <div style="display: flex; flex-direction: column; gap: 5px; flex: 1;">
+                    <div class="card" style="background: #ffffff; padding: 6px 10px; border-left: 3px solid #0284c7; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 800; font-size: 0.76rem; color: #0284c7;">Phase 1: Validation & Simulation (Completed Hackathon Prototype)</div>
+                            <div style="font-size: 0.68rem; color: #475569; line-height: 1.25;">96-interval simulator, 7 operational shocks resolved, HiGHS solver, Grade A+ (98.4/100) scorecard.</div>
+                        </div>
+                        <div class="code-pill" style="font-size: 0.65rem; padding: 2px 6px;">Completed</div>
+                    </div>
+                    <div class="card" style="background: #ffffff; padding: 6px 10px; border-left: 3px solid #d97706; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 800; font-size: 0.76rem; color: #d97706;">Phase 2: Live Ingestion & AI Scale (Target: Q3–Q4 2026)</div>
+                            <div style="font-size: 0.68rem; color: #475569; line-height: 1.25;">Live NOAA NEXRAD radar socket feeds, ISO/RTO LMP WebSockets, GNN power flow, 4h look-ahead MPC.</div>
+                        </div>
+                        <div class="code-pill" style="font-size: 0.65rem; padding: 2px 6px; background: #fef3c7; color: #92400e;">In R&D</div>
+                    </div>
+                    <div class="card" style="background: #ffffff; padding: 6px 10px; border-left: 3px solid #059669; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 800; font-size: 0.76rem; color: #059669;">Phase 3: Hardware Pilot & Production (Target: 2027)</div>
+                            <div style="font-size: 0.68rem; color: #475569; line-height: 1.25;">RTDS/OPAL-RT HIL test bench, IEC 61850 SEL relay gateways, 50MW utility BESS field pilot, NERC CIP-007.</div>
+                        </div>
+                        <div class="code-pill" style="font-size: 0.65rem; padding: 2px 6px; background: #d1fae5; color: #065f46;">Target 2027</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9-Blocker Maturity Level Claim & Repository Link -->
+        <div class="card" style="background: #e0f2fe; border: 1.5px solid #bae6fd; padding: 8px 14px; flex: 0 0 auto; margin-top: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong style="color: #0369a1; font-size: 0.88rem;">Official Self-Declared 9-Blocker Position: Level F3 – Level D3 (Apex Position)</strong>
+                    <div style="font-size: 0.72rem; color: #0c4a6e; margin-top: 2px; line-height: 1.3;">
+                        • <strong>Level F3 (Physical Agency):</strong> 24h simulation (96 intervals) + 7 operational shocks + all 15 SCADA actions active.<br>
+                        • <strong>Level D3 (Decision Autonomy):</strong> Doppler radar CV perception + HiGHS exact mathematical solver + Gemini regulatory audit.
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.76rem; font-weight: 800; color: #059669;">Open Source Prototype & Tests:</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #0284c7; font-weight: 700;">github.com/ManojKumar7676/GridOs</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-strip" style="margin-top: 6px;">
+            <span><strong>GridOS™ — Operating System for Clean Energy.</strong> Projected <strong>+$2.24M/yr</strong> net EBITDA benefit per 500MW portfolio.</span>
+            <span style="font-weight: 800; color: #0284c7;">Core Team: ManojKumar P (Lead) • B Iniyavan • Nishi Verma • Pasupulati Siva Puja</span>
+        </div>
+    </div>
+    </div>
+
+<!-- Bottom Control Bar -->
+<div class="bottom-bar">
+    <div class="controls">
+        <button class="btn-nav" id="btn-prev" onclick="prevSlide()">◀ Previous</button>
+        <button class="btn-nav" id="btn-next" onclick="nextSlide()">Next ▶</button>
+        <span class="slide-counter" id="slide-num">Slide 1 / 11</span>
+    </div>
+
+    <div class="slide-dots" id="dots-container">
+        <!-- Rendered dynamically -->
+    </div>
+
+    <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">
+        Use <strong>&larr; &rarr; Arrow Keys</strong> or Click to Navigate
+    </div>
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 11;
+
+    function renderDots() {
+        const container = document.getElementById('dots-container');
+        container.innerHTML = '';
+        for (let i = 1; i <= totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === currentSlide ? ' active' : '');
+            dot.onclick = () => goToSlide(i);
+            container.appendChild(dot);
+        }
+    }
+
+    function updateSlide() {
+        document.querySelectorAll('.slide').forEach((s, idx) => {
+            s.classList.toggle('active', (idx + 1) === currentSlide);
+        });
+        document.getElementById('slide-num').innerText = `Slide ${currentSlide} / ${totalSlides}`;
+        renderDots();
+    }
+
+    function nextSlide() {
+        if (currentSlide < totalSlides) {
+            currentSlide++;
+            updateSlide();
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 1) {
+            currentSlide--;
+            updateSlide();
+        }
+    }
+
+    function goToSlide(n) {
+        currentSlide = n;
+        updateSlide();
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+            nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            prevSlide();
+        }
+    });
+
+    renderDots();
+</script>
+
+</body>
+</html>

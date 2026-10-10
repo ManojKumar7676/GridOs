@@ -1,7 +1,7 @@
 # GridOS™ — Official Demo Video Narration & Presentation Script
 
-> **Video Runtime:** 4 Minutes 00 Seconds (240 Seconds Total)  
-> **Resolution & Format:** 1080p Full HD (1920×1080), 30 FPS, H.264 High Profile, Stereo AAC Audio (41.3 MB)  
+> **Video Runtime:** 3 Minutes 50 Seconds (230 Seconds Total)  
+> **Resolution & Format:** 1080p Full HD (1920×1080), 30 FPS, H.264 High Profile, Stereo AAC Audio (40.8 MB)  
 > **Google Drive Stream:** [Watch on Google Drive](https://drive.google.com/file/d/1R5Kq_YbG9N30QcWxWlONRRq7RDFZDpzJ/view?usp=sharing)  
 > **Production Caliber:** Executive Technical Pitch & Live Operational Platform Walkthrough  
 > **Core Architecture Team:** ManojKumar P (Lead) • B Iniyavan • Nishi Verma • Pasupulati Siva Puja  
@@ -97,9 +97,9 @@
 ---
 
 ## Technical Credentials & Submission Verification
-- **Total Duration:** 240.0 Seconds (4m 00s)
-- **Audio Channels:** 2-Channel Stereo (AAC, 192 kbps, 44.1 kHz)
-- **Video Standard:** 1080p Full HD (1920×1080), 30 fps progressive
+- **Total Duration:** 230.0 Seconds (3m 50s)
+- **Audio Channels:** 2-Channel Stereo (AAC, 128 kbps, 44.1 kHz)
+- **Video Standard:** 1080p Full HD (1920×1080), 30 fps progressive (40.78 MB)
 - **Automated Test Suite:** 26/26 Passing (100% Pass Rate)
 - **Regulatory Standards Checked:** NERC BAL-001 (Real-Power Balancing), FAC-008 (Facility Ratings), PRC-024 (Voltage/Frequency Ride-Through), IEEE 1547-2018
 - **Open-Source Repository:** `https://github.com/ManojKumar7676/GridOs`

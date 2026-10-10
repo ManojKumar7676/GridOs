@@ -16,8 +16,11 @@ storage/*.db
 *.db
 *.sqlite3
 
-# Temporary / Scratch scripts
+# Temporary / Scratch scripts and build caches
 evaluate_deck.py
+scratch/
+showcase/assets/video_build/
+showcase/assets/video_build_3m50s/
 
 # OS Generated
 Thumbs.db

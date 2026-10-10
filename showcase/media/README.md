@@ -4,8 +4,8 @@
 
 ### 1. Official Demonstration Video
 - **Google Drive Stream:** [Watch on Google Drive](https://drive.google.com/file/d/1R5Kq_YbG9N30QcWxWlONRRq7RDFZDpzJ/view?usp=sharing)
-- **Direct Video File:** [`GridOS_Demo_Video.mp4`](GridOS_Demo_Video.mp4) (41.29 MB — optimized under 50 MB)
-- **Runtime:** Exactly 4 Minutes 00 Seconds (240.0s)
+- **Direct Video File:** [`GridOS_Demo_Video.mp4`](GridOS_Demo_Video.mp4) (40.78 MB — strictly within 50 MB limit)
+- **Runtime:** Exactly 3 Minutes 50 Seconds (230.0s)
 - **Resolution:** 1080p Full HD (1920×1080 @ 30 FPS, Progressive H.264 High Profile)
 - **Audio:** 2-Channel Stereo AAC (128 kbps, 44.1 kHz)
 - **Local Mirror (Downloads):** `C:\Users\paddu\Downloads\GridOS_Demo_Video.mp4`

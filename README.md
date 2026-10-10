@@ -459,12 +459,12 @@ GridOs/
 
 ## 12. Showcase Materials & Pitch Assets
 
-- 🎬 **Official 4-Minute Demonstration Video:**
+- 🎬 **Official 3-Minute 50-Second Demonstration Video:**
   - **Online Video Stream:** [Watch on Google Drive](https://drive.google.com/file/d/1R5Kq_YbG9N30QcWxWlONRRq7RDFZDpzJ/view?usp=sharing)
-  - **Direct Video File:** [`showcase/media/GridOS_Demo_Video.mp4`](showcase/media/GridOS_Demo_Video.mp4) (41.29 MB, 1080p Full HD, Stereo AAC)
-- 📊 **Executive Pitch Deck (12 Slides):**
-  - **PDF Deck:** [`showcase/pitch-decks/GridOS_Pitch_Deck.pdf`](showcase/pitch-decks/GridOS_Pitch_Deck.pdf)
-  - **PowerPoint Deck:** [`showcase/pitch-decks/GridOS_Pitch_Deck.pptx`](showcase/pitch-decks/GridOS_Pitch_Deck.pptx)
+  - **Direct Video File:** [`showcase/media/GridOS_Demo_Video.mp4`](showcase/media/GridOS_Demo_Video.mp4) (40.78 MB, 3m 50s, 1080p Full HD, Stereo AAC)
+- 📊 **Executive Pitch Deck (11 Slides):**
+  - **PDF Deck:** [`showcase/pitch-decks/GridOS_Pitch_Deck.pdf`](showcase/pitch-decks/GridOS_Pitch_Deck.pdf) (11 Pages)
+  - **PowerPoint Deck:** [`showcase/pitch-decks/GridOS_Pitch_Deck.pptx`](showcase/pitch-decks/GridOS_Pitch_Deck.pptx) (11 Slides)
 - 🌐 **Interactive Demo Portal:** [`showcase/demo/index.html`](showcase/demo/index.html)
 - 🎙️ **Voiceover Narration Script:** [`showcase/media/DEMO_VIDEO_NARRATION.md`](showcase/media/DEMO_VIDEO_NARRATION.md)
 - 🗺️ **Interactive Architecture Flows:** [`docs/architecture_and_flows.html`](docs/architecture_and_flows.html)
