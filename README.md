@@ -50,12 +50,13 @@ AccentureAssessment/
 
 ## Documentation and showcase
 
+- [Demo video (Google Drive)](https://drive.google.com/file/d/1R5Kq_YbG9N30QcWxWlONRRq7RDFZDpzJ/view?usp=sharing) · [Local MP4 (41MB)](showcase/media/GridOS_Demo_Video.mp4)
+- [Pitch deck (PDF)](showcase/pitch-decks/GridOS_Pitch_Deck.pdf) · [PowerPoint](showcase/pitch-decks/GridOS_Pitch_Deck.pptx)
+- [Demo portal](showcase/demo/index.html) · [Video storyboard](showcase/media/VIDEO_PROMPTS.html)
+- [Showcase materials](showcase/README.md)
 - [Local development and validation](docs/EXECUTION_GUIDE.md)
 - [Architecture specification](docs/architecture_specification.md)
 - [Architecture and flow diagrams](docs/architecture_and_flows.html)
-- [Showcase materials](showcase/README.md)
-- [Pitch deck (PDF)](showcase/pitch-decks/GridOS_Pitch_Deck.pdf) · [PowerPoint](showcase/pitch-decks/GridOS_Pitch_Deck.pptx)
-- [Demo portal](showcase/demo/index.html) · [Video storyboard](showcase/media/VIDEO_PROMPTS.html)
 
 ## Configuration and local data
 
