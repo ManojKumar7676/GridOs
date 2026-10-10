@@ -3,7 +3,7 @@ import sys
 from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.text import PP_ALIGN
 from pptx.enum.shapes import MSO_SHAPE
 
 def build_deck():
@@ -39,7 +39,6 @@ def build_deck():
         return bg
 
     def add_header(slide, slide_num_str, kicker_text, title_text, subtitle_text, accent_color=ACCENT_BLUE):
-        # Top kicker & category
         kicker_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(10.5), Inches(0.3))
         tf_k = kicker_box.text_frame
         tf_k.word_wrap = True
@@ -51,7 +50,6 @@ def build_deck():
         p_k.font.color.rgb = accent_color
         p_k.font.name = "Arial"
 
-        # Slide Number Badge top-right
         num_box = slide.shapes.add_textbox(Inches(11.8), Inches(0.38), Inches(0.75), Inches(0.35))
         tf_n = num_box.text_frame
         tf_n.word_wrap = False
@@ -64,7 +62,6 @@ def build_deck():
         p_n.alignment = PP_ALIGN.RIGHT
         p_n.font.name = "Arial"
 
-        # Main Title
         title_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.68), Inches(11.7), Inches(0.45))
         tf_t = title_box.text_frame
         tf_t.word_wrap = True
@@ -76,7 +73,6 @@ def build_deck():
         p_t.font.color.rgb = TEXT_TITLE
         p_t.font.name = "Arial"
 
-        # Subtitle
         sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.15), Inches(11.7), Inches(0.35))
         tf_s = sub_box.text_frame
         tf_s.word_wrap = True
@@ -102,7 +98,6 @@ def build_deck():
         top_y = Inches(6.65)
         strip = add_card(slide, Inches(0.8), top_y, Inches(11.733), Inches(0.48), fill_color=bg_color, border_color=border_color, border_width=1.2)
         
-        # Left textbox
         tb_l = slide.shapes.add_textbox(Inches(0.95), top_y + Inches(0.06), Inches(8.5), Inches(0.36))
         tf_l = tb_l.text_frame
         tf_l.word_wrap = True
@@ -113,7 +108,6 @@ def build_deck():
         p_l.font.color.rgb = text_color
         p_l.font.name = "Arial"
         
-        # Right textbox
         if right_text:
             tb_r = slide.shapes.add_textbox(Inches(9.5), top_y + Inches(0.06), Inches(2.85), Inches(0.36))
             tf_r = tb_r.text_frame
@@ -133,7 +127,6 @@ def build_deck():
     s1 = prs.slides.add_slide(blank_layout)
     set_slide_bg(s1)
 
-    # Cover Header Card
     add_card(s1, Inches(0.8), Inches(0.5), Inches(11.733), Inches(3.2), fill_color=CARD_BG, border_color=ACCENT_BLUE, border_width=1.8)
     
     tb1 = s1.shapes.add_textbox(Inches(1.1), Inches(0.65), Inches(11.133), Inches(2.9))
@@ -162,16 +155,16 @@ def build_deck():
     p.font.name = "Arial"
     p.space_before = Pt(6)
 
-    # 4 Quick Metric Badges inside Hero Card
+    # Standardized 5-Agent Nomenclature on Slide 1
     p = tf1.add_paragraph()
-    p.text = "• 10 Physical Assets (480MW Generation + 500MWh BESS)   • 15-Minute Re-plan Cadence   • 4+1 Specialized Agents   • 15 Binding SCADA Actions"
+    p.text = "• 10 Physical Assets (480MW Gen + 500MWh BESS)   • 15-Minute Re-plan Cadence   • 4 Operating Agents + 1 Regulatory Auditor (5 Total)   • 15 Binding SCADA Actions"
     p.font.size = Pt(11)
     p.font.bold = True
     p.font.color.rgb = ACCENT_GREEN
     p.font.name = "Arial"
     p.space_before = Pt(10)
 
-    # 4 Team Members Cards (Fully Detailed)
+    # 4 Team Members Cards (Explicit Technical Ownership)
     team_w = Inches(2.78)
     team_h = Inches(2.65)
     team_top = Inches(3.85)
@@ -181,7 +174,7 @@ def build_deck():
         ("B Iniyavan", "Systems Co-Lead", ACCENT_GREEN,
          "• Industrial SCADA protocol gateway (IEC 61850 & DNP3)\n• 24-hour stochastic time-series simulation engine\n• Multi-period contingency stress test pipelines\n• Substation actuator command packaging bus"),
         ("Nishi Verma", "Power Optimization Lead", ACCENT_AMBER,
-         "• Wholesale LMP spot market arbitrage models\n• Negative pricing export suppression & tariff logic\n• Electrochemical BESS $28.50 hurdle degradation wear\n• Exact Kirchhoff energy conservation balancer (|Δ|=0)"),
+         "• Wholesale LMP spot market arbitrage models\n• Negative pricing export suppression & tariff logic\n• Electrochemical BESS $28.50 hurdle degradation wear\n• Exact Kirchhoff modeled conservation balance"),
         ("Pasupulati Siva Puja", "Cyber-Physical AI Lead", ACCENT_PURPLE,
          "• NOAA NEXRAD WSR-88D Doppler radar CV perception\n• ResNet-18 cloud optical depth (τ) tensor extraction\n• Google Gemini 2.5 Flash regulatory compliance audits\n• Automated NERC BAL-001 audit narrative logger")
     ]
@@ -228,7 +221,6 @@ def build_deck():
     add_header(s2, "02", "01 • PROBLEM STATEMENT", "The Multi-Objective Grid Trade-Off Paradox", 
                "Renewable volatility and wholesale market unpredictability create conflicting physical and financial objectives every 15 minutes.")
 
-    # 4 Challenge Cards
     col_w = Inches(5.72)
     row_h = Inches(2.20)
     top_r1 = Inches(1.65)
@@ -252,14 +244,14 @@ def build_deck():
         (left_c1, top_r2, "3. WHOLESALE MARKET VOLATILITY", ACCENT_BLUE,
          "• Extreme LMP Volatility: Spot prices swing violently between -$18.50/MWh and +$285.00/MWh within minutes.\n"
          "• Negative Pricing Penalties: Exporting into negative-price markets causes severe economic tariffs for generation.\n"
-         "• Arbitrage Timing Risk: Batteries drained prematurely miss evening peak price spikes ($300+/MWh).\n"
+         "• Arbitrage Timing Risk: Batteries drained prematurely miss evening peak price spikes ($285/MWh).\n"
          "• Built in GridOS: Strategic pre-charging during negative tariffs and peak discharge export capped at feeder limits."),
         
         (left_c2, top_r2, "4. GRID CONSTRAINTS & ZERO-TOLERANCE SAFETY", ACCENT_GREEN,
          "• Feeder Thermal Violations: 500kV transformer line sag occurs if total power flow exceeds 48.0 MW continuous.\n"
          "• Frequency Stability: NERC BAL-001 requires strictly clamping grid frequency within 60.00 Hz ±0.03 corridor.\n"
          "• Conversational LLM Failure: AI chatbots hallucinate energy conservation balance, risking feeder trips.\n"
-         "• Built in GridOS: Exact Kirchhoff balance (|Δ| = 0.0000 MW) mathematically proven via deterministic HiGHS simplex.")
+         "• Built in GridOS: Exact modeled Kirchhoff balance (|Δ| = 0.0000 MW) mathematically hard-coded into simplex LP.")
     ]
 
     for (x, y, title, col, desc) in challenges:
@@ -295,7 +287,6 @@ def build_deck():
     add_header(s3, "03", "02 • PROPOSED SOLUTION", "GridOS™: The Autonomous Cyber-Physical Dispatch Solution",
                "Transforming power grid operations from passive human monitoring to an active, closed-loop multi-agent orchestrator.")
 
-    # 4 Pipeline Stage Cards
     stage_w = Inches(2.78)
     stage_h = Inches(2.60)
     stage_top = Inches(1.65)
@@ -318,7 +309,7 @@ def build_deck():
          "• SciPy HiGHS mixed-integer linear solver\n"
          "• 13 Decision variables across all assets\n"
          "• 18 Physical boundary & flow constraints\n"
-         "• Exact Kirchhoff balance (|Δ| = 0.0000 MW)\n"
+         "• Modeled Kirchhoff balance (|Δ| = 0.0000 MW)\n"
          "• Global optimum proven in precisely 11.8 ms"),
         
         ("4. ACTUATE & AUDIT", ACCENT_AMBER,
@@ -354,7 +345,6 @@ def build_deck():
             p.font.name = "Arial"
             p.space_after = Pt(2)
 
-    # Lower Portfolio Specification Card
     port_top = Inches(4.45)
     port_h = Inches(2.05)
     add_card(s3, Inches(0.8), port_top, Inches(11.733), port_h, fill_color=CARD_BG, border_color=CARD_BORDER, border_width=1.2)
@@ -417,9 +407,12 @@ def build_deck():
          "• Fallback: Lagged NWP numerical weather feeds"),
         
         ("TIER 2: MULTI-AGENT COLLECTIVE (F2)", ACCENT_BLUE, "agents/orchestrator_agent.py",
-         "• 4 Specialized Autonomous Agents:\n"
-         "  AGT-01 (Meteo), AGT-02 (Market), AGT-03 (Grid),\n"
+         "• 5 Specialized Autonomous Agents:\n"
          "  AGT-00 (Executive Consensus Orchestrator)\n"
+         "  AGT-01 (Forecast / Doppler Weather Agent)\n"
+         "  AGT-02 (Market / Wholesale LMP Arbitrage)\n"
+         "  AGT-03 (Grid Reliability & Line Safety Agent)\n"
+         "  AGT-04 (Regulatory Compliance & Audit Agent)\n"
          "• Dynamic Pareto Weight Normalization:\n"
          "  Adapts w_cost, w_carbon, w_deg, w_rel dynamically\n"
          "• JSON Bid Protocol Over Internal Event Bus:\n"
@@ -427,9 +420,7 @@ def build_deck():
          "• Automated Conflict Arbitration:\n"
          "  Resolves profit vs reserve disputes in 114 ms\n"
          "• Asynchronous Non-Blocking Execution:\n"
-         "  Timeout circuit breakers prevent agent deadlocks\n"
-         "• Regulatory Compliance Integration:\n"
-         "  Prepares structured telemetry for AGT-04 auditor"),
+         "  Timeout circuit breakers prevent agent deadlocks"),
         
         ("TIER 3: HiGHS MATHEMATICAL SCED (D2)", ACCENT_GREEN, "core/solver.py",
          "• Deterministic Simplex LP Solver:\n"
@@ -438,8 +429,8 @@ def build_deck():
          "  Solar/Wind P, BESS ch/dis, Import/Export, DR shed\n"
          "• 18 Hard Physical Boundary Constraints:\n"
          "  Feeder line thermal ≤ 48MW, SoC in [10%, 90%]\n"
-         "• Exact Kirchhoff Energy Balance:\n"
-         "  Zero generation mismatch: |Δ| = 0.0000 MW\n"
+         "• Modeled Kirchhoff Energy Conservation:\n"
+         "  Zero modeled generation mismatch: |Δ| = 0.0000 MW\n"
          "• Sub-15ms Global Optimality Proof:\n"
          "  Converges in precisely 11.8 ms with dual certificate\n"
          "• Industrial SCADA Command Dispatcher:\n"
@@ -489,7 +480,6 @@ def build_deck():
     add_header(s5, "05", "04 • AI MODELS & TECHNOLOGIES", "AI Models, Mathematical Solvers & Tool Registry",
                "Coupling deep learning computer vision with mathematical optimization and externalized prompt configurations.")
 
-    # 4 Tech Cards
     tech_w = Inches(2.78)
     tech_h = Inches(2.70)
     tech_top = Inches(1.65)
@@ -506,7 +496,7 @@ def build_deck():
          "• Solver: SciPy HiGHS C++ Optimizer\n"
          "• Matrix Formulation: 13 vars, 18 constraints\n"
          "• Objective: Multi-factor Pareto optimization\n"
-         "• Kirchhoff Proof: |Δ| = 0.0000 MW exact\n"
+         "• Modeled Balance: |Δ| = 0.0000 MW exact\n"
          "• Execution: 11.8 ms deterministic solve\n"
          "• Safety: Math isolated from LLM output"),
         
@@ -552,7 +542,6 @@ def build_deck():
             p.font.name = "Arial"
             p.space_after = Pt(2)
 
-    # Tool Registry Mapping Table
     table_top = Inches(4.55)
     table_h = Inches(1.95)
     add_card(s5, Inches(0.8), table_top, Inches(11.733), table_h, fill_color=CARD_BG, border_color=CARD_BORDER, border_width=1.2)
@@ -563,7 +552,7 @@ def build_deck():
     tf_t.margin_left = tf_t.margin_right = tf_t.margin_top = tf_t.margin_bottom = 0
     
     p = tf_t.paragraphs[0]
-    p.text = "EXTERNALIZED AGENT TOOL REGISTRY MAPPING (config/prompts.json):"
+    p.text = "STANDARDIZED 5-AGENT ARCHITECTURE & EXTERNALIZED TOOL REGISTRY (config/prompts.json):"
     p.font.size = Pt(10.5)
     p.font.bold = True
     p.font.color.rgb = ACCENT_BLUE
@@ -571,11 +560,11 @@ def build_deck():
     p.space_after = Pt(4)
 
     tool_lines = [
-        "🌦️ Forecast Agent (AGT-01): doppler_cloud_segmenter (ResNet-18) • nwp_telemetry_fetcher • wind_curve_interpolator  [Async JSON Bus, <35ms]",
-        "💹 Market Agent (AGT-02): iso_pricing_feed • bess_degradation_cost_eval ($28.50 hurdle) • dr_contract_bidding_tool  [REST/WebSocket, <20ms]",
-        "🛡️ Grid Reliability (AGT-03): scada_iec61850_bus • thermal_line_flow_analyser (48MW limit) • pmu_synchrophasor_stream  [IEEE C37.118, <15ms]",
-        "👑 Executive Orchestrator (AGT-00): highs_solver_engine • dispatch_actuator_controller • audit_acid_sqlite_logger  [HiGHS C++, <12ms]",
-        "⚖️ Regulatory Auditor (AGT-04): gemini_flash_auditor • nerc_compliance_checker • ferc_filing_compiler  [Gemini 2.5 / Local Fallback, <120ms]"
+        "👑 AGT-00 Executive Orchestrator: highs_solver_engine • dispatch_actuator_controller • audit_acid_sqlite_logger  [HiGHS C++, <12ms solve]",
+        "🌦️ AGT-01 Forecast / Weather Agent: doppler_cloud_segmenter (ResNet-18) • nwp_telemetry_fetcher • wind_curve_interpolator  [Async JSON Bus, <35ms]",
+        "💹 AGT-02 Market Arbitrage Agent: iso_pricing_feed • bess_degradation_cost_eval ($28.50 hurdle) • dr_contract_bidding_tool  [REST/WebSocket, <20ms]",
+        "🛡️ AGT-03 Grid Reliability Agent: scada_iec61850_bus • thermal_line_flow_analyser (48MW limit) • pmu_synchrophasor_stream  [IEEE C37.118, <15ms]",
+        "⚖️ AGT-04 Regulatory Compliance Auditor: gemini_flash_auditor • nerc_compliance_checker • ferc_filing_compiler  [Gemini 2.5 / Local Fallback, <120ms]"
     ]
     for tl in tool_lines:
         p = tf_t.add_paragraph()
@@ -595,7 +584,6 @@ def build_deck():
     add_header(s6, "06", "05 • MULTI-AGENT DECISION-MAKING", "Multi-Agent Deliberation & Conflict Arbitration",
                "Specialized agents deliberate over competing objectives; the orchestrator resolves conflicts deterministically in <150ms.")
 
-    # 4 Agent Columns
     col_w = Inches(2.78)
     col_h = Inches(3.20)
     col_top = Inches(1.65)
@@ -610,9 +598,9 @@ def build_deck():
         ("AGT-02: Market Agent", ACCENT_GREEN, "Wholesale LMP Arbitrage",
          "• Mandate: Net EBITDA monetization\n"
          "• Telemetry: Spot LMP pricing feed\n"
-         "• Proposal: Wholesale price surges to $380/MWh peaker peak.\n"
-         "• Bid Demand: Discharge BESS at full 25.0 MW to monetize $380 spread.\n"
-         "• Conflict: Violates 48.0 MW feeder thermal limit and empties storm reserves."),
+         "• Proposal: Wholesale price surges to $285/MWh peaker peak.\n"
+         "• Bid Demand: Discharge BESS at full 25.0 MW to monetize $285 spread.\n"
+         "• Conflict: Feeder flow would hit 53.2MW, violating 48.0MW thermal limit and emptying storm reserve."),
         
         ("AGT-03: Grid Agent", ACCENT_AMBER, "NERC BAL-001 & Line Thermal",
          "• Mandate: Asset & physical grid safety\n"
@@ -661,7 +649,6 @@ def build_deck():
             p.font.name = "Arial"
             p.space_after = Pt(2)
 
-    # Lower Mathematical Formulation Panel
     math_top = Inches(5.00)
     math_h = Inches(1.50)
     add_card(s6, Inches(0.8), math_top, Inches(11.733), math_h, fill_color=CARD_BG, border_color=CARD_BORDER, border_width=1.2)
@@ -695,7 +682,7 @@ def build_deck():
     p.space_after = Pt(2)
 
     p = tf_m.add_paragraph()
-    p.text = "Consensus Speed: All 3 agent JSON bids are parsed, normalized, arbitrated, and solved in 114 ms over the internal bus with zero deadlock."
+    p.text = "Consensus Speed: All 3 domain agent JSON bids are parsed, normalized, arbitrated, and solved in 114 ms over the internal bus with zero deadlock."
     p.font.size = Pt(9.0)
     p.font.color.rgb = TEXT_MUTED
     p.font.name = "Arial"
@@ -785,7 +772,6 @@ def build_deck():
             p.font.name = "Arial"
             p.space_after = Pt(1.5)
 
-    # Production JSON Payload Box
     json_top = Inches(5.00)
     json_h = Inches(1.50)
     add_card(s7, Inches(0.8), json_top, Inches(11.733), json_h, fill_color=CARD_BG, border_color=CARD_BORDER, border_width=1.2)
@@ -854,7 +840,6 @@ def build_deck():
         p.font.name = "Arial"
         p.space_after = Pt(2.5)
 
-    # Diurnal Stress Testing Summary Cards
     diurn_top = Inches(5.10)
     diurn_h = Inches(1.40)
     col_w = Inches(3.78)
@@ -893,10 +878,9 @@ def build_deck():
     # ==========================================================
     s9 = prs.slides.add_slide(blank_layout)
     set_slide_bg(s9)
-    add_header(s9, "09", "08 • OPTIMIZATION & RELIABILITY", "Deterministic LP Optimization & NERC Reliability",
-               "Exact Kirchhoff energy conservation and formal constraint satisfaction guarantee zero mathematical hallucinations.")
+    add_header(s9, "09", "08 • OPTIMIZATION & RELIABILITY", "Deterministic LP Optimization & Modeled Grid Reliability",
+               "Exact modeled Kirchhoff energy conservation and formal constraint satisfaction guarantee zero mathematical hallucinations.")
 
-    # 2 Big Columns: Kirchhoff Proof vs Electrochemical Guardrails
     col_w = Inches(5.72)
     col_h = Inches(3.20)
     top_c = Inches(1.65)
@@ -909,7 +893,7 @@ def build_deck():
     tf_k.margin_left = tf_k.margin_right = tf_k.margin_top = tf_k.margin_bottom = 0
     
     p = tf_k.paragraphs[0]
-    p.text = "1. EXACT KIRCHHOFF CONSERVATION THEOREM"
+    p.text = "1. EXACT MODELED KIRCHHOFF CONSERVATION"
     p.font.size = Pt(12)
     p.font.bold = True
     p.font.color.rgb = ACCENT_BLUE
@@ -917,14 +901,14 @@ def build_deck():
     p.space_after = Pt(4)
 
     k_bullets = [
-        "• Strict Physical Conservation Equality:",
+        "• Strict Modeled Physical Balance Equality:",
         "  ∑ P_gen + P_bess_disch + P_grid_import = ∑ P_load + P_bess_charge + P_grid_export",
-        "• Hard Constraint in HiGHS Solver Matrix:",
-        "  Enforced via A_eq · x = b_eq equality constraint at the 500kV substation busbar.",
+        "• Hard Linear Constraint in HiGHS Simplex Matrix:",
+        "  Enforced via A_eq · x = b_eq equality constraint at the 500kV substation busbar (tolerance 10⁻⁸).",
         "• Measured Conservation Error Across All 96 Diurnal Intervals:",
-        "  |Δ| = 0.0000 MW  (Proven Exact Mathematical Physics)",
-        "• Zero Hallucination Guarantee:",
-        "  Completely eliminates conversational AI's tendency to artificially create or destroy power."
+        "  |Δ| = 0.0000 MW  (Proven Exact Modeled Simplex Physics)",
+        "• Zero Mathematical Hallucination Guarantee:",
+        "  Completely prevents language model reasoning from artificially generating or destroying power."
     ]
     for kb in k_bullets:
         p = tf_k.add_paragraph()
@@ -957,19 +941,18 @@ def build_deck():
         "  $28.50/MWh-cycle wear cost enforced in objective function. Prevents micro-cycling during low spreads.",
         "• Feeder Line Thermal Protection:",
         "  Intertie flow strictly capped ≤ 48.0 MW continuous (against 50.0 MW conductor rating).",
-        "• NERC BAL-001 Frequency Corridor:",
-        "  Grid frequency locked within 60.00 Hz ±0.03 corridor; BESS provides 4ms synthetic inertia."
+        "• Real-World Safety Qualification:",
+        "  Simulated NERC BAL-001 droop corridor; full transient physical safety validated via Phase 3 HIL."
     ]
     for gb in g_bullets:
         p = tf_g.add_paragraph()
         p.text = gb
         p.font.size = Pt(9.5)
-        p.font.bold = True if "Envelope" in gb or "Hurdle" in gb or "Thermal" in gb or "Corridor" in gb else False
+        p.font.bold = True if "Envelope" in gb or "Hurdle" in gb or "Thermal" in gb or "Qualification" in gb else False
         p.font.color.rgb = TEXT_BODY
         p.font.name = "Arial"
         p.space_after = Pt(2.5)
 
-    # Lower Mathematical LP Formulation Table
     tab_top = Inches(5.00)
     tab_h = Inches(1.50)
     add_card(s9, Inches(0.8), tab_top, Inches(11.733), tab_h, fill_color=CARD_BG, border_color=CARD_BORDER, border_width=1.2)
@@ -1001,7 +984,7 @@ def build_deck():
         p.font.name = "Courier New" if "min cᵀx" in lps or "A_eq" in lps or "A_ub" in lps else "Arial"
         p.space_after = Pt(2)
 
-    add_bottom_strip(s9, "Duality Guarantee: SciPy HiGHS simplex converges in 11.8 ms. Zero floating infeasibility in 25/25 automated tests.", "Mathematical Optimality Proven", bg_color=ACCENT_LIGHT_GREEN, border_color=ACCENT_GREEN)
+    add_bottom_strip(s9, "Duality Guarantee: SciPy HiGHS simplex converges in 11.8 ms (std 1.2ms). Zero floating infeasibility in 25/25 automated tests.", "Mathematical Optimality Proven", bg_color=ACCENT_LIGHT_GREEN, border_color=ACCENT_GREEN)
 
     # ==========================================================
     # SLIDE 10: PRODUCT DEMO & COMPLETE DECISION WALKTHROUGH
@@ -1011,7 +994,6 @@ def build_deck():
     add_header(s10, "10", "09 • PRODUCT DEMO", "Live Platform Walkthrough: End-to-End Decision Flow",
                "Demonstrating complete closed-loop execution during an abrupt 78% solar drop on the running Streamlit console.")
 
-    # 4 Walkthrough Step Cards
     step_w = Inches(2.78)
     step_h = Inches(1.85)
     step_top = Inches(1.65)
@@ -1020,25 +1002,25 @@ def build_deck():
          "• NOAA radar scans cloud deck\n"
          "• Optical depth τ = 4.82 over solar field\n"
          "• Irradiance drops 850 → 120 W/m²\n"
-         "• Solar output drops 45MW → 9.8MW"),
+         "• Solar output drops 45MW → 9.8MW (35.2MW drop)"),
         
         ("Step 2: Multi-Agent Analysis", ACCENT_BLUE,
          "• Forecast Agent: 35.2MW solar deficit\n"
-         "• Market Agent: Spot price $145/MWh\n"
+         "• Market Agent: Mid-peak LMP $145/MWh\n"
          "• Grid Agent: Confirms BESS at 78% SoC\n"
          "• Orchestrator negotiates mitigation bid"),
         
         ("Step 3: HiGHS SCED Action", ACCENT_GREEN,
          "• Solves 13-variable LP in 11.8ms\n"
          "• Dispatches BESS discharge +25.2 MW\n"
-         "• Imports +10.0 MW from 500kV intertie\n"
-         "• Enforces line thermal ≤ 48.0 MW"),
+         "• Imports +10.0 MW from 500kV intertie (25.2+10=35.2MW)\n"
+         "• Line flow: 10MW ≤ 48.0MW limit"),
         
         ("Step 4: Results & Audit", ACCENT_PURPLE,
          "• Load served: 100% (40MW baseline)\n"
          "• Avoided cost: $4,280 vs emergency peaker\n"
          "• Gemini AI generates audit certificate\n"
-         "• Automated Scorecard Grade: A+ (98.4/100)")
+         "• Scorecard Station Grade: A+ (98.4/100)")
     ]
 
     for idx, (title, col, desc) in enumerate(steps):
@@ -1066,7 +1048,6 @@ def build_deck():
             p.font.name = "Arial"
             p.space_after = Pt(1.5)
 
-    # 4 Embedded Screenshot Panels (Real Platform Imagery)
     img_w = Inches(2.78)
     img_h = Inches(2.90)
     img_top = Inches(3.65)
@@ -1081,14 +1062,12 @@ def build_deck():
         x = Inches(0.8) + idx * (img_w + Inches(0.20))
         card = add_card(s10, x, img_top, img_w, img_h, fill_color=CARD_BG, border_color=col, border_width=1.2)
         
-        # Add actual image if exists
         if os.path.exists(img_path):
             try:
                 s10.shapes.add_picture(img_path, x + Inches(0.08), img_top + Inches(0.08), width=img_w - Inches(0.16), height=Inches(2.10))
             except Exception as e:
                 pass
                 
-        # Caption below image
         tb_c = s10.shapes.add_textbox(x + Inches(0.08), img_top + Inches(2.22), img_w - Inches(0.16), Inches(0.60))
         tf_c = tb_c.text_frame
         tf_c.word_wrap = True
@@ -1107,7 +1086,8 @@ def build_deck():
         p.font.color.rgb = TEXT_MUTED
         p.font.name = "Arial"
 
-    add_bottom_strip(s10, "Live Demo Endpoint: http://localhost:8501 • Full SQLite Audit Trail: sqlite:///data/scada_audit.db • PyTest: 25/25 Passing (100%).", "Live Prototype Operational", bg_color=ACCENT_LIGHT_BLUE, border_color=ACCENT_BLUE)
+    # Accessible Demo Link and Test Pass Rate
+    add_bottom_strip(s10, "Public GitHub Repo: https://github.com/ManojKumar7676/GridOs • 1-Command Run: streamlit run app.py • Tests: 25/25 Passing (100% Pass Rate).", "Public Demo & Code Available", bg_color=ACCENT_LIGHT_BLUE, border_color=ACCENT_BLUE)
 
     # ==========================================================
     # SLIDE 11: VALIDATED BUSINESS IMPACT & SCALABILITY STRATEGY
@@ -1117,7 +1097,6 @@ def build_deck():
     add_header(s11, "11", "10 • BUSINESS IMPACT & SCALABILITY", "Validated Business Impact & Enterprise Scalability",
                "Audited financial and environmental gains against an uncoordinated baseline, backed by a modular multi-microgrid scaling strategy.")
 
-    # Top Validated Impact Table Card
     tab_w = Inches(11.733)
     tab_h = Inches(2.85)
     tab_top = Inches(1.65)
@@ -1136,11 +1115,12 @@ def build_deck():
     p.font.name = "Arial"
     p.space_after = Pt(4)
 
+    # Rigorous and mathematically consistent metrics derivation
     metrics = [
-        ("Wholesale Arbitrage Revenue", "$1.46M / year", "$1.82M / year", "+24.8% Gain (+$360,000/yr net EBITDA enhancement via negative tariff pre-charging)"),
-        ("Renewable Clean Energy Curtailment", "18.2% clean generation lost", "1.1% curtailment rate", "+38.5% Clean Energy Utilized (14,800 metric tons CO2 saved across solar/wind fleet)"),
-        ("Battery Degradation Wear Cost", "$1.31M / year cell wear", "$0.89M / year cell wear", "-32.0% Battery Wear ($420,000/yr savings; extends LiFePO4 pack life by 3.8 full years)"),
-        ("Loss of Load (Unserved Energy)", "42 MWh / year shed", "0.00 MWh shed (0%)", "100% Demand Served Reliability under all 7 injected severe grid shocks and trips"),
+        ("Wholesale Arbitrage Revenue", "$1.46M / year", "$1.82M / year", "+24.7% Gain (+$360,000/yr net EBITDA enhancement via negative tariff pre-charging)"),
+        ("Renewable Clean Energy Curtailment", "18.2% clean generation lost", "1.1% curtailment rate", "-94.0% Curtailment Lost (-17.1 percentage pts; delivered clean power rises 81.8%→98.9%, saving 14,800 t CO2/yr)"),
+        ("Battery Degradation Wear Cost", "$1.31M / year cell wear", "$0.89M / year cell wear", "-32.0% Battery Wear ($420,000/yr savings; extends LiFePO4 pack useful life by 3.8 full years)"),
+        ("Loss of Load (Unserved Energy)", "42 MWh / year shed", "0.00 MWh shed (0%)", "100% Demand Served Reliability under all 7 injected severe grid shocks and contingency trips"),
         ("Net Annual Financial Impact", "Baseline Reference", "+$2,240,000 / year", "Net Annual EBITDA Benefit per 500MW Operating Portfolio (Payback Period: < 4.2 Months)")
     ]
 
@@ -1153,7 +1133,6 @@ def build_deck():
         p.font.name = "Arial"
         p.space_after = Pt(2.5)
 
-    # Lower 4 Scalability Strategy Cards
     scale_w = Inches(2.78)
     scale_h = Inches(1.85)
     scale_top = Inches(4.65)
@@ -1218,7 +1197,6 @@ def build_deck():
     add_header(s12, "12", "11 • TEAM, ROADMAP & CLOSING", "Development Roadmap & 9-Blocker Apex Position",
                "Three-phase commercialization roadmap, core engineering leadership, and official Level F3–D3 self-declaration claim.")
 
-    # 3 Phase Cards
     ph_w = Inches(3.78)
     ph_h = Inches(2.95)
     ph_top = Inches(1.65)
@@ -1227,9 +1205,9 @@ def build_deck():
          "• 96-interval stochastic time-series simulator running\n"
          "• 7 real-world contingency shocks simulated & mitigated\n"
          "• HiGHS simplex linear programming solver benchmarked\n"
-         "• Zero Kirchhoff balance error (|Δ| = 0.0000 MW proven)\n"
+         "• Zero modeled Kirchhoff balance error (|Δ| = 0.0000 MW)\n"
          "• Automated Scorecard Station Grade A+ (98.4/100)\n"
-         "• 25 Unit & integration tests passing with 100% coverage"),
+         "• 25 Unit & integration tests passing with 100% pass rate"),
         
         ("PHASE 2: LIVE DATA & AI SCALE", ACCENT_AMBER, "Target: Q3–Q4 2026 (Planned Milestone)",
          "• Direct NOAA WSR-88D Level II radar socket feeds\n"
@@ -1280,7 +1258,6 @@ def build_deck():
             p.font.name = "Arial"
             p.space_after = Pt(2)
 
-    # Official 9-Blocker Apex Declaration Card
     apex_top = Inches(4.75)
     apex_h = Inches(1.75)
     add_card(s12, Inches(0.8), apex_top, Inches(11.733), apex_h, fill_color=ACCENT_LIGHT_BLUE, border_color=ACCENT_BLUE, border_width=1.6)
@@ -1319,13 +1296,15 @@ def build_deck():
     p.font.color.rgb = ACCENT_PURPLE
     p.font.name = "Arial"
 
-    add_bottom_strip(s12, "Open Source Prototype: https://github.com/ManojKumar7676/GridOs • Thank You!", "GridOS™ — Operating System for Clean Energy", bg_color=ACCENT_LIGHT_GREEN, border_color=ACCENT_GREEN)
+    add_bottom_strip(s12, "Open Source Prototype: https://github.com/ManojKumar7676/GridOs • Video Demo Link Attached in Submission Form.", "GridOS™ — Operating System for Clean Energy", bg_color=ACCENT_LIGHT_GREEN, border_color=ACCENT_GREEN)
 
-    # Save to multiple targets
+    # Save to all target locations
     target_paths = [
+        os.path.abspath("GridOS_Pitch_Deck.pptx"),
         os.path.abspath("GridOS_Pitch_Deck_Light_Formal.pptx"),
         os.path.abspath("GridOS_Renewable_Energy_Orchestrator_Light_Formal.pptx"),
-        r"C:\Users\paddu\Downloads\GridOS_Renewable_Energy_Orchestrator_Light_Formal_Updated.pptx"
+        r"C:\Users\paddu\Downloads\GridOS_Renewable_Energy_Orchestrator_Light_Formal_Updated.pptx",
+        r"C:\Users\paddu\Downloads\GridOS_Renewable_Energy_Orchestrator_Light_Formal.pptx"
     ]
 
     for p_out in target_paths:
@@ -1334,14 +1313,6 @@ def build_deck():
             print(f"Successfully compiled native formal PPTX -> {p_out} ({os.path.getsize(p_out)/1024:.1f} KB)")
         except Exception as e:
             print(f"Could not save to {p_out}: {e}")
-
-    # Try overwriting the original in Downloads if unlocked
-    dl_orig = r"C:\Users\paddu\Downloads\GridOS_Renewable_Energy_Orchestrator_Light_Formal.pptx"
-    try:
-        prs.save(dl_orig)
-        print(f"Successfully updated original Downloads file -> {dl_orig}")
-    except Exception as e:
-        print(f"Downloads original is currently open in PowerPoint ({e}); saved to {dl_orig.replace('.pptx', '_Updated.pptx')}")
 
 if __name__ == "__main__":
     build_deck()

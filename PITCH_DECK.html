@@ -381,7 +381,7 @@
             <div class="card" style="border-top: 3px solid #d97706; background: #ffffff; padding: 10px 14px;">
                 <div class="metric-big" style="color: #d97706;">4 + 1 Agents</div>
                 <div class="metric-label">Autonomous Multi-Agent Collective</div>
-                <div style="font-size: 0.74rem; color: #64748b; margin-top: 2px;">1 Orchestrator + 3 Domain Agents + 1 Regulatory Auditor</div>
+                <div style="font-size: 0.74rem; color: #64748b; margin-top: 2px;">4 Dispatch Agents (AGT-00/01/02/03) + 1 Regulatory Auditor (AGT-04)</div>
             </div>
             <div class="card" style="border-top: 3px solid #7c3aed; background: #ffffff; padding: 10px 14px;">
                 <div class="metric-big" style="color: #7c3aed;">15 Actions</div>
@@ -826,7 +826,7 @@
         <table style="flex: 0 0 auto;">
             <thead>
                 <tr>
-                    <th>Agent Personas</th>
+                    <th>Agent ID & Persona</th>
                     <th>Core Competency</th>
                     <th>Externalized Tool Registry (`config/prompts.json`)</th>
                     <th>Execution Protocol</th>
@@ -834,31 +834,31 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>🌦️ Forecast Agent (AGT-01)</strong></td>
+                    <td><strong>🌦️ AGT-01 Forecast / Weather Agent</strong></td>
                     <td>Doppler CV & NWP Numerical Weather</td>
                     <td><code>doppler_cloud_segmenter</code>, <code>nwp_telemetry_fetcher</code>, <code>wind_curve_interpolator</code></td>
                     <td>Async JSON Event Bus (&lt;35ms)</td>
                 </tr>
                 <tr>
-                    <td><strong>💹 Market Agent (AGT-02)</strong></td>
+                    <td><strong>💹 AGT-02 Market Arbitrage Agent</strong></td>
                     <td>Wholesale LMP Spot Arbitrage</td>
                     <td><code>iso_pricing_feed</code>, <code>bess_degradation_cost_eval</code>, <code>dr_contract_bidding_tool</code></td>
                     <td>REST / WebSocket ISO Bus (&lt;20ms)</td>
                 </tr>
                 <tr>
-                    <td><strong>🛡️ Grid Reliability (AGT-03)</strong></td>
+                    <td><strong>🛡️ AGT-03 Grid Reliability Agent</strong></td>
                     <td>NERC BAL-001 & Feeder Thermal Guard</td>
                     <td><code>scada_iec61850_bus</code>, <code>thermal_line_flow_analyser</code>, <code>pmu_synchrophasor_stream</code></td>
                     <td>IEEE C37.118 & DNP3 Substation Bus</td>
                 </tr>
                 <tr>
-                    <td><strong>👑 Executive Orchestrator (AGT-00)</strong></td>
+                    <td><strong>👑 AGT-00 Executive Orchestrator</strong></td>
                     <td>Pareto Arbitration & SCED Formulation</td>
                     <td><code>highs_solver_engine</code>, <code>dispatch_actuator_controller</code>, <code>audit_acid_sqlite_logger</code></td>
                     <td>Deterministic HiGHS Core (&lt;12ms)</td>
                 </tr>
                 <tr>
-                    <td><strong>⚖️ Regulatory Auditor (AGT-04)</strong></td>
+                    <td><strong>⚖️ AGT-04 Regulatory Compliance Auditor</strong></td>
                     <td>NERC BAL-001 & FERC Filing Synthesis</td>
                     <td><code>gemini_flash_auditor</code>, <code>acid_audit_evaluator</code>, <code>nerc_compliance_checker</code></td>
                     <td>Gemini 2.5 Flash / Offline Rule Core</td>
@@ -902,7 +902,7 @@
                     <td rowspan="3" style="vertical-align: middle; background: #f0fdf4; border-left: 3px solid #059669;">
                         <strong style="color: #059669; font-size: 0.88rem;">AGT-00-EXEC Pareto Arbitration:</strong><br><br>
                         1. <strong>Clamps BESS discharge</strong> to 18.2 MW, keeping total feeder flow at 48.0 MW (honors thermal safety).<br><br>
-                        2. <strong>Captures $14,200</strong> peak arbitrage profit during $380/MWh price surge.<br><br>
+                        2. <strong>Captures $14,200</strong> peak arbitrage profit during $285/MWh price surge.<br><br>
                         3. <strong>Retains 22.4 MW</strong> spinning headroom before storm front reaches solar field.<br><br>
                         <em style="color: #0369a1; font-weight: 700;">Converged in 11.8 ms via HiGHS.</em>
                     </td>
@@ -910,7 +910,7 @@
                 <tr>
                     <td><strong>💹 AGT-02</strong><br>Market</td>
                     <td>LMP Spot Arbitrage</td>
-                    <td>Bids 25.0 MW full BESS discharge to monetize $380/MWh wholesale peak spike.</td>
+                    <td>Bids 25.0 MW full BESS discharge to monetize $285/MWh wholesale peak spike.</td>
                     <td>Violates 50.0 MW feeder thermal limit (line flow would reach 53.2 MW).</td>
                 </tr>
                 <tr>
@@ -1150,24 +1150,24 @@
     <div class="slide" id="slide-9">
         <div class="slide-header">
             <div class="slide-kicker">🧮 Mathematical Optimality</div>
-            <h2 class="slide-title">Deterministic LP Optimization & NERC Reliability</h2>
+            <h2 class="slide-title">Deterministic LP Optimization & Modeled Grid Reliability</h2>
             <p class="slide-subtitle">Exact Kirchhoff physical energy conservation and formal constraint satisfaction.</p>
         </div>
 
         <!-- Upper Row: Kirchhoff Proof & Electrochemical Guardrails -->
         <div class="grid-2" style="flex: 1.1;">
             <div class="card" style="background: #ffffff; border-top: 3px solid #0284c7;">
-                <div class="card-title" style="color: #0284c7;">1. Exact Kirchhoff Conservation Theorem</div>
+                <div class="card-title" style="color: #0284c7;">1. Exact Modeled Kirchhoff Conservation</div>
                 <p class="card-desc" style="margin-bottom: 6px;">
                     Every single dispatch interval enforces strict physical balance. Power generated and imported must equal power consumed and stored:
                 </p>
                 <div style="background: #f8fafc; border: 1.5px solid var(--border-subtle); border-radius: 8px; padding: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #059669; line-height: 1.45;">
                     &sum; P_gen + P_bess_disch + P_grid_import = &sum; P_load + P_bess_charge + P_grid_export<br><br>
                     <strong>Measured Error Across All 96 Diurnal Intervals:</strong><br>
-                    <span style="color: #0f172a; font-size: 1.1rem; font-weight: 800;">|&Delta;| = 0.0000 MW (Exact Mathematical Physics)</span>
+                    <span style="color: #0f172a; font-size: 1.1rem; font-weight: 800;">|&Delta;| = 0.0000 MW (Exact Modeled Simplex Physics)</span>
                 </div>
                 <p class="card-desc" style="margin-top: 6px; font-size: 0.77rem; color: #64748b;">
-                    Guarantees zero power imbalance, completely preventing artificial mathematical creation or destruction of energy.
+                    Guarantees zero modeled solver imbalance (tolerance 10⁻⁸); physical transient frequency stability bounded via simulated NERC BAL-001 droop corridor.
                 </p>
             </div>
 
@@ -1246,7 +1246,7 @@
                 <div style="font-size: 0.74rem; color: #334155; margin-top: 2px; line-height: 1.35;">
                     • NOAA Doppler radar scans cloud deck<br>
                     • Irradiance drops 850 &rarr; 120 W/m²<br>
-                    • Solar output drops 45MW &rarr; 9.8MW
+                    • Solar drops 45MW &rarr; 9.8MW (35.2MW drop)
                 </div>
             </div>
 
@@ -1264,7 +1264,7 @@
                 <div style="font-size: 0.74rem; color: #334155; margin-top: 2px; line-height: 1.35;">
                     • Solves 13-variable LP in 11.8ms<br>
                     • Dispatches BESS discharge +25.2 MW<br>
-                    • Imports +10.0 MW from 500kV intertie
+                    • Imports +10.0 MW intertie (25.2+10=35.2MW)
                 </div>
             </div>
 
@@ -1311,8 +1311,8 @@
         </div>
 
         <div class="bottom-strip">
-            <span><strong>Live Demo Verification:</strong> Interactive Streamlit Dashboard running on <code>http://localhost:8501</code></span>
-            <span style="font-weight: 800; color: #059669;">Automated PyTest Suite: 25 / 25 Passing (100% Coverage)</span>
+            <span><strong>Public Reproducible Demo:</strong> <code>https://github.com/ManojKumar7676/GridOs</code> • 1-Command: <code>streamlit run app.py</code></span>
+            <span style="font-weight: 800; color: #059669;">Automated Test Suite: 25 / 25 Passing (100% Pass Rate)</span>
         </div>
     </div>
 
@@ -1341,13 +1341,13 @@
                     <td><strong>Wholesale Arbitrage Revenue</strong></td>
                     <td>$1.46M / year</td>
                     <td style="font-weight: 800; color: #059669; background: #f0fdf4;">$1.82M / year</td>
-                    <td><strong>+24.8% Gain (+$360,000/yr)</strong> via smart negative price pre-charging and peak spike dispatch</td>
+                    <td><strong>+24.7% Gain (+$360,000/yr)</strong> via smart negative price pre-charging and peak spike dispatch</td>
                 </tr>
                 <tr>
                     <td><strong>Renewable Curtailment</strong></td>
                     <td>18.2% clean generation lost</td>
                     <td style="font-weight: 800; color: #059669; background: #f0fdf4;">1.1% curtailment rate</td>
-                    <td><strong>+38.5% Clean Energy Utilized</strong> saving 14,800 metric tons CO2 annually across solar/wind portfolio</td>
+                    <td><strong>-94.0% Curtailment Lost (-17.1 percentage pts; clean delivered rises 81.8%&rarr;98.9%, saving 14,800t CO2/yr)</strong> saving 14,800 metric tons CO2 annually across solar/wind portfolio</td>
                 </tr>
                 <tr>
                     <td><strong>Battery Degradation Cost</strong></td>
@@ -1418,7 +1418,7 @@
                     • <strong>7 operational shocks</strong> rigorously simulated and resolved<br>
                     • <strong>HiGHS exact LP formulation</strong> benchmarked against SciPy simplex<br>
                     • <strong>Automated Scorecard Station</strong> delivering Grade A+ (98.4/100)<br>
-                    • <strong>25 unit and integration tests</strong> passing with 100% reliability
+                    • <strong>25 unit and integration tests</strong> passing with 100% pass rate (HiGHS mean 11.8ms, ResNet-18 mean 42.1ms)
                 </div>
                 <div class="code-pill">Milestone Complete</div>
             </div>
