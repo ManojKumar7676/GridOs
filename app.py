@@ -425,6 +425,43 @@ with tab_overview:
         </div>
     """, unsafe_allow_html=True)
 
+    # Core Engineering Team Roster
+    st.markdown("---")
+    st.markdown("### 👥 Core Systems & Architecture Engineering Team")
+    col_t1, col_t2, col_t3, col_t4 = st.columns(4)
+    with col_t1:
+        st.markdown("""
+        <div style="background: #111827; border: 1px solid #1f2937; border-top: 3px solid #38bdf8; border-radius: 8px; padding: 14px; text-align: center;">
+            <strong style="color: #38bdf8; font-size: 1.02rem;">ManojKumar P</strong><br>
+            <span style="color: #9ca3af; font-size: 0.82rem;">Lead Systems Architect</span><br>
+            <small style="color: #64748b; font-size: 0.75rem;">Autonomous Multi-Agent Systems & SCED LP</small>
+        </div>
+        """, unsafe_allow_html=True)
+    with col_t2:
+        st.markdown("""
+        <div style="background: #111827; border: 1px solid #1f2937; border-top: 3px solid #34d399; border-radius: 8px; padding: 14px; text-align: center;">
+            <strong style="color: #34d399; font-size: 1.02rem;">B Iniyavan</strong><br>
+            <span style="color: #9ca3af; font-size: 0.82rem;">Systems Co-Lead</span><br>
+            <small style="color: #64748b; font-size: 0.75rem;">SCADA Protocol Bus & Real-Time Orchestration</small>
+        </div>
+        """, unsafe_allow_html=True)
+    with col_t3:
+        st.markdown("""
+        <div style="background: #111827; border: 1px solid #1f2937; border-top: 3px solid #fbbf24; border-radius: 8px; padding: 14px; text-align: center;">
+            <strong style="color: #fbbf24; font-size: 1.02rem;">Nishi Verma</strong><br>
+            <span style="color: #9ca3af; font-size: 0.82rem;">Power Optimization Lead</span><br>
+            <small style="color: #64748b; font-size: 0.75rem;">Wholesale Market & Kirchhoff Balancer</small>
+        </div>
+        """, unsafe_allow_html=True)
+    with col_t4:
+        st.markdown("""
+        <div style="background: #111827; border: 1px solid #1f2937; border-top: 3px solid #f87171; border-radius: 8px; padding: 14px; text-align: center;">
+            <strong style="color: #f87171; font-size: 1.02rem;">Pasupulati Siva Puja</strong><br>
+            <span style="color: #9ca3af; font-size: 0.82rem;">Cyber-Physical AI Lead</span><br>
+            <small style="color: #64748b; font-size: 0.75rem;">Doppler Radar CV & Regulatory Audit AI</small>
+        </div>
+        """, unsafe_allow_html=True)
+
     # Standalone Technical Architecture & Flow Diagrams Blueprint Section
     st.markdown("---")
     st.markdown("### 🗺️ Standalone Technical Architecture & Flow Diagrams Blueprint")

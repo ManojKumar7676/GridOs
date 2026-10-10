@@ -977,8 +977,8 @@ def create_deck(output_path="GridOS_Pitch_Deck_Complete.pptx"):
     p4.space_before = Pt(20)
 
     p5 = tf.add_paragraph()
-    p5.text = "ManojKumar P (Lead Architect)   |   X (Systems Co-Lead)   |   Y (Power Optimization)   |   Z (Cyber-Physical AI)"
-    p5.font.size = Pt(12)
+    p5.text = "ManojKumar P (Lead Architect)   |   B Iniyavan (Systems Co-Lead)   |   Nishi Verma (Power Optimization)   |   Pasupulati Siva Puja (Cyber-Physical AI)"
+    p5.font.size = Pt(11)
     p5.font.bold = True
     p5.font.color.rgb = TEXT_MAIN
     p5.alignment = PP_ALIGN.CENTER

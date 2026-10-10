@@ -1,20 +1,35 @@
-# ⚡ Accenture GridOS™ — Autonomous Renewable Energy Orchestrator
+# ⚡ GridOS™ — Autonomous Renewable Energy Orchestrator
 ## The Economic Times × Accenture AI Hackathon (Agentic Edition)
 **Problem Statement 4: Utilities – Renewable Energy Orchestrator**  
-**Self-Declared 9-Blocker Position:** **Level F3 – Level D3** (Highest Possible Coverage)
+**Self-Declared 9-Blocker Position:** **Level F3 – Level D3** (Highest Possible Evaluation Coverage)
 
 ---
 
-## 📖 Quick Links
-* 🚀 **[Complete Execution Guide (How to Run)](EXECUTION_GUIDE.md)**
-* 🗺️ **[Interactive Architecture & Flow Diagrams (HTML)](architecture_and_flows.html)**
-* 📐 **[Technical Specification & Mathematical Formulation](architecture_specification.md)**
-* ⚙️ **[Agent Prompts & Tool Registry Configuration](config/prompts.json)**
+## 🌐 Live Interactive Demos & Quick Links
+
+| Resource | Direct Link | Description |
+| :--- | :--- | :--- |
+| 🚀 **Live Interactive Demo Portal** | **[Launch GridOS™ Demo](https://htmlpreview.github.io/?https://github.com/ManojKumar7676/GridOs/blob/main/demo.html)** | Central launchpad for Platform Demos, Pitch Deck, and Architecture |
+| 📊 **Executive Pitch Deck (Interactive)** | **[View Pitch Deck](https://htmlpreview.github.io/?https://github.com/ManojKumar7676/GridOs/blob/main/PITCH_DECK.html)** | 12-slide executive presentation with architecture, ROI, and metrics |
+| 🗺️ **Architecture & Flow Diagrams** | **[View Architecture Flows](https://htmlpreview.github.io/?https://github.com/ManojKumar7676/GridOs/blob/main/architecture_and_flows.html)** | 5 Mermaid vector flows: Architecture, Sequence, Shocks, K8s, IEC 61850 |
+| 🎬 **4-Minute Master Video Prompts** | **[View Video Prompts](https://htmlpreview.github.io/?https://github.com/ManojKumar7676/GridOs/blob/main/VIDEO_PROMPTS.html)** | 24 all-in-one prompts with voiceovers and live platform screenshots |
+| 📐 **Technical Specification** | **[architecture_specification.md](architecture_specification.md)** | Formal mathematical LP formulation, proofs, and API schemas |
+| ⚙️ **Agent Prompts & Tool Registry** | **[config/prompts.json](config/prompts.json)** | Complete JSON configuration for all 4 autonomous agents |
+| 🚀 **Execution Guide** | **[EXECUTION_GUIDE.md](EXECUTION_GUIDE.md)** | Step-by-step local setup, testing, and deployment guide |
+
+---
+
+## 👥 Engineering Team Roster
+
+* **ManojKumar P** — Lead Systems Architect *(Autonomous Multi-Agent Systems & SCED LP Formulation)*
+* **B Iniyavan** — Systems Co-Lead *(SCADA Protocol Bus & Real-Time Orchestration)*
+* **Nishi Verma** — Power Optimization Lead *(Wholesale Market Arbitrage & Kirchhoff Balancer)*
+* **Pasupulati Siva Puja** — Cyber-Physical AI Lead *(Doppler Radar Vision & Regulatory Audit AI)*
 
 ---
 
 ## 🌟 Executive Summary
-Adoption of renewable generation is accelerating rapidly, but solar and wind power are inherently intermittent. **Accenture GridOS™** is an autonomous cyber-physical multi-agent operating system that coordinates 10 physical utility assets:
+Adoption of renewable generation is accelerating rapidly, but solar and wind power are inherently intermittent. **GridOS™** is an autonomous cyber-physical multi-agent operating system that coordinates 10 physical utility assets:
 * **☀️ 5 Solar Farms** (230 MW nameplate)
 * **💨 3 Wind Farms** (250 MW nameplate)
 * **🔋 2 Battery Energy Storage Systems (BESS)** (150 MW / 500 MWh total)
@@ -46,14 +61,25 @@ Every **15 minutes**, the system autonomously perceives weather conditions, deli
 
 ---
 
-## ⚡ 1-Minute Execution
+## 📸 Production Platform Screenshots
+
+| 1. Real-Time SCADA Dispatch Console | 2. Multimodal Radar Vision Station |
+| :---: | :---: |
+| ![SCADA Console](storage/screenshots/screenshot_tab2_scada.png) | ![Radar Vision](storage/screenshots/screenshot_tab3_radar.png) |
+| **3. 24-Hour Diurnal Analytics & Shock Lab** | **4. Agent Evaluation & Audit Station** |
+| ![Diurnal Analytics](storage/screenshots/screenshot_tab4_analytics.png) | ![Evaluation Station](storage/screenshots/screenshot_tab7_eval.png) |
+
+---
+
+## ⚡ 1-Minute Local Execution
 
 ```powershell
-# 1. Navigate to directory
-cd C:\Users\paddu\Downloads\AccentureAssessment
+# 1. Clone repository
+git clone https://github.com/ManojKumar7676/GridOs.git
+cd GridOs
 
-# 2. Set Python path
-$env:PYTHONPATH = "c:\Users\paddu\Downloads"
+# 2. Install dependencies
+pip install -r requirements.txt
 
 # 3. Launch the Streamlit Working Demo
 python -m streamlit run app.py --server.port 8501
@@ -63,4 +89,3 @@ python -m pytest tests/ -v
 ```
 
 Open your browser at **`http://localhost:8501`**.
-
