@@ -139,10 +139,10 @@ def create_deck(output_path="GridOS_Pitch_Deck_Complete.pptx"):
     team_h = Inches(1.6)
     team_top = Inches(4.75)
     team_members = [
-        ("ManojKumar P", "Lead & Core Architect", "Autonomous Multi-Agent Systems & HiGHS SCED Formulation", ACCENT_BLUE),
-        ("X", "Co-Lead & Systems Engineer", "Perception Pipeline & Multimodal Radar Computer Vision", ACCENT_GREEN),
-        ("Y", "Power Systems & Optimization Lead", "NERC BAL-001 Frequency & Feeder Thermal Protection", ACCENT_PURPLE),
-        ("Z", "Cyber-Physical & AI Engineer", "Substation Protocols (IEC 61850 / DNP3) & Gemini AI Audit", ACCENT_AMBER)
+        ("ManojKumar P", "Lead Systems Architect", "Autonomous Multi-Agent Architecture & HiGHS SCED LP Solver", ACCENT_BLUE),
+        ("B Iniyavan", "Systems Co-Lead", "SCADA Protocol Bus (IEC 61850 / DNP3) & Real-Time Orchestration", ACCENT_GREEN),
+        ("Nishi Verma", "Power Optimization Lead", "Wholesale Electricity Market Arbitrage & Kirchhoff Balancer", ACCENT_PURPLE),
+        ("Pasupulati Siva Puja", "Cyber-Physical AI Lead", "Doppler Radar CV Vision Ingestion & Gemini Regulatory Audit AI", ACCENT_AMBER)
     ]
 
     for idx, (name, role, desc, col) in enumerate(team_members):
