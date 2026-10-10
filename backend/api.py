@@ -1,7 +1,7 @@
 """
-Accenture GridOS™ - Production Enterprise REST API
-Implements real-time SCADA telemetry, multi-agent dispatch orchestration,
-and multimodal computer vision endpoints for Problem Statement 4 (Utilities – Renewable Energy Orchestrator).
+Accenture GridOS™ - Prototype REST API
+Exposes modeled portfolio dispatch, simulation, and RGB image heuristic endpoints
+for Problem Statement 4 (Utilities - Renewable Energy Orchestrator).
 """
 
 import sys
@@ -14,15 +14,15 @@ from fastapi import FastAPI, HTTPException, Query, UploadFile, File
 from pydantic import BaseModel, Field
 from typing import Dict, Any, List, Optional
 
-from AccentureAssessment.core.portfolio import UtilityPortfolioState, AssetStatus
-from AccentureAssessment.core.database import OrchestratorDatabase
-from AccentureAssessment.perception.radar_vision import RadarVisionEngine, MultimodalPerceptionReport
-from AccentureAssessment.agents.orchestrator_agent import ChiefExecutiveOrchestrator
-from AccentureAssessment.simulation.engine import IndustrialSimulationEngine
+from AccentureAssessment.backend.core.portfolio import UtilityPortfolioState, AssetStatus
+from AccentureAssessment.backend.core.database import OrchestratorDatabase
+from AccentureAssessment.backend.perception.radar_vision import RadarVisionEngine, MultimodalPerceptionReport
+from AccentureAssessment.backend.agents.orchestrator_agent import ChiefExecutiveOrchestrator
+from AccentureAssessment.backend.simulation.engine import IndustrialSimulationEngine
 
 app = FastAPI(
     title="Accenture GridOS™ | Renewable Energy Orchestrator API",
-    description="Production Multi-Agent SCADA Telemetry & Dispatch Optimization Engine (Problem Statement 4 - Utilities)",
+    description="Prototype modeled dispatch and simulation API (Problem Statement 4 - Utilities)",
     version="1.0.0"
 )
 
@@ -51,7 +51,8 @@ def health_check():
         "system": "Accenture GridOS Renewable Energy Orchestrator",
         "standard": "IEC 61850 / IEEE 1547 / NERC BAL-001",
         "problem_statement": "Problem 4: Utilities – Renewable energy orchestrator",
-        "claimed_9_blocker": "F3 - D3"
+        "self_estimated_9_blocker": "F3 - D2",
+        "d3_perception_validated": False
     }
 
 @app.get("/api/v1/portfolio")

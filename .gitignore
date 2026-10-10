@@ -16,11 +16,8 @@ storage/*.db
 *.db
 *.sqlite3
 
-# Temporary / Scratch scripts & duplicate decks
+# Temporary / Scratch scripts
 evaluate_deck.py
-GridOS_Pitch_Deck.pptx
-GridOS_Pitch_Deck_Light.pptx
-GridOS_Pitch_Deck_Final.pptx
 
 # OS Generated
 Thumbs.db

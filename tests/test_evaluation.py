@@ -2,13 +2,14 @@
 Tests for Accenture GridOS™ Evaluation Framework and AuditEvaluationAgent.
 """
 
+from dataclasses import replace
 import pytest
-from AccentureAssessment.core.portfolio import UtilityPortfolioState
-from AccentureAssessment.agents.orchestrator_agent import ChiefExecutiveOrchestrator
-from AccentureAssessment.evaluation.evaluation_agent import AuditEvaluationAgent
-from AccentureAssessment.evaluation.metrics import MetricsCalculator
-from AccentureAssessment.evaluation.benchmark_runner import BenchmarkRunner
-from AccentureAssessment.core.llm_client import get_gemini_client, load_env_file
+from AccentureAssessment.backend.core.portfolio import UtilityPortfolioState
+from AccentureAssessment.backend.agents.orchestrator_agent import ChiefExecutiveOrchestrator
+from AccentureAssessment.backend.evaluation.evaluation_agent import AuditEvaluationAgent
+from AccentureAssessment.backend.evaluation.metrics import MetricsCalculator
+from AccentureAssessment.backend.evaluation.benchmark_runner import BenchmarkRunner
+from AccentureAssessment.backend.core.llm_client import get_gemini_client, load_env_file
 
 
 def test_env_loader_finds_api_key():
@@ -42,6 +43,11 @@ def test_metrics_calculator_exact_balance():
     assert scorecard.orchestrator_metrics.energy_balance_error_mw < 0.5
     assert scorecard.reliability_metrics.thermal_line_violations_count == 0
     assert scorecard.reliability_metrics.bess_soc_violations_count == 0
+    assert scorecard.forecast_metrics.ground_truth_available is False
+    assert scorecard.forecast_metrics.storm_alert_f1_score is None
+    assert scorecard.forecast_metrics.to_dict()["composite_score"] is None
+    assert scorecard.market_metrics.arbitrage_capture_efficiency is None
+    assert any("ground truth was not supplied" in finding for finding in scorecard.audit_findings)
 
 
 def test_negative_pricing_evaluation():
@@ -62,6 +68,30 @@ def test_negative_pricing_evaluation():
     # Export must be suppressed
     assert scorecard.market_metrics.negative_pricing_suppression_rate == 100.0
     assert out["dispatch_result"].grid_export_mw == 0.0
+
+
+def test_unserved_load_fails_dispatch_compliance():
+    portfolio = UtilityPortfolioState()
+    orchestrator = ChiefExecutiveOrchestrator()
+    out = orchestrator.orchestrate(portfolio, interval_idx=25)
+    dispatch = out["dispatch_result"]
+    dispatch_with_shed_load = replace(
+        dispatch,
+        served_demand_mw=max(0.0, dispatch.served_demand_mw - 1.0),
+        unserved_demand_mw=1.0,
+    )
+
+    scorecard = AuditEvaluationAgent().evaluate_interval(
+        portfolio=portfolio,
+        dispatch_result=dispatch_with_shed_load,
+        agent_deliberations=out["agent_deliberations"],
+        scenario_name="Unserved Load Test",
+        use_llm_narrative=False,
+    )
+
+    assert scorecard.reliability_metrics.unserved_energy_mwh == 0.25
+    assert scorecard.orchestrator_metrics.energy_balance_error_mw >= 0.99
+    assert scorecard.compliance_passed is False
 
 
 def test_benchmark_runner_all_scenarios():

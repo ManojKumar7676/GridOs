@@ -1,0 +1,171 @@
+# Technical Architecture & Solution Specification
+## ET AI Hackathon: Agentic Edition (Accenture × The Economic Times)
+**Problem Statement 4: Utilities – Renewable Energy Orchestrator**
+**Codebase Directory**: `AccentureAssessment`
+**Self-Estimated Evaluation Grid Position**: **Level F3 - D2** (D3 perception reliability is not yet validated)
+
+---
+
+## 1. Executive Summary & Problem Formulation
+
+The transition of utility power grids toward deep renewable penetration is constrained by **high-frequency weather intermittency, market price volatility, and physical network limits**. As defined in Problem Statement 4, the utility manages an extensive cyber-physical portfolio:
+* **☀️ 5 Solar Farms (230 MW nameplate)** across microclimates with cloud attenuation.
+* **💨 3 Wind Farms (250 MW nameplate)** with cut-in (3 m/s) and storm safety cut-out (25 m/s) limits.
+* **🔋 2 Battery Energy Storage Systems (BESS: 150 MW / 500 MWh total)** (Iron-Phosphate bulk + Titanate peaker).
+* **🏭 Heavy Industrial Consumers** (Baseload, flexible PEM green hydrogen electrolyzers, interruptible smelters).
+* **🌐 500 kV Regional Interties** subject to thermal line ratings and transmission congestion limits.
+* **💲 Wholesale Electricity Market** with real-time spot LMP trading, carbon offset pricing, and forward spreads.
+
+### Why Agentic AI Is Required:
+Unlike classical static linear dispatch tools or conversational chatbots, this cyber-physical system:
+1. **Processes image inputs as a D3 prototype, not a validated D3 capability**: The current RGB pipeline applies color and luminance thresholds to synthetic or uploaded raster images. It does not decode raw NEXRAD WSR-88D Level II data or establish detection accuracy against labeled observations.
+2. **Deliberates Across Multiple Competing Goals (F2)**: Continuously negotiates non-linear trade-offs between minimizing costs, carbon emissions, curtailment, and battery degradation while maximizing profit, clean penetration, and grid frequency stability.
+3. **Produces Discrete Action Records (F1 prototype)**: Simulates all 5 action categories specified on Page 12:
+   - **Battery actions**: Charge, Discharge, Reserve capacity for emergencies
+   - **Market actions**: Buy electricity, Sell electricity, Delay selling until prices rise
+   - **Renewable actions**: Curtail wind, Curtail solar, Prioritize cleaner generation
+   - **Demand management**: Trigger demand response, Reduce noncritical loads, Shift industrial loads
+   - **Maintenance**: Delay maintenance, Schedule maintenance, Dispatch inspection teams
+   These are local simulation records; the prototype is not connected to physical actuators, wholesale markets, or live SCADA.
+4. **Sustains Multi-Period Temporal Coherence (F3)**: Governs operations across a 24-hour diurnal cycle (96 intervals of 15 minutes each) with proven resilience against all 7 real-world disruptions from the specification:
+   - Clouds reduce solar output
+   - Wind suddenly increases & storm cut-outs
+   - Electricity prices spike ($285/MWh)
+   - Negative electricity pricing (-$18.50/MWh)
+   - One battery becomes unavailable (outage)
+   - Transmission line reaches capacity (thermal congestion)
+   - Industrial demand increases unexpectedly (+35 MW surge)
+
+---
+
+## 2. 9-Blocker Verification Matrix (Self-Estimate: Level F3 - D2)
+
+```
+        SOLUTION DEPTH
+        ▲
+     D3 │ [D3-F1]        [D3-F2]         [D3-F3] (NOT YET VALIDATED)
+        │
+     D2 │ [D2-F1]        [D2-F2]         [D2-F3]
+        │
+     D1 │ [D1-F1]        [D1-F2]         [D1-F3]
+        └────────────────────────────────────────►
+          F1              F2              F3
+                    SOLUTION FEATURES
+```
+
+| Dimension | Declared Level | Concrete Implementation Proof |
+| :--- | :---: | :--- |
+| **Features** | **F3** | **F1**: Emits discrete action clusters across all 5 categories: Battery, Market, Renewable, Demand Response, and Maintenance.<br>**F2**: Situational dynamic Pareto weighting dynamically shifts priorities under grid stress, storm warnings, price spikes, and negative tariffs.<br>**F3**: Simulates 96 discrete 15-minute intervals across diurnal duck curves, with verified resilience against all 7 real-world disruptions. |
+| **Depth** | **D2** | **D1**: Structured portfolio telemetry, spot LMP inputs, and modeled asset data.<br>**D2**: Linear Programming dispatch with energy-balance, battery SoC, and scenario checks. The image pipeline is an RGB heuristic prototype and is not counted as validated D3 perception. |
+
+---
+
+## 3. System Architecture Diagram
+
+```mermaid
+graph TD
+    subgraph Data Layer [Multimodal Telemetry & Market Feed]
+        RADAR["🛰️ Doppler Satellite Radar & Multi-Spectral Imagery"]
+        SCADA["⚡ Real-Time SCADA Telemetry (IEC 61850 / DNP3)"]
+        SPOT_MKT["💲 Wholesale Spot Market & Forward Spreads"]
+        DB[(🗄️ ACID SQLite Persistent Database)]
+    end
+
+    subgraph Perception Layer [RGB Image Heuristic Prototype (D3 not validated)]
+        CV_ENGINE["Perception & Vision Engine<br><i>Cloud Opacity Index, Derating & Storm Tracking</i>"]
+    end
+
+    subgraph Multi-Agent Collective [Collaborative Agents]
+        AGT_1["👁️ Meteorological & Vision Agent"]
+        AGT_2["💹 Wholesale Market & Arbitrage Agent"]
+        AGT_3["🛡️ Grid Reliability & Asset Health Agent"]
+        CHIEF["⚡ Chief Executive Orchestrator<br><i>Dynamic Pareto Weight Arbitration (F2)</i>"]
+    end
+
+    subgraph Optimization Layer [Physical Safety & Dispatch]
+        SOLVER["HiGHS Linear Programming Solver<br><i>Energy Balance & Electrochemical Bounds</i>"]
+    end
+
+    subgraph Physical Execution [All 5 Action Categories (F1)]
+        ACT_BESS["🔋 Battery Actions (Charge / Discharge / Reserve)"]
+        ACT_GRID["💹 Market Actions (Buy / Sell / Delay Selling)"]
+        ACT_CURT["☀️ Renewable Actions (Curtail Solar/Wind / Prioritize Clean)"]
+        ACT_DR["🏭 Demand Management (Trigger DR / Shift Loads / Reduce Noncritical)"]
+        ACT_MNT["🔧 Maintenance (Delay / Schedule / Dispatch Inspection)"]
+    end
+
+    RADAR --> CV_ENGINE
+    CV_ENGINE --> AGT_1
+    SCADA --> AGT_3
+    SPOT_MKT --> AGT_2
+
+    AGT_1 --> CHIEF
+    AGT_2 --> CHIEF
+    AGT_3 --> CHIEF
+
+    CHIEF --> SOLVER
+    SOLVER --> ACT_BESS
+    SOLVER --> ACT_GRID
+    SOLVER --> ACT_CURT
+    SOLVER --> ACT_DR
+    SOLVER --> ACT_MNT
+
+    SOLVER --> DB
+    CHIEF --> DB
+```
+
+---
+
+## 4. Multi-Agent Hierarchy: The 4 Agents and the Orchestrator Role
+
+A central architectural question for enterprise agentic systems: **Do we have 4 domain agents, and is there an orchestrator?**
+
+### The Answer:
+**Yes, exactly.** GridOS deploys a **hierarchical multi-agent collective** comprising **4 distinct autonomous agents**, with **1 Chief Executive Orchestrator** presiding over **3 specialized domain agents**:
+
+```
+                          ┌────────────────────────────────────────────────────────┐
+                          │     AGT-00-EXEC: Chief Executive Orchestrator          │
+                          │   (Master Dispatcher & Dynamic Pareto Arbitrator)      │
+                          └──────────────────────────┬─────────────────────────────┘
+                                                     │ Coordinates every 15 mins
+                 ┌───────────────────────────────────┼───────────────────────────────────┐
+                 │                                   │                                   │
+                 ▼                                   ▼                                   ▼
+  ┌─────────────────────────────┐     ┌─────────────────────────────┐     ┌─────────────────────────────┐
+  │ AGT-01-METEO: Forecast Agent│     │  AGT-02-MRKT: Market Agent  │     │   AGT-03-GRID: Grid Agent   │
+  │ Atmospheric & Radar Vision  │     │  Wholesale Trading & LMP    │     │  Reliability, SoC & Thermal │
+  └─────────────────────────────┘     └─────────────────────────────┘     └─────────────────────────────┘
+```
+
+| Agent ID | Agent Name & Operational Role | Domain | Core Skills | Operational Instructions | Tools & Actuators |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **`AGT-00-EXEC`** | **Chief Executive Renewable Energy Orchestrator**<br>*(Master Dispatcher & Pareto Arbitrator)* | Multi-Period Stochastic Dispatch, Dynamic Pareto Arbitration & SCED Execution | • Multi-agent consensus synthesis<br>• Dynamic Pareto weight arbitration<br>• 13-variable LP SCED formulation<br>• Inter-temporal forward arbitrage valuation<br>• Contingency escalation & triage<br>• SCADA command emission | 1. Query all 3 domain agents every 15 min.<br>2. Situationally arbitrate Pareto weights.<br>3. Formulate and solve 13-variable LP via HiGHS.<br>4. Apply electrochemical transitions (10-95% SoC).<br>5. Emit 5-category SCADA action clusters.<br>6. Commit telemetry to ACID SQLite DB. | • `IndustrialDispatchSolver` (HiGHS LP)<br>• `OrchestratorDatabase` (SQLite)<br>• `ParetoWeightArbitrator`<br>• IEC 61850 SCADA Actuation Bus<br>• Domain Agent Query Bus |
+| **`AGT-01-METEO`** | **Weather Image Heuristic Agent** | RGB raster feature extraction and structured telemetry | • Color/luminance thresholding<br>• 20x20 pixel localized image sampling<br>• Modeled wind cut-in and cut-out thresholds<br>• Heuristic image input-quality score (not accuracy) | 1. Process a synthetic or uploaded RGB image.<br>2. Estimate image-level color and brightness features.<br>3. Sample local patches around modeled assets.<br>4. Apply heuristic attenuation and storm flags.<br>5. Return a structured estimate with an explicit input-quality score. | • `RadarVisionEngine` (RGB heuristic prototype)<br>• NumPy/PIL image processing |
+| **`AGT-02-MRKT`** | **Wholesale Electricity Market & Trading Agent**<br>*(Commercial Trader & LMP Analyst)* | Wholesale Spot Electricity Markets, Carbon Compliance & DR Economics | • Locational Marginal Price (LMP) analysis<br>• Forward inter-temporal spread arbitrage<br>• Negative pricing cash penalty mitigation<br>• Demand Response valuation ($65/MWh)<br>• Carbon offset accounting ($35/t CO2) | 1. Ingest real-time spot LMP, forward curve, carbon tax.<br>2. Calculate spread $\Delta P = P_{t+4} - P_{t}$.<br>3. Classify market regime (Negative, Surge, Spread, Nominal).<br>4. Issue trading mandate (charge, discharge, store, merit).<br>5. Deliver commercial advisory to Chief Orchestrator. | • ISO/RTO Wholesale Market Ticker<br>• Forward Spark Spread Calculator<br>• Demand Response Settlement Engine<br>• Carbon Compliance Ledger |
+| **`AGT-03-GRID`** | **Grid Reliability & SCADA Protection Agent**<br>*(Protection Engineer & Compliance Officer)* | Cyber-Physical Grid Stability, NERC BAL-001 Balancing & Asset Protection | • NERC BAL-001 frequency response monitoring<br>• IEEE 1547 interconnection compliance<br>• Electrochemical BESS health safeguards<br>• 500 kV corridor thermal MVA tracking<br>• Predictive thermal/vibration diagnostics | 1. Ingest grid frequency, intertie voltage, line ratings.<br>2. Audit frequency vs 49.85 - 50.15 Hz thresholds.<br>3. Enforce BESS-01 & BESS-02 SoC boundaries.<br>4. Check 500 kV corridor for thermal congestion.<br>5. Audit inverter temp (>62°C) and turbine vibration.<br>6. Return reliability constraints to Orchestrator. | • SCADA RTU/PMU Substation Bus<br>• Battery Management System (BMS)<br>• Dynamic Line Rating (DLR) Tool<br>• Accelerometer Vibration / Thermal Network |
+
+---
+
+## 5. Codebase Directory Map
+
+This document describes the prototype's intended architecture and modeled capabilities. It is not evidence of a live SCADA, market, or weather integration. See the root README for current implementation limits.
+
+```
+AccentureAssessment/
+├── frontend/app.py                   # Streamlit application
+├── backend/api.py                    # FastAPI application
+├── backend/agents/                   # Agent and orchestration logic
+├── backend/config/                   # Prompt configuration
+├── backend/core/                      # Domain models, optimizer, persistence
+├── backend/evaluation/                # Evaluation and benchmark logic
+├── backend/perception/                # Image-analysis prototype
+├── backend/simulation/                # Scenario simulation and telemetry replay
+├── tests/                             # Automated tests
+├── docs/                              # Architecture and execution guides
+├── scripts/                           # Developer and showcase utilities
+├── showcase/                          # Pitch deck, demo portal, media materials
+├── storage/                           # Local database and generated runtime data
+├── requirements.txt
+└── README.md
+```

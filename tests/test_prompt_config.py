@@ -8,7 +8,7 @@ import os
 import json
 import tempfile
 import pytest
-from AccentureAssessment.config.prompt_config import PromptConfig, get_prompt_config
+from AccentureAssessment.backend.config.prompt_config import PromptConfig, get_prompt_config
 
 def test_prompt_config_loads_all_agents():
     cfg = get_prompt_config()
@@ -26,7 +26,7 @@ def test_prompt_config_loads_all_agents():
 def test_prompt_config_system_prompts_not_empty():
     cfg = get_prompt_config()
     assert "Renewable Energy Orchestrator" in cfg.get_system_prompt("orchestrator_agent")
-    assert "Meteorological & Vision" in cfg.get_system_prompt("forecast_agent")
+    assert "weather image heuristic agent" in cfg.get_system_prompt("forecast_agent").lower()
     assert "Wholesale Electricity Market" in cfg.get_system_prompt("market_agent")
     assert "Grid Reliability" in cfg.get_system_prompt("grid_reliability_agent")
 

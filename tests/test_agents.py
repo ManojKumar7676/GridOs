@@ -4,9 +4,9 @@ Unit Tests - Multi-Agent Deliberation & 24-Hour Simulation Engine
 
 import pytest
 import os
-from AccentureAssessment.core.portfolio import UtilityPortfolioState
-from AccentureAssessment.agents.orchestrator_agent import ChiefExecutiveOrchestrator
-from AccentureAssessment.simulation.engine import IndustrialSimulationEngine
+from AccentureAssessment.backend.core.portfolio import UtilityPortfolioState
+from AccentureAssessment.backend.agents.orchestrator_agent import ChiefExecutiveOrchestrator
+from AccentureAssessment.backend.simulation.engine import IndustrialSimulationEngine
 
 def test_multi_agent_orchestration():
     db_test = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "storage", "test_orchestrator.db")

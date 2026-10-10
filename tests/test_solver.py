@@ -3,8 +3,8 @@ Unit Tests - Mathematical Feasibility & Physical Conservation
 """
 
 import pytest
-from AccentureAssessment.core.portfolio import UtilityPortfolioState
-from AccentureAssessment.core.solver import IndustrialDispatchSolver, DispatchWeights
+from AccentureAssessment.backend.core.portfolio import UtilityPortfolioState
+from AccentureAssessment.backend.core.solver import IndustrialDispatchSolver, DispatchWeights
 
 def test_energy_conservation_balance():
     solver = IndustrialDispatchSolver()

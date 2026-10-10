@@ -17,10 +17,10 @@ import os
 import numpy as np
 from PIL import Image
 
-from AccentureAssessment.core.portfolio import UtilityPortfolioState, AssetStatus
-from AccentureAssessment.core.solver import IndustrialDispatchSolver, DispatchWeights
-from AccentureAssessment.agents.orchestrator_agent import ChiefExecutiveOrchestrator
-from AccentureAssessment.perception.radar_vision import RadarVisionEngine
+from AccentureAssessment.backend.core.portfolio import UtilityPortfolioState, AssetStatus
+from AccentureAssessment.backend.core.solver import IndustrialDispatchSolver, DispatchWeights
+from AccentureAssessment.backend.agents.orchestrator_agent import ChiefExecutiveOrchestrator
+from AccentureAssessment.backend.perception.radar_vision import RadarVisionEngine
 
 @pytest.fixture
 def solver():
@@ -157,7 +157,11 @@ def test_all_five_action_categories_present(solver, base_portfolio):
     assert "BATTERY_ACTIONS" in categories
     assert "MARKET_ACTIONS" in categories
     assert "RENEWABLE_ACTIONS" in categories
+    assert "DEMAND_MANAGEMENT" in categories
     assert "MAINTENANCE" in categories
+
+    demand_actions = [a for a in res.action_cluster if a.get("category") == "DEMAND_MANAGEMENT"]
+    assert demand_actions
 
 def test_multimodal_vision_real_image_ingestion():
     """
@@ -174,6 +178,10 @@ def test_multimodal_vision_real_image_ingestion():
     assert report.cloud_opacity_index > 0.0
     assert report.storm_alert_active is True
     assert report.storm_severity in ["ELEVATED", "SEVERE"]
-    assert report.sensor_fusion_confidence >= 0.95
+    assert report.input_quality_score >= 0.65
     assert len(report.asset_level_reports) == 8
+
+    blank = Image.new("RGB", (500, 380), (0, 0, 0))
+    blank_report = engine.process_radar_image(blank)
+    assert blank_report.input_quality_score < report.input_quality_score
 
