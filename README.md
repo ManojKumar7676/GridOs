@@ -430,12 +430,12 @@ GridOs/
 │   └── test_solver.py
 ├── showcase/                       # Presentation & demonstration materials
 │   ├── pitch-decks/
-│   │   ├── GridOS_Pitch_Deck.pdf   # 12-slide executive pitch deck (PDF)
-│   │   └── GridOS_Pitch_Deck.pptx  # 12-slide executive pitch deck (PowerPoint)
+│   │   ├── GridOS_Pitch_Deck.pdf   # 11-slide executive pitch deck (PDF)
+│   │   └── GridOS_Pitch_Deck.pptx  # 11-slide executive pitch deck (PowerPoint)
 │   ├── demo/
 │   │   └── index.html              # Static launch portal & screenshot gallery
 │   ├── media/
-│   │   ├── GridOS_Demo_Video.mp4   # 4-minute 1080p demo video (41.29 MB)
+│   │   ├── GridOS_Demo_Video.mp4   # 3m 50s 1080p demo video (40.78 MB, <50MB)
 │   │   ├── DEMO_VIDEO_NARRATION.md # Complete timestamped voiceover script
 │   │   └── VIDEO_PROMPTS.html      # Google Vids cinematography storyboard
 │   └── assets/
